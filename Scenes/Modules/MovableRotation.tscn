@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtjklu400biu8"]
+
+[ext_resource type="Script" uid="uid://57160ih5n0qv" path="res://Scripts/Modules/MovableRotation.cs" id="1_j5a4p"]
+
+[node name="MovableRotation" type="Node"]
+script = ExtResource("1_j5a4p")

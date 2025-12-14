@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnaa6owekhou5"]
+
+[ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="1_3kvya"]
+[ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
+[ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="2_v402d"]
+[ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="3_g4oe6"]
+[ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/Shot.tscn" id="4_86atj"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("movableModule")]
+script = ExtResource("1_agccv")
+movableModule = NodePath("Modules/Movable")
+_movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_3kvya")]
+speed = 250.0
+nodeToAffect = NodePath("../..")
+
+[node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_g4oe6")]
+shotScene = ExtResource("4_86atj")
+timeBetweenShots = 1.0
+nodeToAffect = NodePath("../../Canon")
+
+[node name="renderer" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.05)
+texture = ExtResource("2_v402d")
+
+[node name="Canon" type="Node2D" parent="."]
+position = Vector2(5, -25)
+rotation = 4.712389

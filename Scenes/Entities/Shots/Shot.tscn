@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttjrhlqit1y1"]
+
+[ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_mxcn5"]
+[ext_resource type="Texture2D" uid="uid://deyam3fombsgw" path="res://Assets/Textures/Shots/PlayerShot.png" id="2_1eiu6"]
+
+[node name="Shot" type="Node2D"]
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_mxcn5")]
+speed = 1000.0
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="Sprite2D" parent="."]
+modulate = Color(1, 0.7764706, 0, 1)
+rotation = 3.1415927
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1eiu6")
