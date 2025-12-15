@@ -14,6 +14,8 @@ public partial class MovableRotation : Module {
 		float lDelta = (float)pDelta;
 
         nodeToAffect.Position += nodeToAffect.Rotation.FromAngleToVector() * speed * lDelta;
+
+		base._Process(pDelta);
 	}
 	
 	// Events

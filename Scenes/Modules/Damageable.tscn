@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvuoxauwej8pw"]
+
+[ext_resource type="Script" uid="uid://dgudt7bl5khwg" path="res://Scripts/Modules/Damageable.cs" id="1_sj3df"]
+
+[node name="Damageable" type="Node"]
+script = ExtResource("1_sj3df")

@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Author : Roka
-public partial class Player : Node2D {
+public partial class Player : Entity {
 	
 	// Consts
 
@@ -19,6 +19,8 @@ public partial class Player : Node2D {
 		Vector2 lScreenSize = GetViewport().GetVisibleRect().Size;
 		_movingZone.Position *= lScreenSize;
 		_movingZone.Size *= lScreenSize;
+
+		base._Ready();
 	}
 
 	public override void _Process(double pDelta) {
@@ -33,6 +35,8 @@ public partial class Player : Node2D {
 			Mathf.Clamp(Position.X, _movingZone.Position.X, _movingZone.Size.X + _movingZone.Position.X),
 			Mathf.Clamp(Position.Y, _movingZone.Position.Y, _movingZone.Size.Y + _movingZone.Position.Y)
 		);
+
+		base._Process(pDelta);
 	}
 
     // Events

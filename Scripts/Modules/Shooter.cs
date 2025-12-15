@@ -14,6 +14,7 @@ public partial class Shooter : Module {
 	// Functions
 	public override void _Ready() {
         if (shotScene == null) SetProcess(false);
+
 		base._Ready();
     }
 
@@ -22,6 +23,8 @@ public partial class Shooter : Module {
 
 		if (timer <= 0f) Shoot();
 		timer -= lDelta;
+
+		base._Process(pDelta);
 	}
 	
 	protected void Shoot() {

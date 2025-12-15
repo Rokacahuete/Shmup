@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw67n4kaxxnbk"]
+[gd_scene load_steps=7 format=3 uid="uid://dw67n4kaxxnbk"]
 
 [ext_resource type="Script" uid="uid://cjb3wy5ru3gr7" path="res://Scripts/Entities/Enemies/Crow.cs" id="1_nhq80"]
 [ext_resource type="Texture2D" uid="uid://q1a16j48u4vj" path="res://Assets/Textures/Enemies/Crow.png" id="1_ujjex"]
 [ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_y4dt6"]
+[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="3_o5tx0"]
+[ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_w3j1c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nhq80"]
+radius = 12.641671
+height = 58.281815
 
 [node name="Crow" type="Node2D"]
 rotation = 1.5707964
@@ -15,7 +21,20 @@ _rotationMultiplicator = 1.0
 speed = 400.0
 nodeToAffect = NodePath("../..")
 
+[node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_o5tx0")]
+_ADamageables = [ExtResource("4_w3j1c")]
+nodeToAffect = NodePath("../..")
+
 [node name="renderer" type="Sprite2D" parent="."]
 rotation = 3.1415927
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ujjex")
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+position = Vector2(8.742279e-08, 2)
+rotation = 1.9268435
+shape = SubResource("CapsuleShape2D_nhq80")
+
+[connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]
