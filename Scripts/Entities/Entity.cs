@@ -7,9 +7,12 @@ public partial class Entity : Node2D {
 	// Consts
 
 	// Variables
+	[Export] private int _maxHealth = 0;
+	private int _health;
 
 	// Functions
 	public override void _Ready() {
+		_health = _maxHealth;
 		base._Ready();
 	}
 
@@ -19,8 +22,14 @@ public partial class Entity : Node2D {
 		base._Process(pDelta);
 	}
 
-	public void Hurt() {
-		GD.Print(Name + " was hurted");
+	public void Hurt(Damager pDamager) {
+		_health -= pDamager.damage;
+
+		if (_health <= 0) Die();
+	}
+
+	public void Die() {
+		QueueFree();
 	}
 	
 	// Events

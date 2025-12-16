@@ -27,7 +27,11 @@ public partial class Damageable : Module {
 		foreach (PackedScene lScene in _ADamageables) {
 			if (pArea.GetParent().SceneFilePath != lScene.ResourcePath) continue;
 			
-			((Entity)nodeToAffect).Hurt();
+			Damager lDamager = pArea.GetModule<Damager>();
+			if (lDamager != null) {
+				((Entity)nodeToAffect)?.Hurt(lDamager);
+				lDamager.Hurt();
+			}
 			break;
 		}
 	}

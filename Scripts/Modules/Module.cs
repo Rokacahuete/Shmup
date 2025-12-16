@@ -7,7 +7,7 @@ public partial class Module : Node {
 	// Consts
 
 	// Variables
-	[Export] protected Node2D nodeToAffect;
+	[Export] public Node2D nodeToAffect;
 
 	// Functions
 	public override void _Ready() {

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crdu287mkpj6v"]
+
+[ext_resource type="Script" uid="uid://dxdxt3x014yq0" path="res://Scripts/Modules/Damager.cs" id="1_d8nhb"]
+
+[node name="Damager" type="Node"]
+script = ExtResource("1_d8nhb")

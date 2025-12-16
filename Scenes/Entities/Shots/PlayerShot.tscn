@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dttjrhlqit1y1"]
+[gd_scene load_steps=6 format=3 uid="uid://dttjrhlqit1y1"]
 
 [ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_akqp5"]
 [ext_resource type="Script" uid="uid://dvduj531up2ma" path="res://Scripts/Entities/Shot.cs" id="1_ijf5j"]
 [ext_resource type="Texture2D" uid="uid://deyam3fombsgw" path="res://Assets/Textures/Shots/PlayerShot.png" id="2_ijf5j"]
+[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="3_n8guv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8guv"]
 radius = 5.0
@@ -14,6 +15,10 @@ script = ExtResource("1_ijf5j")
 
 [node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_akqp5")]
 speed = 1000.0
+nodeToAffect = NodePath("../..")
+
+[node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_n8guv")]
+damage = 50
 nodeToAffect = NodePath("../..")
 
 [node name="renderer" type="Sprite2D" parent="."]

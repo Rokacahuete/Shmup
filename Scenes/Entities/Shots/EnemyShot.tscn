@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba0lxd7yjdpxj"]
+[gd_scene load_steps=4 format=3 uid="uid://ba0lxd7yjdpxj"]
 
 [ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_bmhn4"]
+[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="2_ffbfq"]
 [ext_resource type="Texture2D" uid="uid://deyam3fombsgw" path="res://Assets/Textures/Shots/PlayerShot.png" id="2_jcnko"]
 
 [node name="Shot" type="Node2D"]
@@ -9,6 +10,10 @@
 
 [node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_bmhn4")]
 speed = 1000.0
+nodeToAffect = NodePath("../..")
+
+[node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_ffbfq")]
+damage = 10
 nodeToAffect = NodePath("../..")
 
 [node name="renderer" type="Sprite2D" parent="."]
