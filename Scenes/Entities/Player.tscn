@@ -27,7 +27,7 @@ nodeToAffect = NodePath("../..")
 
 [node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_g4oe6")]
 shotScene = ExtResource("4_86atj")
-timeBetweenShots = 1.0
+timeBetweenShots = 0.3
 nodeToAffect = NodePath("../../Canon")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_km4ui")]

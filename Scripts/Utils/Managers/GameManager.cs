@@ -14,7 +14,10 @@ public partial class GameManager : Node {
 	[Export] private PackedScene[] _AEnemyGroupScenes = new PackedScene[0];
 	[Export] private Node2D _gameContainer;
 
+	[Export(PropertyHint.Enum, "None, Infinite, Waves")] private int _gameMode = 0;
+
 	public List<Enemy> LEnemies = new();
+	public int currentWave = -1;
 
 	// Delegates
 	private delegate void Functions();
@@ -25,7 +28,17 @@ public partial class GameManager : Node {
 		base._Ready();
 
 		rand.Randomize();
-		if (_AEnemyGroupScenes.Length >= 0) _FunctionsToCall += _SpawnEnemyGroup;
+		if (_AEnemyGroupScenes.Length <= 0) return;
+		
+		switch (_gameMode) {
+			case 0: break;
+			case 1: 
+				_FunctionsToCall += _InfiniteMode;
+				break;
+			case 2:
+				_FunctionsToCall += _WavesMode;
+				break;
+		} 
 	}
 
 	public override void _Process(double pDelta) {
@@ -36,17 +49,29 @@ public partial class GameManager : Node {
 		base._Process(pDelta);
 	}
 	
-	private void _SpawnEnemyGroup() {
+	private void _InfiniteMode() {
 		if (LEnemies.Count != 0) return;
 
-		Node2D lGroup = _AEnemyGroupScenes[rand.RandiRange(0, _AEnemyGroupScenes.Length - 1)].Instantiate<Node2D>();
+		_InstanciateEnemyGroup(rand.RandiRange(0, _AEnemyGroupScenes.Length - 1));
+    }
+
+	private void _WavesMode() {
+		if (LEnemies.Count != 0) return;
+		if (++currentWave >= _AEnemyGroupScenes.Length) return;
+		
+		_InstanciateEnemyGroup(currentWave);
+	}
+
+	private void _InstanciateEnemyGroup(int pGroup) {
+		pGroup = pGroup.MinMax(0, _AEnemyGroupScenes.Length - 1);
+		Node2D lGroup = _AEnemyGroupScenes[pGroup].Instantiate<Node2D>();
 		_gameContainer.AddChild(lGroup);
 
 		foreach (Enemy lEnemy in lGroup.GetChildren()) {
             LEnemies.Add(lEnemy);
 			lEnemy.OnDied += _RemoveEnemy;
         }
-    }
+	}
 	
 	private void _RemoveEnemy(Entity pEnemy) {
 		LEnemies.Remove((Enemy)pEnemy);

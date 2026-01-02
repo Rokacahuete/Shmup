@@ -15,6 +15,7 @@
 script = ExtResource("1_uu6xs")
 _AEnemyGroupScenes = [ExtResource("2_3dxm6"), ExtResource("3_lgr22"), ExtResource("4_trn2v"), ExtResource("5_03owx")]
 _gameContainer = NodePath("../../GameContainer")
+_gameMode = 2
 
 [node name="GameContainer" type="Node2D" parent="."]
 
