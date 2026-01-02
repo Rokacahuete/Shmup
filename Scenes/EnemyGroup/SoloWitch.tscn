@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2wfo50mdx0po"]
+
+[ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="1_m8pgx"]
+
+[node name="Group" type="Node2D"]
+
+[node name="Witch" parent="." instance=ExtResource("1_m8pgx")]
+position = Vector2(149, 13)

@@ -1,28 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmwo73fm1k6bv"]
+[gd_scene load_steps=7 format=3 uid="uid://cmwo73fm1k6bv"]
 
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="1_glv2v"]
-[ext_resource type="PackedScene" uid="uid://dw67n4kaxxnbk" path="res://Scenes/Entities/Enemies/Crow.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://b40l7n4rx11a5" path="res://Scripts/Utils/Managers/GameManager.cs" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/SoloCrow.tscn" id="2_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="3_lgr22"]
+[ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/TwoCrow.tscn" id="4_trn2v"]
+[ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="5_03owx"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_glv2v")]
+[node name="Managers" type="Node" parent="."]
+
+[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("_gameContainer")]
+script = ExtResource("1_uu6xs")
+_AEnemyGroupScenes = [ExtResource("2_3dxm6"), ExtResource("3_lgr22"), ExtResource("4_trn2v"), ExtResource("5_03owx")]
+_gameContainer = NodePath("../../GameContainer")
+
+[node name="GameContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="GameContainer" instance=ExtResource("1_glv2v")]
 position = Vector2(150, 494)
-
-[node name="Crow" parent="." instance=ExtResource("2_uu6xs")]
-position = Vector2(156, 50)
-
-[node name="Crow2" parent="." instance=ExtResource("2_uu6xs")]
-position = Vector2(97, -238)
-
-[node name="Crow3" parent="." instance=ExtResource("2_uu6xs")]
-position = Vector2(229, -155)
-
-[node name="Crow4" parent="." instance=ExtResource("2_uu6xs")]
-position = Vector2(43, -122)
-
-[node name="Witch" parent="." instance=ExtResource("3_r0du0")]
-position = Vector2(249, -33)
-
-[node name="Witch2" parent="." instance=ExtResource("3_r0du0")]
-position = Vector2(47, -45)

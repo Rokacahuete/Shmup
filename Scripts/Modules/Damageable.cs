@@ -28,10 +28,8 @@ public partial class Damageable : Module {
 			if (pArea.GetParent().SceneFilePath != lScene.ResourcePath) continue;
 			
 			Damager lDamager = pArea.GetModule<Damager>();
-			if (lDamager != null) {
+			if (lDamager != null)
 				((Entity)nodeToAffect)?.Hurt(lDamager);
-				lDamager.Hurt();
-			}
 			break;
 		}
 	}
