@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnaa6owekhou5"]
+[gd_scene load_steps=13 format=3 uid="uid://dnaa6owekhou5"]
 
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="1_3kvya"]
 [ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="6_rsj4h"]
 [ext_resource type="PackedScene" uid="uid://dw67n4kaxxnbk" path="res://Scenes/Entities/Enemies/Crow.tscn" id="7_4kc40"]
 [ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="8_wmg1a"]
+[ext_resource type="PackedScene" uid="uid://b3wqh2v6tpeya" path="res://Scenes/Entities/Enemies/BookCrow.tscn" id="9_4kc40"]
+[ext_resource type="PackedScene" uid="uid://ddavm1k0rnoqh" path="res://Scenes/Entities/Enemies/BookWitch.tscn" id="10_wmg1a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
 height = 44.0
@@ -31,7 +33,7 @@ timeBetweenShots = 0.3
 nodeToAffect = NodePath("../../Canon")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_km4ui")]
-_ADamageables = [ExtResource("6_rsj4h"), ExtResource("7_4kc40"), ExtResource("8_wmg1a")]
+_ADamageables = [ExtResource("6_rsj4h"), ExtResource("7_4kc40"), ExtResource("8_wmg1a"), ExtResource("9_4kc40"), ExtResource("10_wmg1a")]
 nodeToAffect = NodePath("../..")
 
 [node name="renderer" type="Sprite2D" parent="."]

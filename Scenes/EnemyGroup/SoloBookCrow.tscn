@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://di7lwo6djnay0"]
+
+[ext_resource type="PackedScene" uid="uid://b3wqh2v6tpeya" path="res://Scenes/Entities/Enemies/BookCrow.tscn" id="1_17tuf"]
+
+[node name="Group" type="Node2D"]
+
+[node name="BookCrow" parent="." instance=ExtResource("1_17tuf")]
+position = Vector2(142, 46)

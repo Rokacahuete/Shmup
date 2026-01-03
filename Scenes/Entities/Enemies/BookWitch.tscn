@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddavm1k0rnoqh"]
+
+[ext_resource type="Script" uid="uid://c04nhddjhyvx5" path="res://Scripts/Entities/Enemies/Book.cs" id="1_orfdt"]
+[ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="3_x3gec"]
+[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="4_6tchc"]
+[ext_resource type="Texture2D" uid="uid://dikefhfnmmqw4" path="res://Assets/Textures/Enemies/Book2.png" id="5_va7jo"]
+[ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="5_x3gec"]
+[ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="6_h1lp5"]
+[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="6_w25wm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxqtk"]
+size = Vector2(126, 76)
+
+[node name="Book" type="Node2D"]
+script = ExtResource("1_orfdt")
+_maxHealth = 300
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("6_h1lp5")]
+shotScene = ExtResource("3_x3gec")
+timeBetweenShots = 3.0
+timer = 2.0
+nodeToAffect = NodePath("../../Canon")
+
+[node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_6tchc")]
+_ADamageables = [ExtResource("5_x3gec")]
+nodeToAffect = NodePath("../..")
+
+[node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("6_w25wm")]
+damage = 20
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_va7jo")
+
+[node name="Canon" type="Node2D" parent="."]
+position = Vector2(19, 14)
+rotation = 1.5707964
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+shape = SubResource("RectangleShape2D_xxqtk")
+
+[connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]

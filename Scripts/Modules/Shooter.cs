@@ -7,7 +7,7 @@ public partial class Shooter : Module {
 	// Consts
 
 	// Variables
-	[Export] protected PackedScene shotScene = null;
+	[Export] public PackedScene shotScene = null;
     [Export] protected float timeBetweenShots = 0f;
 	[Export] protected float timer;
 
@@ -31,8 +31,8 @@ public partial class Shooter : Module {
         timer += timeBetweenShots;
 
 		Node2D lShot = shotScene.Instantiate<Node2D>();
-		nodeToAffect.GetParent().AddChild(lShot);
-		lShot.Position = nodeToAffect.Position;
-		lShot.Rotation = nodeToAffect.Rotation;
+		GameManager.instance.gameContainer.AddChild(lShot);
+		lShot.GlobalPosition = nodeToAffect.GlobalPosition;
+		lShot.GlobalRotation = nodeToAffect.GlobalRotation;
     }
 }

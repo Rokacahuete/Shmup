@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg8fwem1w0nxr"]
+
+[ext_resource type="PackedScene" uid="uid://ddavm1k0rnoqh" path="res://Scenes/Entities/Enemies/BookWitch.tscn" id="1_exq3l"]
+
+[node name="Group" type="Node2D"]
+
+[node name="Book" parent="." instance=ExtResource("1_exq3l")]
+position = Vector2(158, 46)

@@ -8,11 +8,13 @@ public partial class GameManager : Node {
 	// Consts
 
 	// Variables
+	public static GameManager instance;
+
 	public static Vector2 scrollLastMove = Vector2.Zero;
 	public static RandomNumberGenerator rand = new RandomNumberGenerator();
 
 	[Export] private PackedScene[] _AEnemyGroupScenes = new PackedScene[0];
-	[Export] private Node2D _gameContainer;
+	[Export] public Node2D gameContainer;
 
 	[Export(PropertyHint.Enum, "None, Infinite, Waves")] private int _gameMode = 0;
 
@@ -26,6 +28,8 @@ public partial class GameManager : Node {
 	// Functions
 	public override void _Ready() {
 		base._Ready();
+
+		instance = this;
 
 		rand.Randomize();
 		if (_AEnemyGroupScenes.Length <= 0) return;
@@ -65,7 +69,7 @@ public partial class GameManager : Node {
 	private void _InstanciateEnemyGroup(int pGroup) {
 		pGroup = pGroup.MinMax(0, _AEnemyGroupScenes.Length - 1);
 		Node2D lGroup = _AEnemyGroupScenes[pGroup].Instantiate<Node2D>();
-		_gameContainer.AddChild(lGroup);
+		gameContainer.AddChild(lGroup);
 
 		foreach (Enemy lEnemy in lGroup.GetChildren()) {
             LEnemies.Add(lEnemy);
