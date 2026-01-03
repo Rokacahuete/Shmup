@@ -66,15 +66,18 @@ public partial class GameManager : Node {
 		_InstanciateEnemyGroup(currentWave);
 	}
 
+	public void CreateEnemy(Enemy pEnemy) {
+		LEnemies.Add(pEnemy);
+		pEnemy.OnDied += _RemoveEnemy;
+	}
+
 	private void _InstanciateEnemyGroup(int pGroup) {
 		pGroup = pGroup.MinMax(0, _AEnemyGroupScenes.Length - 1);
 		Node2D lGroup = _AEnemyGroupScenes[pGroup].Instantiate<Node2D>();
 		gameContainer.AddChild(lGroup);
 
-		foreach (Enemy lEnemy in lGroup.GetChildren()) {
-            LEnemies.Add(lEnemy);
-			lEnemy.OnDied += _RemoveEnemy;
-        }
+		foreach (Enemy lEnemy in lGroup.GetChildren())
+			CreateEnemy(lEnemy);
 	}
 	
 	private void _RemoveEnemy(Entity pEnemy) {

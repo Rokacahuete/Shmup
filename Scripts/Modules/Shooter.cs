@@ -34,5 +34,7 @@ public partial class Shooter : Module {
 		GameManager.instance.gameContainer.AddChild(lShot);
 		lShot.GlobalPosition = nodeToAffect.GlobalPosition;
 		lShot.GlobalRotation = nodeToAffect.GlobalRotation;
+		if (lShot is Enemy lEnemy)
+			GameManager.instance.CreateEnemy(lEnemy);
     }
 }
