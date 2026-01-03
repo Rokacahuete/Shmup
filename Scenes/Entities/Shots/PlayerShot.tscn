@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8guv"]
 radius = 5.0
 
-[node name="Shot" type="Node2D"]
+[node name="PlayerShot" type="Node2D"]
 script = ExtResource("1_ijf5j")
 
 [node name="Modules" type="Node" parent="."]

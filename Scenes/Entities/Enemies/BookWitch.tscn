@@ -20,7 +20,7 @@ _maxHealth = 300
 [node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("6_h1lp5")]
 shotScene = ExtResource("3_x3gec")
 timeBetweenShots = 3.0
-timer = 2.0
+timer = 0.5
 nodeToAffect = NodePath("../../Canon")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_6tchc")]

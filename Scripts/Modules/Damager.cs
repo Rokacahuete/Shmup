@@ -21,7 +21,8 @@ public partial class Damager : Module {
 	}
 
 	public void Hurt() {
-		nodeToAffect.QueueFree();
+		if (nodeToAffect is Entity lEntity)
+			lEntity.Hurt(new Damager());
 	}
 	
 	// Events
