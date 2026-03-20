@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci2655mjvakix"]
+[gd_scene load_steps=12 format=3 uid="uid://ci2655mjvakix"]
 
 [ext_resource type="Script" uid="uid://bco75pariqdem" path="res://Scripts/Entities/Enemies/Witch.cs" id="1_nawxp"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="1_xgw2o"]
@@ -17,10 +17,16 @@ height = 28.0
 radius = 14.0
 height = 50.0
 
-[node name="Witch" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5rrt"]
+size = Vector2(60, 69)
+
+[node name="Witch" type="Node2D" node_paths=PackedStringArray("_damageableModule")]
 rotation = 1.5707964
 script = ExtResource("1_nawxp")
-_maxHealth = 100
+_damageableModule = NodePath("Modules/Damageable")
+_lifePercentageToTp = 0.55
+_nbTp = 2
+maxHealth = 100
 
 [node name="Modules" type="Node" parent="."]
 
@@ -61,4 +67,11 @@ shape = SubResource("CapsuleShape2D_kb5vk")
 position = Vector2(3.999998, -20)
 shape = SubResource("CapsuleShape2D_ywsem")
 
+[node name="DetectionZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+position = Vector2(19, -11.5)
+shape = SubResource("RectangleShape2D_l5rrt")
+
 [connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]
+[connection signal="area_entered" from="DetectionZone" to="." method="_OnDetectionZoneEntered"]

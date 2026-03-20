@@ -22,6 +22,18 @@ public partial class Damageable : Module {
 		base._Process(pDelta);
 	}
 	
+	public bool CanBeHurtedBy(Area2D pArea) {
+		bool lResult = false;
+		foreach (PackedScene lScene in _ADamageables) {
+			if (pArea.GetParent().SceneFilePath != lScene.ResourcePath) continue;
+
+			lResult = true;
+			break;
+		}
+		
+		return lResult;
+	}
+	
 	// Events
 	private void _OnAreaEntered(Area2D pArea) {
 		if (stopped) return;

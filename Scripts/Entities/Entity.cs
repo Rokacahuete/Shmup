@@ -7,8 +7,8 @@ public partial class Entity : Node2D {
 	// Consts
 
 	// Variables
-	[Export] private int _maxHealth = 0;
-	private int _health;
+	[Export] protected int maxHealth = 0;
+	protected int health;
 
 	// Delegates
 	public delegate void OnDiedEventHandler(Entity pEntity);
@@ -16,7 +16,7 @@ public partial class Entity : Node2D {
 
 	// Functions
 	public override void _Ready() {
-		_health = _maxHealth;
+		health = maxHealth;
 		base._Ready();
 	}
 
@@ -26,10 +26,10 @@ public partial class Entity : Node2D {
 		base._Process(pDelta);
 	}
 
-	public void Hurt(Damager pDamager) {
-		_health -= pDamager.damage;
+	public virtual void Hurt(Damager pDamager) {
+		health -= pDamager.damage;
 
-		if (_health <= 0) Die();
+		if (health <= 0) Die();
 	}
 
 	public void Die() {
