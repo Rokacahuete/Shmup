@@ -9,6 +9,8 @@ public partial class Module : Node {
 	// Variables
 	[Export] public Node2D nodeToAffect;
 
+	public bool stopped = false;
+
 	// Functions
 	public override void _Ready() {
         if (nodeToAffect == null) QueueFree();

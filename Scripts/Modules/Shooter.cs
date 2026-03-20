@@ -21,13 +21,17 @@ public partial class Shooter : Module {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
-		if (timer <= 0f) Shoot();
-		timer -= lDelta;
+		Shoot(lDelta);
 
 		base._Process(pDelta);
 	}
 	
-	protected void Shoot() {
+	protected void Shoot(float pDelta) {
+		if (stopped) return;
+
+		timer -= pDelta;
+		if (timer > 0f) return;
+
         timer += timeBetweenShots;
 
 		Node2D lShot = shotScene.Instantiate<Node2D>();

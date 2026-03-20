@@ -13,9 +13,15 @@ public partial class MovableRotation : Module {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
-        nodeToAffect.Position += nodeToAffect.Rotation.FromAngleToVector() * speed * lDelta;
+        _Move(lDelta);
 
 		base._Process(pDelta);
+	}
+
+	private void _Move(float pDelta) {
+		if (stopped) return;
+		
+		nodeToAffect.Position += nodeToAffect.Rotation.FromAngleToVector() * speed * pDelta;
 	}
 	
 	// Events

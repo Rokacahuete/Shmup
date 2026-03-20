@@ -23,11 +23,17 @@ public partial class Movable : Module {
 
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
-		
-		_distanceTime += lDelta * _speed;
-        nodeToAffect.Position = _initPos + Patterns.GetPosition(_patternType, _distanceTime, _direction);
+
+		_Move(lDelta);
 
 		base._Process(pDelta);
+	}
+
+	private void _Move(float pDelta) {
+		if (stopped) return;
+		
+		_distanceTime += pDelta * _speed;
+        nodeToAffect.Position = _initPos + Patterns.GetPosition(_patternType, _distanceTime, _direction);
 	}
 	
 	// Events

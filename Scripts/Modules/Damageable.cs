@@ -24,6 +24,8 @@ public partial class Damageable : Module {
 	
 	// Events
 	private void _OnAreaEntered(Area2D pArea) {
+		if (stopped) return;
+
 		foreach (PackedScene lScene in _ADamageables) {
 			if (pArea.GetParent().SceneFilePath != lScene.ResourcePath) continue;
 			

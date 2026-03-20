@@ -21,6 +21,8 @@ public partial class Damager : Module {
 	}
 
 	public void Hurt() {
+		if (stopped) return;
+		
 		if (nodeToAffect is Entity lEntity)
 			lEntity.Hurt(new Damager());
 	}
