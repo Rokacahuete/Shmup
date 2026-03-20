@@ -7,14 +7,25 @@ public partial class Movable : Module {
 	// Consts
 
 	// Variables
-	[Export] public Vector2 direction = Vector2.Zero;
-	[Export] public float speed = 0f;
+	[Export(PropertyHint.Enum, "Line,Sinusoidal,Circle")] private int _patternType = 0;
+	[Export] private Vector2 _direction = Vector2.Zero;
+	[Export] private float _speed = 0f;
 
-	// Functions
+	private Vector2 _initPos;
+	private float _distanceTime = 0f;
+
+    // Functions
+    public override void _Ready() {
+        base._Ready();
+		
+		_initPos = nodeToAffect.Position;
+    }
+
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
-
-        nodeToAffect.Position += direction.Normalized() * speed * lDelta;
+		
+		_distanceTime += lDelta * _speed;
+        nodeToAffect.Position = _initPos + Patterns.GetPosition(_patternType, _distanceTime, _direction);
 
 		base._Process(pDelta);
 	}

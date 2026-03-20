@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv2wsneiikb47"]
+
+[ext_resource type="Script" uid="uid://cw6dpaa6lhuhr" path="res://Scripts/Modules/MovableCustom.cs" id="1_b0n72"]
+
+[node name="MovableCustom" type="Node"]
+script = ExtResource("1_b0n72")

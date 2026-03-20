@@ -9,7 +9,7 @@ public partial class Player : Entity {
 	// Variables
 	public static Player instance;
 
-	[Export] private Movable movableModule = null;
+	[Export] private MovableCustom movableModule = null;
 	[Export] private Rect2 _movingZone;
 
 	// Functions

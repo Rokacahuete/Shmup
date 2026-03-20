@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dnaa6owekhou5"]
 
-[ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="1_3kvya"]
 [ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
+[ext_resource type="PackedScene" uid="uid://dv2wsneiikb47" path="res://Scenes/Modules/MovableCustom.tscn" id="2_4kc40"]
 [ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="2_v402d"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="3_g4oe6"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_86atj"]
@@ -17,13 +17,13 @@ height = 44.0
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("movableModule")]
 script = ExtResource("1_agccv")
-movableModule = NodePath("Modules/Movable")
+movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
 _maxHealth = 100
 
 [node name="Modules" type="Node" parent="."]
 
-[node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_3kvya")]
+[node name="MovableCustom" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_4kc40")]
 speed = 250.0
 nodeToAffect = NodePath("../..")
 
