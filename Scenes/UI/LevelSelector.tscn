@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs3ot0lst4uan"]
+
+[ext_resource type="Script" uid="uid://x54d2ggkk5yj" path="res://Scripts/UI/LevelSelector/LevelSelector.cs" id="1_o3ex8"]
+[ext_resource type="Script" uid="uid://c0xwulxn46npp" path="res://Scripts/UI/LevelSelector/LevelButton.cs" id="2_cc4ho"]
+[ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/SoloCrow.tscn" id="3_o8atg"]
+[ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="4_bpf5r"]
+[ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/TwoCrow.tscn" id="5_41owy"]
+[ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="6_amie5"]
+[ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="7_aknpa"]
+[ext_resource type="PackedScene" uid="uid://dg8fwem1w0nxr" path="res://Scenes/EnemyGroup/SoloBookWitch.tscn" id="8_b07ky"]
+
+[node name="Level Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o3ex8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 323.0
+offset_bottom = 68.0
+text = "LEVEL_SELECTOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 406.0
+offset_right = 98.0
+offset_bottom = 470.0
+text = "1"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("3_o8atg")]
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 376.0
+offset_right = 294.0
+offset_bottom = 440.0
+text = "2"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("4_bpf5r")]
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 326.0
+offset_right = 97.0
+offset_bottom = 390.0
+text = "3"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("5_41owy")]
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 298.0
+offset_right = 295.0
+offset_bottom = 362.0
+text = "4"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("6_amie5")]
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 244.0
+offset_right = 98.0
+offset_bottom = 308.0
+text = "5"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("7_aknpa")]
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 216.0
+offset_right = 295.0
+offset_bottom = 280.0
+text = "6"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("8_b07ky")]
+
+[node name="Button7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 123.0
+offset_right = 198.0
+offset_bottom = 187.0
+text = "7"
+script = ExtResource("2_cc4ho")
+_AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("4_bpf5r"), ExtResource("6_amie5"), ExtResource("6_amie5"), ExtResource("8_b07ky")]
