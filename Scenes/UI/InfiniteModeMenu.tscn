@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://b686owbgycuj1"]
+
+[ext_resource type="Script" uid="uid://eqg4poiwaaib" path="res://Scripts/UI/Menus/InfiniteMode/InfiniteModeMenu.cs" id="1_xee7o"]
+[ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/SoloCrow.tscn" id="2_14pns"]
+[ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="3_5wfg3"]
+[ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/TwoCrow.tscn" id="4_ve4bh"]
+[ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="5_72j7s"]
+[ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="6_fxsqu"]
+[ext_resource type="PackedScene" uid="uid://dg8fwem1w0nxr" path="res://Scenes/EnemyGroup/SoloBookWitch.tscn" id="7_xar52"]
+[ext_resource type="PackedScene" uid="uid://doams1qd1lc6q" path="res://Scenes/UI/Buttons/SwitchMenuButton.tscn" id="8_aee1u"]
+
+[node name="InfiniteModeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xee7o")
+_AEnemyGroupScenes = [ExtResource("2_14pns"), ExtResource("3_5wfg3"), ExtResource("4_ve4bh"), ExtResource("5_72j7s"), ExtResource("6_fxsqu"), ExtResource("7_xar52")]
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 474.0
+offset_right = 240.0
+offset_bottom = 540.0
+text = "START"
+
+[node name="Button" parent="." instance=ExtResource("8_aee1u")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 407.0
+offset_right = 284.0
+offset_bottom = 454.0
+text = "SWITCH_TO_LEVEL_SELECTOR"
+_menu = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_OnStartButtonPressed"]

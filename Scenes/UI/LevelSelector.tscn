@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs3ot0lst4uan"]
+[gd_scene load_steps=10 format=3 uid="uid://bs3ot0lst4uan"]
 
-[ext_resource type="Script" uid="uid://x54d2ggkk5yj" path="res://Scripts/UI/LevelSelector/LevelSelector.cs" id="1_o3ex8"]
-[ext_resource type="Script" uid="uid://c0xwulxn46npp" path="res://Scripts/UI/LevelSelector/LevelButton.cs" id="2_cc4ho"]
+[ext_resource type="Script" uid="uid://x54d2ggkk5yj" path="res://Scripts/UI/Menus/LevelSelector/LevelSelector.cs" id="1_o3ex8"]
+[ext_resource type="Script" uid="uid://c0xwulxn46npp" path="res://Scripts/UI/Menus/LevelSelector/LevelButton.cs" id="2_cc4ho"]
 [ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/SoloCrow.tscn" id="3_o8atg"]
 [ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="4_bpf5r"]
 [ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/TwoCrow.tscn" id="5_41owy"]
 [ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="6_amie5"]
 [ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="7_aknpa"]
 [ext_resource type="PackedScene" uid="uid://dg8fwem1w0nxr" path="res://Scenes/EnemyGroup/SoloBookWitch.tscn" id="8_b07ky"]
+[ext_resource type="PackedScene" uid="uid://doams1qd1lc6q" path="res://Scenes/UI/Buttons/SwitchMenuButton.tscn" id="9_bpf5r"]
 
 [node name="Level Selector" type="Control"]
 layout_mode = 3
@@ -95,3 +96,12 @@ offset_bottom = 187.0
 text = "7"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("4_bpf5r"), ExtResource("6_amie5"), ExtResource("6_amie5"), ExtResource("8_b07ky")]
+
+[node name="Button8" parent="." instance=ExtResource("9_bpf5r")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 502.0
+offset_right = 281.0
+offset_bottom = 549.0
+text = "SWITCH_TO_INFINITE_MODE"
+_menu = 2
