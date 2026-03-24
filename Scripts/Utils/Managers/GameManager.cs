@@ -37,6 +37,7 @@ public partial class GameManager : Node {
 		rand.Randomize();
 		if (_AEnemyGroupScenes.Length <= 0) return;
 		
+		MenusManager.Setup(MenusManager.Menus.None, null);
 		_SwitchGameMode(_gameMode);
 	}
 
@@ -88,6 +89,12 @@ public partial class GameManager : Node {
 		_SwitchGameMode(pMode);
 
 		Player.instance.Visible = true;
+		MenusManager.Switch();
+	}
+
+	public void StopGame() {
+		MenusManager.Switch(MenusManager.Menus.LevelSelector);
+		_FunctionsToCall = null;
 	}
 	
 	// Game modes
@@ -99,9 +106,9 @@ public partial class GameManager : Node {
 
 	private void _WavesMode() {
 		if (LEnemies.Count != 0) return;
-		if (++currentWave >= _AEnemyGroupScenes.Length) return;
-		
-		_InstanciateEnemyGroup(currentWave);
+
+		if (++currentWave >= _AEnemyGroupScenes.Length) StopGame();
+		else _InstanciateEnemyGroup(currentWave);
 	}
 
 	// Events

@@ -24,6 +24,6 @@ public partial class LevelButton : Button {
 	
 	// Events
 	private void _OnButtonPressed() {
-		LevelSelector.instance.SwitchLevel(_AEnemyGroup);
+		LevelSelector.SwitchLevel(_AEnemyGroup);
 	}
 }

@@ -39,7 +39,6 @@ public partial class Witch : Enemy {
 	private void _TP() {
 		_tpActive--;
 		health += 50;
-		GD.Print("TP !!!");
 	}
 	
 	// Events

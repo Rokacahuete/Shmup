@@ -2,18 +2,17 @@ using Godot;
 using System;
 
 // Author : Roka
-public partial class LevelSelector : Control {
+public partial class LevelSelector : Menu {
 	
 	// Consts
 
 	// Variables
-	public static LevelSelector instance;
 
 	// Functions
 	public override void _Ready() {
+		setup = MenusManager.Menus.LevelSelector;
 		base._Ready();
-
-		instance = this;
+		MenusManager.Switch(MenusManager.Menus.LevelSelector);
 	}
 
 	public override void _Process(double pDelta) {
@@ -22,7 +21,7 @@ public partial class LevelSelector : Control {
 		base._Process(pDelta);
 	}
 
-	public void SwitchLevel(PackedScene[] pAEnemyGroups) {
+	public static void SwitchLevel(PackedScene[] pAEnemyGroups) {
 		GameManager.instance.StartGame(GameManager.GameModes.Waves, pAEnemyGroups);
 	}
 	

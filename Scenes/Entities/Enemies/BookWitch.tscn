@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c04nhddjhyvx5" path="res://Scripts/Entities/Enemies/Book.cs" id="1_orfdt"]
 [ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="3_x3gec"]
-[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="4_6tchc"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_6tchc"]
 [ext_resource type="Texture2D" uid="uid://dikefhfnmmqw4" path="res://Assets/Textures/Enemies/Book2.png" id="5_va7jo"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="5_x3gec"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="6_h1lp5"]
-[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="6_w25wm"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="6_w25wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxqtk"]
 size = Vector2(126, 76)
