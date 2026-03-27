@@ -88,11 +88,12 @@ public partial class GameManager : Node {
 		currentWave = -1;
 		_SwitchGameMode(pMode);
 
-		Player.instance.Visible = true;
+		Player.instance.SetActive(false);
 		MenusManager.Switch();
 	}
 
 	public void StopGame() {
+		Player.instance.SetActive(true);
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
 		_FunctionsToCall = null;
 	}

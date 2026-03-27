@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="2_v402d"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="3_g4oe6"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_86atj"]
-[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="5_km4ui"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="5_km4ui"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="6_rsj4h"]
 [ext_resource type="PackedScene" uid="uid://dw67n4kaxxnbk" path="res://Scenes/Entities/Enemies/Crow.tscn" id="7_4kc40"]
 [ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="8_wmg1a"]
@@ -15,9 +15,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
 height = 44.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("movableModule")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("_AModules", "_movableModule")]
 script = ExtResource("1_agccv")
-movableModule = NodePath("Modules/MovableCustom")
+_AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
+_movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
 maxHealth = 100
 

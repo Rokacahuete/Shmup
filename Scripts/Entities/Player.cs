@@ -9,7 +9,8 @@ public partial class Player : Entity {
 	// Variables
 	public static Player instance;
 
-	[Export] private MovableCustom movableModule = null;
+	[Export] private Module[] _AModules = new Module[0];
+	[Export] private MovableCustom _movableModule = null;
 	[Export] private Rect2 _movingZone;
 
 	// Functions
@@ -20,6 +21,8 @@ public partial class Player : Entity {
 		_movingZone.Position *= lScreenSize;
 		_movingZone.Size *= lScreenSize;
 
+		SetActive(true);
+
 		base._Ready();
 	}
 
@@ -27,9 +30,9 @@ public partial class Player : Entity {
 		float lDelta = (float)pDelta;
 
 		if (Input.IsMouseButtonPressed(MouseButton.Left)) {
-			movableModule.direction = GetViewport().GetMousePosition() - Position;
+			_movableModule.direction = GetViewport().GetMousePosition() - Position;
         }
-		else movableModule.direction = Vector2.Zero;
+		else _movableModule.direction = Vector2.Zero;
 		
 		Position = new Vector2(
 			Mathf.Clamp(Position.X, _movingZone.Position.X, _movingZone.Size.X + _movingZone.Position.X),
@@ -39,12 +42,17 @@ public partial class Player : Entity {
 		base._Process(pDelta);
 	}
 
+	public void SetActive(bool pStopped) {
+		foreach (Module lModule in _AModules) lModule.stopped = pStopped;
+		Visible = !pStopped;
+	}
+
     // Events
     public override void _Input(InputEvent @event) {
         if (@event is InputEventScreenTouch lTouch) {
-            movableModule.direction = lTouch.Position;
+            _movableModule.direction = lTouch.Position;
         } else if (@event is InputEventScreenDrag lDrag) {
-            movableModule.direction	= lDrag.Position;
+            _movableModule.direction = lDrag.Position;
         }
     }
 }
