@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmwo73fm1k6bv"]
+[gd_scene load_steps=11 format=3 uid="uid://cmwo73fm1k6bv"]
 
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://b40l7n4rx11a5" path="res://Scripts/Utils/Managers/GameManager.cs" id="1_uu6xs"]
@@ -9,16 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="6_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://dg8fwem1w0nxr" path="res://Scenes/EnemyGroup/SoloBookWitch.tscn" id="7_20pc6"]
 [ext_resource type="PackedScene" uid="uid://bs3ot0lst4uan" path="res://Scenes/UI/LevelSelector.tscn" id="9_03owx"]
+[ext_resource type="PackedScene" uid="uid://b686owbgycuj1" path="res://Scenes/UI/InfiniteModeMenu.tscn" id="10_wkp8b"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Managers" type="Node" parent="."]
 
-[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer", "player")]
+[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer")]
 script = ExtResource("1_uu6xs")
 _AEnemyGroupScenes = [ExtResource("2_3dxm6"), ExtResource("3_lgr22"), ExtResource("4_trn2v"), ExtResource("5_03owx"), ExtResource("6_wkp8b"), ExtResource("7_20pc6")]
 gameContainer = NodePath("../../GameContainer")
-player = NodePath("../../GameContainer/Player")
 
 [node name="GameContainer" type="Node2D" parent="."]
 
@@ -26,4 +26,16 @@ player = NodePath("../../GameContainer/Player")
 visible = false
 position = Vector2(150, 494)
 
-[node name="Level Selector" parent="." instance=ExtResource("9_03owx")]
+[node name="Menus" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level Selector" parent="Menus" instance=ExtResource("9_03owx")]
+visible = false
+layout_mode = 1
+
+[node name="InfiniteModeMenu" parent="Menus" instance=ExtResource("10_wkp8b")]
+visible = false
+layout_mode = 1

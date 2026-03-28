@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://doams1qd1lc6q"]
+
+[ext_resource type="Script" uid="uid://2okp4nk2hcuy" path="res://Scripts/UI/SwitchMenuButton.cs" id="1_nwf0u"]
+
+[node name="Button" type="Button"]
+offset_right = 13.0
+offset_bottom = 47.0
+script = ExtResource("1_nwf0u")
+
+[connection signal="pressed" from="." to="." method="_OnButtonPressed"]
