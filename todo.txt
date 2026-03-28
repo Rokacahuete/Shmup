@@ -1,0 +1,25 @@
+UI
+- Pause
+- Arrivée sur le jeu
+- Boutique
+- Stats
+- Items
+
+Jeu
+- Boss
+- Bonus
+- Controls
+
+Ennemis
+- Witch
+
+- Crow
+
+- Book
+
+Animations
+- Witch
+-- TP
+
+- Book
+-- Spawn
