@@ -35,9 +35,11 @@ public partial class Shooter : Module {
         timer += timeBetweenShots;
 
 		Node2D lShot = shotScene.Instantiate<Node2D>();
-		GameManager.instance.gameContainer.AddChild(lShot);
 		lShot.GlobalPosition = nodeToAffect.GlobalPosition;
 		lShot.GlobalRotation = nodeToAffect.GlobalRotation;
+		GameManager.instance.gameContainer.AddChild(lShot);
+		// lShot.GlobalPosition = nodeToAffect.GlobalPosition;
+		// lShot.GlobalRotation = nodeToAffect.GlobalRotation;
 		if (lShot is Enemy lEnemy)
 			GameManager.instance.CreateEnemy(lEnemy);
     }

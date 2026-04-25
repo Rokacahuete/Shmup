@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "**/Scenes": true,
+    "**/Builds": true
+  }
+}
