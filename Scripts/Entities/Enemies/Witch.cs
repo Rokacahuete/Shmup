@@ -7,6 +7,7 @@ public partial class Witch : Enemy {
 	// Consts
 
 	// Variables
+	[Export] private Movable _movableModule = null;
 	[Export] private Damageable _damageableModule = null;
 	[Export(PropertyHint.Range, "0f,1f")] private float _lifePercentageToTp = 0f;
 	[Export] private int _nbTp = 0;
@@ -38,7 +39,9 @@ public partial class Witch : Enemy {
 
 	private void _TP() {
 		_tpActive--;
-		health += 50;
+		Vector2 lDir = Vector2.Zero;
+		lDir.X = _tpActive%2 == 0 ? 100f : -100f;
+		_movableModule.Move(lDir);
 	}
 	
 	// Events

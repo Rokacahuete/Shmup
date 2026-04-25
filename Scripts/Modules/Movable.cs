@@ -11,14 +11,14 @@ public partial class Movable : Module {
 	[Export] private Vector2 _direction = Vector2.Zero;
 	[Export] private float _speed = 0f;
 
-	private Vector2 _initPos;
+	public Vector2 initPos;
 	private float _distanceTime = 0f;
 
     // Functions
     public override void _Ready() {
         base._Ready();
 		
-		_initPos = nodeToAffect.Position;
+		initPos = nodeToAffect.Position;
     }
 
 	public override void _Process(double pDelta) {
@@ -33,7 +33,15 @@ public partial class Movable : Module {
 		if (stopped) return;
 		
 		_distanceTime += pDelta * _speed;
-        nodeToAffect.Position = _initPos + Patterns.GetPosition(_patternType, _distanceTime, _direction);
+        nodeToAffect.Position = initPos + Patterns.GetPosition(_patternType, _distanceTime, _direction);
+	}
+
+	public void Move(Vector2 pDirection) {
+		initPos += pDirection;
+	}
+
+	public void Skip(float pTimeToSkip) {
+		_distanceTime += pTimeToSkip;
 	}
 	
 	// Events

@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="2_im73t"]
 [ext_resource type="Texture2D" uid="uid://di3u242kgdhu8" path="res://Assets/Textures/Enemies/Witch.png" id="3_im73t"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="3_kb5vk"]
-[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="4_bk7h6"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_bk7h6"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="5_nawxp"]
-[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="7_l5rrt"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="7_l5rrt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kb5vk"]
 radius = 11.0
@@ -20,9 +20,10 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5rrt"]
 size = Vector2(60, 69)
 
-[node name="Witch" type="Node2D" node_paths=PackedStringArray("_damageableModule")]
+[node name="Witch" type="Node2D" node_paths=PackedStringArray("_movableModule", "_damageableModule")]
 rotation = 1.5707964
 script = ExtResource("1_nawxp")
+_movableModule = NodePath("Modules/Movable")
 _damageableModule = NodePath("Modules/Damageable")
 _lifePercentageToTp = 0.55
 _nbTp = 2
@@ -32,7 +33,7 @@ maxHealth = 100
 
 [node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_xgw2o")]
 _patternType = 1
-_direction = Vector2(30, 0)
+_direction = Vector2(50, 0)
 _speed = 1.0
 nodeToAffect = NodePath("../..")
 
