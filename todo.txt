@@ -6,9 +6,13 @@ UI
 - Items
 
 Jeu
-- Boss
 - Bonus
 - Controls
+- Parallax
+
+Player
+- Weapons
+- Objets
 
 Ennemis
 - Witch
@@ -23,3 +27,21 @@ Animations
 
 - Book
 -- Spawn
+
+Assets
+- Menus
+-- Level Selector
+-- Infinite
+
+- Player
+-- Weapons
+-- Objects
+
+- Enemies
+-- Crow
+-- Witch
+-- Book
+
+GD
+- Currencies
+- Monetisaton

@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Author : Roka
-public partial class SwitchMenuButton : Node {
+public partial class SwitchMenuButton : Button {
 
 	// Consts
 

@@ -8,6 +8,7 @@ public partial class LevelButton : Button {
 
 	// Variables
 	[Export] private PackedScene[] _AEnemyGroup = new PackedScene[0];
+	[Export] private Button _nextLevel = null;
 
 	// Functions
 	public override void _Ready() {
@@ -25,5 +26,6 @@ public partial class LevelButton : Button {
 	// Events
 	private void _OnButtonPressed() {
 		LevelSelector.SwitchLevel(_AEnemyGroup);
+		if (_nextLevel != null) _nextLevel.Disabled = false;
 	}
 }

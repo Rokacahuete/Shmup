@@ -27,7 +27,7 @@ text = "LEVEL_SELECTOR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 406.0
@@ -36,66 +36,79 @@ offset_bottom = 470.0
 text = "1"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("3_o8atg")]
+_nextLevel = NodePath("../Button2")
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 230.0
 offset_top = 376.0
 offset_right = 294.0
 offset_bottom = 440.0
+disabled = true
 text = "2"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("4_bpf5r")]
+_nextLevel = NodePath("../Button3")
 
-[node name="Button3" type="Button" parent="."]
+[node name="Button3" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 33.0
 offset_top = 326.0
 offset_right = 97.0
 offset_bottom = 390.0
+disabled = true
 text = "3"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("5_41owy")]
+_nextLevel = NodePath("../Button4")
 
-[node name="Button4" type="Button" parent="."]
+[node name="Button4" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 231.0
 offset_top = 298.0
 offset_right = 295.0
 offset_bottom = 362.0
+disabled = true
 text = "4"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("6_amie5")]
+_nextLevel = NodePath("../Button5")
 
-[node name="Button5" type="Button" parent="."]
+[node name="Button5" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 244.0
 offset_right = 98.0
 offset_bottom = 308.0
+disabled = true
 text = "5"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("7_aknpa")]
+_nextLevel = NodePath("../Button6")
 
-[node name="Button6" type="Button" parent="."]
+[node name="Button6" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 231.0
 offset_top = 216.0
 offset_right = 295.0
 offset_bottom = 280.0
+disabled = true
 text = "6"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("8_b07ky")]
+_nextLevel = NodePath("../Button7")
 
-[node name="Button7" type="Button" parent="."]
+[node name="Button7" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
 offset_left = 134.0
 offset_top = 123.0
 offset_right = 198.0
 offset_bottom = 187.0
+disabled = true
 text = "7"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("4_bpf5r"), ExtResource("6_amie5"), ExtResource("6_amie5"), ExtResource("8_b07ky")]
+_nextLevel = NodePath("../Button8")
 
 [node name="Button8" parent="." instance=ExtResource("9_bpf5r")]
 layout_mode = 0
@@ -103,5 +116,6 @@ offset_left = 56.0
 offset_top = 502.0
 offset_right = 281.0
 offset_bottom = 549.0
+disabled = true
 text = "SWITCH_TO_INFINITE_MODE"
 _menu = 2
