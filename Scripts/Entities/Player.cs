@@ -47,6 +47,12 @@ public partial class Player : Entity {
 		Visible = !pStopped;
 	}
 
+    public override void Die() {
+		health = maxHealth;
+		GameManager.instance.Restart();
+    }
+
+
     // Events
     public override void _Input(InputEvent @event) {
         if (@event is InputEventScreenTouch lTouch) {

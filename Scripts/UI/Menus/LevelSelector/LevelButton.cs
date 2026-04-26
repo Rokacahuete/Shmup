@@ -10,11 +10,15 @@ public partial class LevelButton : Button {
 	[Export] private PackedScene[] _AEnemyGroup = new PackedScene[0];
 	[Export] private Button _nextLevel = null;
 
+	private bool _defaultDisabled;
+
 	// Functions
 	public override void _Ready() {
 		base._Ready();
 
 		Pressed += _OnButtonPressed;
+		_defaultDisabled = Disabled;
+		GameManager.instance.OnRestart += () => Disabled = _defaultDisabled;
 	}
 
 	public override void _Process(double pDelta) {

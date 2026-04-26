@@ -21,6 +21,9 @@ Ennemis
 
 - Book
 
+- Elfe
+-- Duplication a la mort
+
 Animations
 - Witch
 -- TP
@@ -41,6 +44,7 @@ Assets
 -- Crow
 -- Witch
 -- Book
+-- Elfe
 
 GD
 - Currencies

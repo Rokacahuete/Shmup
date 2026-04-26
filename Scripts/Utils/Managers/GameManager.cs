@@ -25,8 +25,9 @@ public partial class GameManager : Node {
 	public int currentWave = -1;
 
 	// Delegates
-	private delegate void Functions();
+	public delegate void Functions();
 	private Functions _FunctionsToCall;
+	public Functions OnRestart;
 
 	// Functions
 	public override void _Ready() {
@@ -93,9 +94,15 @@ public partial class GameManager : Node {
 	}
 
 	public void StopGame() {
-		Player.instance.SetActive(true);
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
+		Player.instance.SetActive(true);
+		foreach (Enemy lEnemy in LEnemies.ToArray()) lEnemy.Die();
 		_FunctionsToCall = null;
+	}
+
+	public void Restart() {
+		StopGame();
+		OnRestart?.Invoke();
 	}
 	
 	// Game modes

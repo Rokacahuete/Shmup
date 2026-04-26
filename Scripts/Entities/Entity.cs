@@ -32,7 +32,7 @@ public partial class Entity : Node2D {
 		if (health <= 0) Die();
 	}
 
-	public void Die() {
+	public virtual void Die() {
 		QueueFree();
 		OnDied?.Invoke(this);
 	}
