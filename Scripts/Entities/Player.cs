@@ -17,9 +17,8 @@ public partial class Player : Entity {
 	public override void _Ready() {
 		instance = this;
 		
-		Vector2 lScreenSize = GetViewport().GetVisibleRect().Size;
-		_movingZone.Position *= lScreenSize;
-		_movingZone.Size *= lScreenSize;
+		_movingZone.Position *= GameManager.screenSize;
+		_movingZone.Size *= GameManager.screenSize;
 
 		SetActive(true);
 

@@ -15,6 +15,7 @@ public partial class GameManager : Node {
 
 	public static Vector2 scrollLastMove = Vector2.Zero;
 	public static RandomNumberGenerator rand = new RandomNumberGenerator();
+	public static Vector2 screenSize;
 
 	[Export] private PackedScene[] _AEnemyGroupScenes = new PackedScene[0];
 	[Export] public Node2D gameContainer;
@@ -36,6 +37,7 @@ public partial class GameManager : Node {
 		instance = this;
 
 		rand.Randomize();
+		screenSize = GetViewport().GetVisibleRect().Size;
 		if (_AEnemyGroupScenes.Length <= 0) return;
 		
 		MenusManager.Setup(MenusManager.Menus.None, null);

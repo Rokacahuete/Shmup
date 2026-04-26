@@ -11,6 +11,7 @@ public partial class Witch : Enemy {
 	[Export] private Damageable _damageableModule = null;
 	[Export(PropertyHint.Range, "0f,1f")] private float _lifePercentageToTp = 0f;
 	[Export] private int _nbTp = 0;
+	[Export] private Vector2 _gapTp = Vector2.Zero;
 	
 	private int _healthToTp;
 	private int _tpActive = 0;
@@ -21,6 +22,7 @@ public partial class Witch : Enemy {
 		base._Ready();
 
 		_healthToTp = (int)(health * _lifePercentageToTp);
+		if (GlobalPosition.X >= GameManager.screenSize.X * .5f) _gapTp.X *= -1f;
 	}
 
 	public override void _Process(double pDelta) {
@@ -39,9 +41,8 @@ public partial class Witch : Enemy {
 
 	private void _TP() {
 		_tpActive--;
-		Vector2 lDir = Vector2.Zero;
-		lDir.X = _tpActive%2 == 0 ? 100f : -100f;
-		_movableModule.Move(lDir);
+		_movableModule.Move(_gapTp);
+		_gapTp.X *= -1f;
 	}
 	
 	// Events
