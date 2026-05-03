@@ -8,6 +8,7 @@ public partial class LevelButton : Button {
 
 	// Variables
 	[Export] private PackedScene[] _AEnemyGroup = new PackedScene[0];
+	[Export] private int _score = 0;
 	[Export] private Button _nextLevel = null;
 
 	private bool _defaultDisabled;
@@ -29,7 +30,11 @@ public partial class LevelButton : Button {
 	
 	// Events
 	private void _OnButtonPressed() {
-		LevelSelector.SwitchLevel(_AEnemyGroup);
+		LevelSelector.SwitchLevel(new Level() {
+			gameMode = GameManager.GameModes.Waves,
+			AEnemyGroups = _AEnemyGroup,
+			score = _score
+		});
 		if (_nextLevel != null) _nextLevel.Disabled = false;
 	}
 }

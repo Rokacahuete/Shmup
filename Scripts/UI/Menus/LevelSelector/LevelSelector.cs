@@ -21,8 +21,8 @@ public partial class LevelSelector : Menu {
 		base._Process(pDelta);
 	}
 
-	public static void SwitchLevel(PackedScene[] pAEnemyGroups) {
-		GameManager.instance.StartGame(GameManager.GameModes.Waves, pAEnemyGroups);
+	public static void SwitchLevel(Level pLevel) {
+		GameManager.instance.StartGame(pLevel);
 	}
 	
 	// Events

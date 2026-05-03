@@ -23,6 +23,9 @@ public partial class InfiniteModeMenu : Menu {
 
 	// Events
 	private void _OnStartButtonPressed() {
-		GameManager.instance.StartGame(GameManager.GameModes.Infinite, _AEnemyGroupScenes);
+		GameManager.instance.StartGame(new Level() { 
+			gameMode = GameManager.GameModes.Infinite,
+			AEnemyGroups = _AEnemyGroupScenes
+		});
 	}
 }

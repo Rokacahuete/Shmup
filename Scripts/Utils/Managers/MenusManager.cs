@@ -24,6 +24,8 @@ public static class MenusManager {
 		if (_currentMenu != null) _currentMenu.Visible = false;
 
 		if (!_DMenus.Keys.Contains(pMenu)) pMenu = Menus.None;
+		if (pMenu == Menus.None) return;
+		
 		_currentMenu = _DMenus[pMenu];
 		if (_currentMenu != null) _currentMenu.Visible = true;
 	}
