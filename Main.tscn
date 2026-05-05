@@ -1,13 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmwo73fm1k6bv"]
+[gd_scene load_steps=5 format=3 uid="uid://cmwo73fm1k6bv"]
 
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://b40l7n4rx11a5" path="res://Scripts/Utils/Managers/GameManager.cs" id="1_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/SoloCrow.tscn" id="2_3dxm6"]
-[ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="3_lgr22"]
-[ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/TwoCrow.tscn" id="4_trn2v"]
-[ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="5_03owx"]
-[ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="6_wkp8b"]
-[ext_resource type="PackedScene" uid="uid://dg8fwem1w0nxr" path="res://Scenes/EnemyGroup/SoloBookWitch.tscn" id="7_20pc6"]
 [ext_resource type="PackedScene" uid="uid://bs3ot0lst4uan" path="res://Scenes/UI/LevelSelector.tscn" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://b686owbgycuj1" path="res://Scenes/UI/InfiniteModeMenu.tscn" id="10_wkp8b"]
 
@@ -17,8 +11,9 @@
 
 [node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer")]
 script = ExtResource("1_uu6xs")
-_AEnemyGroupScenes = [ExtResource("2_3dxm6"), ExtResource("3_lgr22"), ExtResource("4_trn2v"), ExtResource("5_03owx"), ExtResource("6_wkp8b"), ExtResource("7_20pc6")]
 gameContainer = NodePath("../../GameContainer")
+_infiniteModeDefaultScore = 50
+_infiniteModeIncreaseScore = 10
 
 [node name="GameContainer" type="Node2D" parent="."]
 

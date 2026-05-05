@@ -18,6 +18,8 @@ public partial class GameManager : Node {
 	public static Vector2 screenSize;
 
 	[Export] public Node2D gameContainer;
+	[Export] private int _infiniteModeDefaultScore = 0;
+	[Export] private int _infiniteModeIncreaseScore = 0;
 	
 	private Level _currentLevel;
 	private GameModes _gameMode = 0;
@@ -41,9 +43,8 @@ public partial class GameManager : Node {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
+		if (LEnemies.Count != 0) return;
 		_FunctionsToCall?.Invoke();
-
-		base._Process(pDelta);
 	}
 
 	private void _SwitchGameMode(GameModes pMode) {
@@ -89,8 +90,7 @@ public partial class GameManager : Node {
 	}
 
 	public void StopGame(bool pIsWin) {
-		if (pIsWin) Datas.score += _currentLevel.score;
-		GD.Print($"Fin de partie. Nouveau score : {Datas.score} !");
+		if (pIsWin) Datas.UpdateScore(_currentLevel.score);
 
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
 		Player.instance.SetActive(true);
@@ -105,14 +105,14 @@ public partial class GameManager : Node {
 	
 	// Game modes
 	private void _InfiniteMode() {
-		if (LEnemies.Count != 0) return;
-
 		_InstanciateEnemyGroup(rand.RandiRange(0, _currentLevel.AEnemyGroups.Length - 1));
+
+		if (_currentLevel.wave >= 0)
+			Datas.UpdateScore(_infiniteModeDefaultScore + _infiniteModeIncreaseScore * _currentLevel.wave);
+		++_currentLevel.wave;
     }
 
 	private void _WavesMode() {
-		if (LEnemies.Count != 0) return;
-
 		if (++_currentLevel.wave >= _currentLevel.AEnemyGroups.Length) StopGame(true);
 		else _InstanciateEnemyGroup(_currentLevel.wave);
 	}
