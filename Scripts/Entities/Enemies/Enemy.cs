@@ -7,6 +7,7 @@ public partial class Enemy : Entity {
 	// Consts
 
 	// Variables
+	[Export(PropertyHint.Range, "0,100,or_greater")] private int _xpOnKilled = 0;
 
 	// Functions
 	public override void _Ready() {
@@ -18,6 +19,11 @@ public partial class Enemy : Entity {
 
 		base._Process(pDelta);
 	}
-	
-	// Events
+
+    // Events
+    public override void Die() {
+        base.Die();
+
+		Datas.AddXp(_xpOnKilled);
+    }
 }
