@@ -18,7 +18,7 @@ public static class Datas {
 	}
 
 	private static int _GetXpToLevelUp() {
-		return 100 + _level * 5;
+		return 200 + _level * 10;
 	}
 
 	private static void _LevelUp() {

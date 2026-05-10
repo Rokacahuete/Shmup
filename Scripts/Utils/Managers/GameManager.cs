@@ -20,6 +20,8 @@ public partial class GameManager : Node {
 	[Export] public Node2D gameContainer;
 	[Export] private int _infiniteModeDefaultScore = 0;
 	[Export] private int _infiniteModeIncreaseScore = 0;
+
+	[Export] private PackedScene _xpOrbScene = null;
 	
 	private Level _currentLevel;
 	private GameModes _gameMode = 0;
@@ -78,7 +80,19 @@ public partial class GameManager : Node {
 	}
 	
 	private void _RemoveEnemy(Entity pEnemy) {
-		LEnemies.Remove((Enemy)pEnemy);
+		Enemy lEnemy = (Enemy)pEnemy;
+
+		LEnemies.Remove(lEnemy);
+
+		if (_xpOrbScene == null) return;
+		XPOrb lOrb;
+		for (int i = 0; i < lEnemy.xpOnKilled; i++) {
+			lOrb = _xpOrbScene.Instantiate<XPOrb>();
+
+			lOrb.GlobalPosition = lEnemy.GlobalPosition;
+			lOrb.Rotation = MyMaths.RandomAngle();
+			gameContainer.CallDeferred(Node.MethodName.AddChild, lOrb);
+		}
 	}
 
 	public void StartGame(Level pLevel) {
@@ -94,7 +108,10 @@ public partial class GameManager : Node {
 
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
 		Player.instance.SetActive(true);
-		foreach (Enemy lEnemy in LEnemies.ToArray()) lEnemy.Die();
+		foreach (Enemy lEnemy in LEnemies.ToArray()) {
+			LEnemies.Remove(lEnemy);
+			lEnemy.QueueFree();
+		}
 		_FunctionsToCall = null;
 	}
 

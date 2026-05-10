@@ -28,7 +28,7 @@ _damageableModule = NodePath("Modules/Damageable")
 _lifePercentageToTp = 0.55
 _nbTp = 2
 _gapTp = Vector2(100, 0)
-_xpOnKilled = 5
+xpOnKilled = 8
 maxHealth = 100
 
 [node name="Modules" type="Node" parent="."]

@@ -15,7 +15,7 @@ height = 58.281815
 rotation = 1.5707964
 script = ExtResource("1_nhq80")
 _rotationMultiplicator = 1.0
-_xpOnKilled = 1
+xpOnKilled = 5
 
 [node name="Modules" type="Node" parent="."]
 

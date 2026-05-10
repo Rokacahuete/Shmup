@@ -14,7 +14,7 @@ size = Vector2(126, 76)
 
 [node name="BookCrow" type="Node2D"]
 script = ExtResource("1_640ay")
-_xpOnKilled = 10
+xpOnKilled = 15
 maxHealth = 300
 
 [node name="Modules" type="Node" parent="."]
