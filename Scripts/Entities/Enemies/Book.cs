@@ -11,6 +11,8 @@ public partial class Book : Enemy {
 	// Functions
 	public override void _Ready() {
 		base._Ready();
+
+		this.GetModule<Shooter>().OnShoot += _OnShoot;
 	}
 
 	public override void _Process(double pDelta) {
@@ -18,6 +20,13 @@ public partial class Book : Enemy {
 
 		base._Process(pDelta);
 	}
+
+	private void _SettingEnemy(Enemy pEnemy) {
+		pEnemy.xpOnKilled = 0;
+	}
 	
 	// Events
+	private void _OnShoot(Node2D pEnemy) {
+		if (pEnemy is Enemy lEnemy) _SettingEnemy(lEnemy);
+	}
 }

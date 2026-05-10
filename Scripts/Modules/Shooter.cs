@@ -11,6 +11,10 @@ public partial class Shooter : Module {
     [Export] protected float timeBetweenShots = 0f;
 	[Export] protected float timer;
 
+	// Delegates
+	public delegate void OnShootEventHandler(Node2D pShot);
+	public OnShootEventHandler OnShoot;
+
 	// Functions
 	public override void _Ready() {
         if (shotScene == null) SetProcess(false);
@@ -42,5 +46,7 @@ public partial class Shooter : Module {
 		// lShot.GlobalRotation = nodeToAffect.GlobalRotation;
 		if (lShot is Enemy lEnemy)
 			GameManager.instance.CreateEnemy(lEnemy);
+
+		OnShoot?.Invoke(lShot);
     }
 }
