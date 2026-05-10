@@ -6,27 +6,29 @@ public static class Datas {
 	// Consts
 
 	// Variables
-	private static int _score = 0;
+	public static int score { get; private set; } = 0;
+	
+	public static int xpToLevelUp => 200 + level * 10;
+	public static int xp { get; private set; } = 0;
+	public static int level { get; private set; } = 1;
 
-	private static int _xp = 0;
-	private static int _level = 1;
+	// Delegates
+	public delegate void OnDatasChangedEventHandler();
+	public static OnDatasChangedEventHandler OnDatasChanged;
 
 	// Functions
 	public static void UpdateScore(int pScoreToAdd = 0) {
-		_score += pScoreToAdd;
-		GD.Print($"Score modifié. Nouveau score : { _score } !");
+		score += pScoreToAdd;
+
+		OnDatasChanged?.Invoke();
 	}
 
-	private static int _GetXpToLevelUp() {
-		return 200 + _level * 10;
-	}
 
 	private static void _LevelUp() {
-		int lNeededXp = _GetXpToLevelUp();
-		if (_xp >= lNeededXp) {
-			_xp -= lNeededXp;
-			_level++;
-			GD.Print($"Level up !! Niveau { _level }, { lNeededXp } pour level up.");
+		int lNeededXp = xpToLevelUp;
+		if (xp >= lNeededXp) {
+			xp -= lNeededXp;
+			level++;
 			_LevelUp();
 		}
 	}
@@ -34,8 +36,10 @@ public static class Datas {
 	public static void AddXp(int pXpToAdd) {
 		if (pXpToAdd <= 0) return;
 
-		_xp += pXpToAdd;
+		xp += pXpToAdd;
 		_LevelUp();
+
+		OnDatasChanged?.Invoke();
 	}
 	
 	// Events

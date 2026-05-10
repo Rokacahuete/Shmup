@@ -34,6 +34,6 @@ offset_top = 407.0
 offset_right = 284.0
 offset_bottom = 454.0
 text = "SWITCH_TO_LEVEL_SELECTOR"
-_menu = 1
+_menu = 2
 
 [connection signal="pressed" from="StartButton" to="." method="_OnStartButtonPressed"]

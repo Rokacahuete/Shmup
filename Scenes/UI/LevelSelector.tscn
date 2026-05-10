@@ -36,7 +36,7 @@ offset_bottom = 470.0
 text = "1"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("3_o8atg")]
-_score = 100
+_score = 2
 _nextLevel = NodePath("../Button2")
 
 [node name="Button2" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -49,7 +49,7 @@ disabled = true
 text = "2"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("4_bpf5r")]
-_score = 150
+_score = 3
 _nextLevel = NodePath("../Button3")
 
 [node name="Button3" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -62,7 +62,7 @@ disabled = true
 text = "3"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("5_41owy")]
-_score = 150
+_score = 3
 _nextLevel = NodePath("../Button4")
 
 [node name="Button4" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -75,7 +75,7 @@ disabled = true
 text = "4"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("6_amie5")]
-_score = 225
+_score = 5
 _nextLevel = NodePath("../Button5")
 
 [node name="Button5" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -88,7 +88,7 @@ disabled = true
 text = "5"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("7_aknpa")]
-_score = 300
+_score = 7
 _nextLevel = NodePath("../Button6")
 
 [node name="Button6" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -101,7 +101,7 @@ disabled = true
 text = "6"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("8_b07ky")]
-_score = 450
+_score = 10
 _nextLevel = NodePath("../Button7")
 
 [node name="Button7" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -114,7 +114,7 @@ disabled = true
 text = "7"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("4_bpf5r"), ExtResource("6_amie5"), ExtResource("6_amie5"), ExtResource("8_b07ky")]
-_score = 1025
+_score = 15
 _nextLevel = NodePath("../Button8")
 
 [node name="Button8" parent="." instance=ExtResource("9_bpf5r")]
@@ -123,6 +123,5 @@ offset_left = 56.0
 offset_top = 502.0
 offset_right = 281.0
 offset_bottom = 549.0
-disabled = true
 text = "SWITCH_TO_INFINITE_MODE"
-_menu = 2
+_menu = 3

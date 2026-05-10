@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkcn7d8rrwr4e"]
+
+[ext_resource type="Script" uid="uid://d12xq6imqei2k" path="res://Scripts/UI/Menus/HUD/HUD.cs" id="1_omqfp"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("_levelLabel", "_levelProgress", "_scoreLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omqfp")
+_levelLabel = NodePath("Level")
+_levelProgress = NodePath("ProgressBar")
+_scoreLabel = NodePath("Score")
+
+[node name="Text Level" type="Label" parent="."]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 67.0
+offset_bottom = 27.0
+text = "Niveau : "
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 27.0
+text = "0"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 324.0
+offset_bottom = 57.0
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 4.0
+offset_right = 293.0
+offset_bottom = 27.0
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 5.0
+offset_right = 320.0
+offset_bottom = 25.0
+rotation = 0.7853982
+pivot_offset = Vector2(10, 10)
+color = Color(1, 0.78431374, 0, 1)

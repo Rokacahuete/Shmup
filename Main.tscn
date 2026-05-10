@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmwo73fm1k6bv"]
+[gd_scene load_steps=8 format=3 uid="uid://cmwo73fm1k6bv"]
 
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://b40l7n4rx11a5" path="res://Scripts/Utils/Managers/GameManager.cs" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://dd7wrws355ugu" path="res://Scenes/Entities/XpOrb.tscn" id="2_fos0i"]
+[ext_resource type="PackedScene" uid="uid://ctm14eci7agnm" path="res://Scenes/Entities/ScoreOrb.tscn" id="3_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dkcn7d8rrwr4e" path="res://Scenes/UI/HUD.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bs3ot0lst4uan" path="res://Scenes/UI/LevelSelector.tscn" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://b686owbgycuj1" path="res://Scenes/UI/InfiniteModeMenu.tscn" id="10_wkp8b"]
 
@@ -13,9 +15,10 @@
 [node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer")]
 script = ExtResource("1_uu6xs")
 gameContainer = NodePath("../../GameContainer")
-_infiniteModeDefaultScore = 50
-_infiniteModeIncreaseScore = 10
+_infiniteModeDefaultScore = 2
+_infiniteModeIncreaseScore = 1
 _xpOrbScene = ExtResource("2_fos0i")
+_scoreOrbScene = ExtResource("3_lgr22")
 
 [node name="GameContainer" type="Node2D" parent="."]
 
@@ -34,5 +37,9 @@ visible = false
 layout_mode = 1
 
 [node name="InfiniteModeMenu" parent="Menus" instance=ExtResource("10_wkp8b")]
+visible = false
+layout_mode = 1
+
+[node name="HUD" parent="Menus" instance=ExtResource("6_3dxm6")]
 visible = false
 layout_mode = 1

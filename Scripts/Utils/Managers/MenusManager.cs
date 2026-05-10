@@ -8,8 +8,8 @@ public static class MenusManager {
 	// Consts
 
 	// Enums
-	public const string MENUS = "None,LevelSelector,Infinite";
-	public enum Menus { None, LevelSelector, Infinite }
+	public const string MENUS = "None,HUD,LevelSelector,Infinite";
+	public enum Menus { None, HUD, LevelSelector, Infinite }
 
 	// Variables
 	private static Dictionary<Menus, Menu> _DMenus = new();

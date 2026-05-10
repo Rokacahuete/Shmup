@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctm14eci7agnm"]
+
+[ext_resource type="Script" uid="uid://cq6udo1vxpvas" path="res://Scripts/Entities/ScoreOrb.cs" id="1_plnce"]
+[ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="2_tch4w"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="3_pr3vt"]
+[ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="4_itakv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a64ml"]
+size = Vector2(10, 10)
+
+[node name="ScoreOrb" type="Node2D"]
+script = ExtResource("1_plnce")
+_scoreAmount = 50
+_rotationMultiplicator = 10.0
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_tch4w")]
+speed = 500.0
+nodeToAffect = NodePath("../..")
+
+[node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_pr3vt")]
+_ADamageables = [ExtResource("4_itakv")]
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset = Vector2(5, 5)
+color = Color(1, 0.78431374, 0, 1)
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+rotation = 0.7853982
+shape = SubResource("RectangleShape2D_a64ml")
+
+[connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]

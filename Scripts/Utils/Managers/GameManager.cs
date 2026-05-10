@@ -21,7 +21,7 @@ public partial class GameManager : Node {
 	[Export] private int _infiniteModeDefaultScore = 0;
 	[Export] private int _infiniteModeIncreaseScore = 0;
 
-	[Export] private PackedScene _xpOrbScene = null;
+	[Export] private PackedScene _xpOrbScene = null, _scoreOrbScene = null;
 	
 	private Level _currentLevel;
 	private GameModes _gameMode = 0;
@@ -100,11 +100,20 @@ public partial class GameManager : Node {
 		_SwitchGameMode(pLevel.gameMode);
 
 		Player.instance.SetActive(false);
-		MenusManager.Switch();
+		MenusManager.Switch(MenusManager.Menus.HUD);
 	}
 
 	public void StopGame(bool pIsWin) {
-		if (pIsWin) Datas.UpdateScore(_currentLevel.score);
+		if (pIsWin && _scoreOrbScene != null) {
+			ScoreOrb lOrb;
+			for (int i = 0; i < _currentLevel.score; i++) {
+				lOrb = _scoreOrbScene.Instantiate<ScoreOrb>();
+
+				lOrb.GlobalPosition = screenSize * .5f;
+				lOrb.Rotation = MyMaths.RandomAngle();
+				gameContainer.AddChild(lOrb);
+			}
+		}
 
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
 		Player.instance.SetActive(true);
@@ -124,8 +133,17 @@ public partial class GameManager : Node {
 	private void _InfiniteMode() {
 		_InstanciateEnemyGroup(rand.RandiRange(0, _currentLevel.AEnemyGroups.Length - 1));
 
-		if (_currentLevel.wave >= 0)
-			Datas.UpdateScore(_infiniteModeDefaultScore + _infiniteModeIncreaseScore * _currentLevel.wave);
+		if (_currentLevel.wave >= 0 && _scoreOrbScene != null) {
+			ScoreOrb lOrb;
+			int lNOrbs = _infiniteModeDefaultScore + _infiniteModeIncreaseScore * _currentLevel.wave;
+			for (int i = 0; i < lNOrbs; i++) {
+				lOrb = _scoreOrbScene.Instantiate<ScoreOrb>();
+
+				lOrb.GlobalPosition = screenSize * .5f;
+				lOrb.Rotation = MyMaths.RandomAngle();
+				gameContainer.AddChild(lOrb);
+			}
+		}
 		++_currentLevel.wave;
     }
 
