@@ -5,7 +5,7 @@
 [node name="Group" type="Node2D"]
 
 [node name="Witch" parent="." instance=ExtResource("1_8r8un")]
-position = Vector2(84, 14)
+position = Vector2(81, 98)
 
 [node name="Witch2" parent="." instance=ExtResource("1_8r8un")]
-position = Vector2(224, 16)
+position = Vector2(225, 94)

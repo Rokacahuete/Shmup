@@ -5,4 +5,4 @@
 [node name="Group" type="Node2D"]
 
 [node name="Crow" parent="." instance=ExtResource("1_1a6f7")]
-position = Vector2(164, 6)
+position = Vector2(157, 78)

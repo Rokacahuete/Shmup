@@ -5,4 +5,4 @@
 [node name="Group" type="Node2D"]
 
 [node name="BookCrow" parent="." instance=ExtResource("1_17tuf")]
-position = Vector2(142, 46)
+position = Vector2(141, 98)

@@ -21,7 +21,7 @@ script = ExtResource("1_agccv")
 _AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
 _movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
-maxHealth = 100
+maxHealth = 500
 
 [node name="Modules" type="Node" parent="."]
 

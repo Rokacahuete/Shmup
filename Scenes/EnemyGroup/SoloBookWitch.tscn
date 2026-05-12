@@ -5,4 +5,4 @@
 [node name="Group" type="Node2D"]
 
 [node name="Book" parent="." instance=ExtResource("1_exq3l")]
-position = Vector2(158, 46)
+position = Vector2(156, 99)

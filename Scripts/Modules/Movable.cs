@@ -10,9 +10,9 @@ public partial class Movable : Module {
 	[Export(PropertyHint.Enum, "Line,Sinusoidal,Circle")] private int _patternType = 0;
 	[Export] private Vector2 _direction = Vector2.Zero;
 	[Export] private float _speed = 0f;
+	[Export] public float distanceTime = 0f;
 
 	public Vector2 initPos;
-	private float _distanceTime = 0f;
 
     // Functions
     public override void _Ready() {
@@ -32,8 +32,8 @@ public partial class Movable : Module {
 	private void _Move(float pDelta) {
 		if (stopped) return;
 		
-		_distanceTime += pDelta * _speed;
-        nodeToAffect.Position = initPos + Patterns.GetPosition(_patternType, _distanceTime, _direction);
+		distanceTime += pDelta * _speed;
+        nodeToAffect.Position = initPos + Patterns.GetPosition(_patternType, distanceTime, _direction);
 	}
 
 	public void Move(Vector2 pDirection) {
@@ -41,7 +41,7 @@ public partial class Movable : Module {
 	}
 
 	public void Skip(float pTimeToSkip) {
-		_distanceTime += pTimeToSkip;
+		distanceTime += pTimeToSkip;
 	}
 	
 	// Events

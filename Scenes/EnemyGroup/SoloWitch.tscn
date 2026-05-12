@@ -5,4 +5,5 @@
 [node name="Group" type="Node2D"]
 
 [node name="Witch" parent="." instance=ExtResource("1_m8pgx")]
-position = Vector2(149, 13)
+position = Vector2(134, 98)
+_gapTp = Vector2(100, 0)

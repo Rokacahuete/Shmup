@@ -8,7 +8,7 @@ public partial class Shooter : Module {
 
 	// Variables
 	[Export] public PackedScene shotScene = null;
-    [Export] protected float timeBetweenShots = 0f;
+    [Export] public float timeBetweenShots = 0f;
 	[Export] protected float timer;
 
 	// Delegates
@@ -29,6 +29,21 @@ public partial class Shooter : Module {
 
 		base._Process(pDelta);
 	}
+
+	public Node2D Shoot() {
+		if (shotScene == null) return null;
+		
+		Node2D lShot = shotScene.Instantiate<Node2D>();
+		lShot.GlobalPosition = nodeToAffect.GlobalPosition;
+		lShot.GlobalRotation = nodeToAffect.GlobalRotation;
+		GameManager.instance.gameContainer.CallDeferred(MethodName.AddChild, lShot);
+		
+		if (lShot is Enemy lEnemy)
+			GameManager.instance.CreateEnemy(lEnemy);
+
+		OnShoot?.Invoke(lShot);
+		return lShot;
+	}
 	
 	protected void Shoot(float pDelta) {
 		if (stopped) return;
@@ -37,16 +52,6 @@ public partial class Shooter : Module {
 		if (timer > 0f) return;
 
         timer += timeBetweenShots;
-
-		Node2D lShot = shotScene.Instantiate<Node2D>();
-		lShot.GlobalPosition = nodeToAffect.GlobalPosition;
-		lShot.GlobalRotation = nodeToAffect.GlobalRotation;
-		GameManager.instance.gameContainer.AddChild(lShot);
-		// lShot.GlobalPosition = nodeToAffect.GlobalPosition;
-		// lShot.GlobalRotation = nodeToAffect.GlobalRotation;
-		if (lShot is Enemy lEnemy)
-			GameManager.instance.CreateEnemy(lEnemy);
-
-		OnShoot?.Invoke(lShot);
+		Shoot();
     }
 }
