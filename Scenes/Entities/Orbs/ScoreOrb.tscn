@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctm14eci7agnm"]
+
+[ext_resource type="Script" uid="uid://cq6udo1vxpvas" path="res://Scripts/Entities/Orbs/ScoreOrb.cs" id="1_wqk8a"]
+[ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="2_2253g"]
+
+[node name="ScoreOrb" type="Node2D"]
+script = ExtResource("1_wqk8a")
+_scoreAmount = 50
+_rotationMultiplicator = 10.0
+_target = Vector2(300, 20)
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_2253g")]
+speed = 500.0
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset = Vector2(5, 5)
+color = Color(1, 0.78431374, 0, 1)

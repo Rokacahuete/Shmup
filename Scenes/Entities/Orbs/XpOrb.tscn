@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd7wrws355ugu"]
+
+[ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_gmcrq"]
+[ext_resource type="Script" uid="uid://bdnls34aakusk" path="res://Scripts/Entities/Orbs/XPOrb.cs" id="1_r5mhg"]
+
+[node name="XPOrb" type="Node2D"]
+script = ExtResource("1_r5mhg")
+_xpAmount = 3
+_rotationMultiplicator = 10.0
+_target = Vector2(162, 40)
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_gmcrq")]
+speed = 500.0
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
