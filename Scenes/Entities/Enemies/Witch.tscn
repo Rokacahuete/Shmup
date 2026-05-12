@@ -25,9 +25,9 @@ rotation = 1.5707964
 script = ExtResource("1_nawxp")
 _movableModule = NodePath("Modules/Movable")
 _damageableModule = NodePath("Modules/Damageable")
-_lifePercentageToTp = 0.55
+_lifePercentageToTp = 0.7
 _nbTp = 2
-_gapTp = Vector2(100, 0)
+_gapTp = Vector2(150, 0)
 xpOnKilled = 8
 maxHealth = 100
 

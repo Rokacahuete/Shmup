@@ -21,7 +21,7 @@ public partial class Witch : Enemy {
 	public override void _Ready() {
 		base._Ready();
 
-		_healthToTp = (int)(health * _lifePercentageToTp);
+		_healthToTp = (int)(maxHealth * _lifePercentageToTp);
 		if (GlobalPosition.X >= GameManager.screenSize.X * .5f) _gapTp.X *= -1f;
 	}
 
