@@ -46,6 +46,10 @@ public partial class Player : Entity {
 		Visible = !pStopped;
 	}
 
+    public override void Hurt(Damager pDamager) {
+        base.Hurt(pDamager);
+    }
+
     public override void Die() {
 		health = maxHealth;
 		GameManager.instance.Restart();

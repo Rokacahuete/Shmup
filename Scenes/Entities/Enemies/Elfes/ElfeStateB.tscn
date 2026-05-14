@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://brrjq40wkdlrb"]
+[gd_scene load_steps=10 format=3 uid="uid://brrjq40wkdlrb"]
 
 [ext_resource type="Script" uid="uid://ddu7h848y0ui5" path="res://Scripts/Entities/Enemies/Elfe.cs" id="1_37diw"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="2_3scjb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="4_62fva"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="4_ctroa"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="5_5frso"]
+[ext_resource type="PackedScene" uid="uid://bty0kgif1rhtf" path="res://Scenes/Entities/Shots/Explosion.tscn" id="8_ctroa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iivcv"]
 size = Vector2(68, 52)
@@ -15,7 +16,7 @@ size = Vector2(68, 52)
 modulate = Color(1, 1, 0.47058824, 1)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_37diw")
-_AShooters = [NodePath("Modules/Shooter"), NodePath("Modules/Shooter2")]
+_AShooters = [NodePath("Modules/Shooter")]
 _movableModule = NodePath("Modules/Movable")
 maxHealth = 100
 
@@ -36,14 +37,9 @@ _speed = 1.0
 nodeToAffect = NodePath("../..")
 
 [node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_5frso")]
-timeBetweenShots = 5.0
-timer = 5.0
-nodeToAffect = NodePath("../../Canon")
-
-[node name="Shooter2" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_5frso")]
-timeBetweenShots = 5.0
-timer = 5.0
-nodeToAffect = NodePath("../../Canon2")
+shotScene = ExtResource("8_ctroa")
+nodeToAffect = NodePath("../..")
+stopped = true
 
 [node name="renderer" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -92,11 +88,5 @@ offset_bottom = 53.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
 position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_iivcv")
-
-[node name="Canon" type="Node2D" parent="."]
-position = Vector2(-74, -46)
-
-[node name="Canon2" type="Node2D" parent="."]
-position = Vector2(73, -47)
 
 [connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]

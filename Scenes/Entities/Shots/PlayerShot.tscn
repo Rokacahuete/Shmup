@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dttjrhlqit1y1"]
 
 [ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_akqp5"]
-[ext_resource type="Script" uid="uid://dvduj531up2ma" path="res://Scripts/Entities/Shot.cs" id="1_ijf5j"]
+[ext_resource type="Script" uid="uid://dvduj531up2ma" path="res://Scripts/Entities/Shots/Shot.cs" id="1_ijf5j"]
 [ext_resource type="Texture2D" uid="uid://deyam3fombsgw" path="res://Assets/Textures/Shots/PlayerShot.png" id="2_ijf5j"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="3_n8guv"]
 

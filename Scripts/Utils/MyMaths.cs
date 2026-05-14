@@ -1,3 +1,4 @@
+using System.Numerics;
 using Godot;
 
 // Author : Roka
@@ -8,11 +9,11 @@ public static class MyMaths {
     // Variables
 
     // Functions
-    public static int Min(this int tNum, int pMin) => tNum > pMin ? pMin : tNum;
-    public static int Max(this int tNum, int pMax) => tNum < pMax ? pMax : tNum;
-    public static int MinMax(this int tNum, int pMin, int pMax) => tNum.Min(pMax).Max(pMin);
+    public static T Min<T>(this T tNum, T pMin) where T : INumber<T> => tNum > pMin ? pMin : tNum;
+    public static T Max<T>(this T tNum, T pMax) where T : INumber<T> => tNum < pMax ? pMax : tNum;
+    public static T MinMax<T>(this T tNum, T pMin, T pMax) where T : INumber<T> => tNum.Min(pMax).Max(pMin);
 
     public static float RandomAngle() => GameManager.rand.Randf() * Mathf.Tau;
 
-    public static Vector2 FromAngleToVector(this float tAngle) => new Vector2(Mathf.Cos(tAngle), Mathf.Sin(tAngle));
+    public static Godot.Vector2 FromAngleToVector(this float tAngle) => new Godot.Vector2(Mathf.Cos(tAngle), Mathf.Sin(tAngle));
 }
