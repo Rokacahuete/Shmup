@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://brrjq40wkdlrb"]
+[gd_scene load_steps=9 format=3 uid="uid://brrjq40wkdlrb"]
 
 [ext_resource type="Script" uid="uid://ddu7h848y0ui5" path="res://Scripts/Entities/Enemies/Elfe.cs" id="1_37diw"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="2_3scjb"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="3_3scjb"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="3_62fva"]
+[ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="4_62fva"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="4_ctroa"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="5_5frso"]
 
@@ -21,7 +22,7 @@ maxHealth = 100
 [node name="Modules" type="Node" parent="."]
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_3scjb")]
-_ADamageables = [ExtResource("3_3scjb")]
+_ADamageables = [ExtResource("3_3scjb"), ExtResource("4_62fva")]
 nodeToAffect = NodePath("../..")
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_62fva")]

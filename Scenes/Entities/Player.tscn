@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnaa6owekhou5"]
+[gd_scene load_steps=10 format=3 uid="uid://dnaa6owekhou5"]
 
 [ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
 [ext_resource type="PackedScene" uid="uid://dv2wsneiikb47" path="res://Scenes/Modules/MovableCustom.tscn" id="2_4kc40"]
@@ -7,10 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_86atj"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="5_km4ui"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="6_rsj4h"]
-[ext_resource type="PackedScene" uid="uid://dw67n4kaxxnbk" path="res://Scenes/Entities/Enemies/Crow.tscn" id="7_4kc40"]
-[ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="8_wmg1a"]
-[ext_resource type="PackedScene" uid="uid://b3wqh2v6tpeya" path="res://Scenes/Entities/Enemies/BookCrow.tscn" id="9_4kc40"]
-[ext_resource type="PackedScene" uid="uid://ddavm1k0rnoqh" path="res://Scenes/Entities/Enemies/BookWitch.tscn" id="10_wmg1a"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="11_wmg1a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
@@ -21,7 +17,7 @@ script = ExtResource("1_agccv")
 _AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
 _movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
-maxHealth = 500
+maxHealth = 100
 
 [node name="Modules" type="Node" parent="."]
 
@@ -35,10 +31,11 @@ timeBetweenShots = 0.3
 nodeToAffect = NodePath("../../Canon")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_km4ui")]
-_ADamageables = [ExtResource("6_rsj4h"), ExtResource("7_4kc40"), ExtResource("8_wmg1a"), ExtResource("9_4kc40"), ExtResource("10_wmg1a")]
+_ADamageables = [ExtResource("6_rsj4h")]
 nodeToAffect = NodePath("../..")
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("11_wmg1a")]
+damage = 9999
 nodeToAffect = NodePath("../..")
 
 [node name="renderer" type="Sprite2D" parent="."]

@@ -23,6 +23,8 @@ public partial class Damageable : Module {
 	}
 	
 	public bool CanBeHurtedBy(Area2D pArea) {
+		if (nodeToAffect is Player && pArea.GetParent() is Enemy) return true;
+
 		bool lResult = false;
 		foreach (PackedScene lScene in _ADamageables) {
 			if (pArea.GetParent().SceneFilePath != lScene.ResourcePath) continue;
@@ -36,17 +38,12 @@ public partial class Damageable : Module {
 	
 	// Events
 	private void _OnAreaEntered(Area2D pArea) {
-		if (stopped) return;
+		if (stopped || !CanBeHurtedBy(pArea)) return;
 
-		foreach (PackedScene lScene in _ADamageables) {
-			if (pArea.GetParent().SceneFilePath != lScene.ResourcePath) continue;
-			
-			Damager lDamager = pArea.GetModule<Damager>();
-			if (lDamager != null) {
-				((Entity)nodeToAffect)?.Hurt(lDamager);
-				lDamager.Hurt();
-			}
-			break;
+		Damager lDamager = pArea.GetModule<Damager>();
+		if (lDamager != null) {
+			((Entity)nodeToAffect)?.Hurt(lDamager);
+			lDamager.Hurt();
 		}
 	}
 }
