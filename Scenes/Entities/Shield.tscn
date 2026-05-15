@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbuji5f74u38c"]
+
+[ext_resource type="Script" uid="uid://ykym38wcl7rl" path="res://Scripts/Entities/Shield.cs" id="1_qy5a5"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="2_wu3y4"]
+[ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="3_gxf61"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgfax"]
+size = Vector2(40, 40)
+
+[node name="Shield" type="Node2D"]
+script = ExtResource("1_qy5a5")
+_startColor = Color(0, 0.27058825, 1, 0.5019608)
+_endColor = Color(0.48235294, 0, 0.22745098, 0.5019608)
+maxHealth = 500
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_wu3y4")]
+_ADamageables = [ExtResource("3_gxf61")]
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+shape = SubResource("RectangleShape2D_jgfax")
+
+[connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]
