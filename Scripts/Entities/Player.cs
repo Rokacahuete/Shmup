@@ -9,6 +9,7 @@ public partial class Player : Entity {
 	// Variables
 	public static Player instance;
 
+	[Export] private ProgressBar _lifeBar = null;
 	[Export] private Module[] _AModules = new Module[0];
 	[Export] private MovableCustom _movableModule = null;
 	[Export] private Rect2 _movingZone;
@@ -23,6 +24,7 @@ public partial class Player : Entity {
 		SetActive(true);
 
 		base._Ready();
+		UpdateLifeBar();
 	}
 
 	public override void _Process(double pDelta) {
@@ -41,6 +43,13 @@ public partial class Player : Entity {
 		base._Process(pDelta);
 	}
 
+	public void UpdateLifeBar() {
+		if (_lifeBar == null) return;
+
+		_lifeBar.MaxValue = maxHealth;
+		_lifeBar.Value = health;
+	}
+
 	public void SetActive(bool pStopped) {
 		foreach (Module lModule in _AModules) lModule.stopped = pStopped;
 		Visible = !pStopped;
@@ -48,11 +57,14 @@ public partial class Player : Entity {
 
     public override void Hurt(Damager pDamager) {
         base.Hurt(pDamager);
+
+		UpdateLifeBar();
     }
 
     public override void Die() {
 		health = maxHealth;
 		GameManager.instance.Restart();
+		UpdateLifeBar();
     }
 
 
