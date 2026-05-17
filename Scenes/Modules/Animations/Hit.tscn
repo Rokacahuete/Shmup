@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://de45x6gd838gt"]
+
+[ext_resource type="Script" uid="uid://bp117soahek18" path="res://Scripts/Modules/Animations/HitAnimation.cs" id="1_ikovm"]
+
+[node name="Hit" type="Node"]
+script = ExtResource("1_ikovm")
+_onHitColor = Color(1, 0, 0, 1)
+duration = 0.5

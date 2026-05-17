@@ -23,7 +23,6 @@ _scoreOrbScene = ExtResource("3_lgr22")
 [node name="GameContainer" type="Node2D" parent="."]
 
 [node name="Player" parent="GameContainer" instance=ExtResource("1_glv2v")]
-visible = false
 position = Vector2(150, 494)
 
 [node name="Menus" type="Control" parent="."]

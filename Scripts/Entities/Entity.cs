@@ -12,7 +12,7 @@ public partial class Entity : Node2D {
 
 	// Delegates
 	public delegate void OnDiedEventHandler(Entity pEntity);
-	public OnDiedEventHandler OnDied;
+	public OnDiedEventHandler OnDied, OnHurted;
 
 	// Functions
 	public override void _Ready() {
@@ -30,6 +30,7 @@ public partial class Entity : Node2D {
 		health -= pDamager.damage;
 
 		if (health <= 0) Die();
+		else OnHurted?.Invoke(this);
 	}
 
 	public virtual void Die() {
