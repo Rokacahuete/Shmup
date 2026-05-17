@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ci2655mjvakix"]
+[gd_scene load_steps=14 format=3 uid="uid://ci2655mjvakix"]
 
 [ext_resource type="Script" uid="uid://bco75pariqdem" path="res://Scripts/Entities/Enemies/Witch.cs" id="1_nawxp"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="1_xgw2o"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="2_im73t"]
+[ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_jcdqc"]
 [ext_resource type="Texture2D" uid="uid://di3u242kgdhu8" path="res://Assets/Textures/Enemies/Witch.png" id="3_im73t"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="3_kb5vk"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_bk7h6"]
@@ -31,6 +32,11 @@ _nbTp = 2
 _gapTp = Vector2(150, 0)
 xpOnKilled = 8
 maxHealth = 100
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="Hit" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_jcdqc")]
+nodeToAffect = NodePath("../..")
 
 [node name="Modules" type="Node" parent="."]
 

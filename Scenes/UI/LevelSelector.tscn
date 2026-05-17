@@ -30,13 +30,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TEST" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 133.0
 offset_top = 356.0
 offset_right = 197.0
 offset_bottom = 420.0
-disabled = true
 text = "TEST"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("3_amie5")]

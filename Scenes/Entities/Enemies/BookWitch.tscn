@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddavm1k0rnoqh"]
+[gd_scene load_steps=12 format=3 uid="uid://ddavm1k0rnoqh"]
 
 [ext_resource type="Script" uid="uid://c04nhddjhyvx5" path="res://Scripts/Entities/Enemies/Book.cs" id="1_orfdt"]
+[ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_va7jo"]
 [ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="3_x3gec"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_6tchc"]
 [ext_resource type="Texture2D" uid="uid://dikefhfnmmqw4" path="res://Assets/Textures/Enemies/Book2.png" id="5_va7jo"]
@@ -17,6 +18,11 @@ size = Vector2(126, 76)
 script = ExtResource("1_orfdt")
 xpOnKilled = 24
 maxHealth = 300
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="Hit" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_va7jo")]
+nodeToAffect = NodePath("../..")
 
 [node name="Modules" type="Node" parent="."]
 

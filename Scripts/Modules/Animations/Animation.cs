@@ -28,12 +28,17 @@ public partial class Animation : Module {
 	}
 
 	public virtual void StartAnimation() {
+		if (stopped) return;
+
+		stopped = true;
 		time = 0f;
 
 		SetProcess(true);
 	}
 
 	public virtual void StopAnimation() {
+		stopped = false;
+		
 		SetProcess(false);
 	}
 

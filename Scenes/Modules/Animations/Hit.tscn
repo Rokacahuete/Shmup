@@ -5,4 +5,4 @@
 [node name="Hit" type="Node"]
 script = ExtResource("1_ikovm")
 _onHitColor = Color(1, 0, 0, 1)
-duration = 0.5
+duration = 0.2

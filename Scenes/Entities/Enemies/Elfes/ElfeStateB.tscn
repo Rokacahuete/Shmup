@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://brrjq40wkdlrb"]
+[gd_scene load_steps=11 format=3 uid="uid://brrjq40wkdlrb"]
 
 [ext_resource type="Script" uid="uid://ddu7h848y0ui5" path="res://Scripts/Entities/Enemies/Elfe.cs" id="1_37diw"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="2_3scjb"]
+[ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_5frso"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="3_3scjb"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="3_62fva"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="4_62fva"]
@@ -19,6 +20,11 @@ script = ExtResource("1_37diw")
 _AShooters = [NodePath("Modules/Shooter")]
 _movableModule = NodePath("Modules/Movable")
 maxHealth = 100
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="Hit" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_5frso")]
+nodeToAffect = NodePath("../..")
 
 [node name="Modules" type="Node" parent="."]
 

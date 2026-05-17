@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw67n4kaxxnbk"]
+[gd_scene load_steps=10 format=3 uid="uid://dw67n4kaxxnbk"]
 
 [ext_resource type="Script" uid="uid://cjb3wy5ru3gr7" path="res://Scripts/Entities/Enemies/Crow.cs" id="1_nhq80"]
 [ext_resource type="Texture2D" uid="uid://q1a16j48u4vj" path="res://Assets/Textures/Enemies/Crow.png" id="1_ujjex"]
 [ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_y4dt6"]
+[ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_el2o4"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="3_o5tx0"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_w3j1c"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="5_72igx"]
@@ -18,6 +19,12 @@ script = ExtResource("1_nhq80")
 _rotationMultiplicator = 1.0
 xpOnKilled = 5
 maxHealth = 30
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="Hit" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_el2o4")]
+_onHitColor = Color(1, 0, 0, 0.53333336)
+nodeToAffect = NodePath("../..")
 
 [node name="Modules" type="Node" parent="."]
 
@@ -39,6 +46,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ujjex")
 
 [node name="collider" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
 position = Vector2(8.742279e-08, 2)
