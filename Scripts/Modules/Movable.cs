@@ -34,6 +34,7 @@ public partial class Movable : Module {
 		
 		distanceTime += pDelta * _speed;
         nodeToAffect.Position = initPos + Patterns.GetPosition(_patternType, distanceTime, _direction);
+		_CheckOutOfLimits();
 	}
 
 	public void Move(Vector2 pDirection) {
@@ -42,6 +43,13 @@ public partial class Movable : Module {
 
 	public void Skip(float pTimeToSkip) {
 		distanceTime += pTimeToSkip;
+	}
+
+	private void _CheckOutOfLimits() {
+		if (nodeToAffect is Entity lEntity && (lEntity.GlobalPosition.Y >= GameManager.screenSize.Y || lEntity.GlobalPosition.Y < 0f)) {
+			if (lEntity is Enemy lEnemy) lEnemy.xpOnKilled = 0;
+			lEntity.Die();
+		}
 	}
 	
 	// Events

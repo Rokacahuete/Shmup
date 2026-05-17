@@ -22,6 +22,14 @@ public partial class MovableRotation : Module {
 		if (stopped) return;
 		
 		nodeToAffect.Position += nodeToAffect.Rotation.FromAngleToVector() * speed * pDelta;
+		_CheckOutOfLimits();
+	}
+
+	private void _CheckOutOfLimits() {
+		if (nodeToAffect is Entity lEntity && (lEntity.GlobalPosition.Y >= GameManager.screenSize.Y || lEntity.GlobalPosition.Y < 0f)) {
+			if (lEntity is Enemy lEnemy) lEnemy.xpOnKilled = 0;
+			lEntity.Die();
+		}
 	}
 	
 	// Events
