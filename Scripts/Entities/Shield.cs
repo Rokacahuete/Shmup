@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Author : Roka
-public partial class Shield : Enemy {
+public partial class Shield : Entity {
 
 	// Consts
 
@@ -15,6 +15,8 @@ public partial class Shield : Enemy {
 		base._Ready();
 
 		Modulate = _startColor;
+
+		GameManager.instance.OnGameEnd += Die;
 	}
 
 	public override void _Process(double pDelta) {
@@ -28,6 +30,12 @@ public partial class Shield : Enemy {
 		Modulate = _startColor * lRatio + _endColor * (1f - lRatio);
         base.Hurt(pDamager);
     }
+
+    public override void Die() {
+		GameManager.instance.OnGameEnd -= Die;
+        base.Die();
+    }
+
 
 	// Events
 }

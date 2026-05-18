@@ -75,8 +75,8 @@ public partial class GameManager : Node {
 		Node2D lGroup = _currentLevel.AEnemyGroups[pGroup].Instantiate<Node2D>();
 		gameContainer.AddChild(lGroup);
 
-		foreach (Enemy lEnemy in lGroup.GetChildren())
-			CreateEnemy(lEnemy);
+		foreach (Entity lEntity in lGroup.GetChildren())
+			if (lEntity is Enemy lEnemy) CreateEnemy(lEnemy);
 	}
 	
 	private void _RemoveEnemy(Entity pEnemy) {
