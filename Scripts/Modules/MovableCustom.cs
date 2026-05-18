@@ -27,7 +27,7 @@ public partial class MovableCustom : Module {
 	}
 
 	private void _CheckOutOfLimits() {
-		if (nodeToAffect is Entity lEntity && (lEntity.GlobalPosition.Y >= GameManager.screenSize.Y || lEntity.GlobalPosition.Y < 0f)) {
+		if (nodeToAffect is Entity lEntity && (lEntity.GlobalPosition.Y >= GameManager.screenSize.Y * 1.4f || lEntity.GlobalPosition.Y < 0f)) {
 			if (lEntity is Enemy lEnemy) lEnemy.xpOnKilled = 0;
 			lEntity.Die();
 		}
