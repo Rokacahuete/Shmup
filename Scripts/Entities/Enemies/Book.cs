@@ -7,6 +7,7 @@ public partial class Book : Enemy {
 	// Consts
 
 	// Variables
+	[Export] private ScaleAnimation _scaleAnimationSpawn = null;
 
 	// Functions
 	public override void _Ready() {
@@ -26,7 +27,16 @@ public partial class Book : Enemy {
 	}
 	
 	// Events
-	private void _OnShoot(Node2D pEnemy) {
-		if (pEnemy is Enemy lEnemy) _SettingEnemy(lEnemy);
+	private void _OnShoot(Node2D pShot) {
+		if (pShot is Enemy lEnemy) _SettingEnemy(lEnemy);
+
+		if (_scaleAnimationSpawn == null) return;
+		ScaleAnimation lAnimCopy = (ScaleAnimation)_scaleAnimationSpawn.Duplicate();
+		lAnimCopy.skipTime = lAnimCopy.duration * .5f;
+
+		pShot.AddChild(lAnimCopy);
+		lAnimCopy.nodeToAffect = pShot;
+		lAnimCopy.CallDeferred(Animation.MethodName.StartAnimation);
+		pShot.SetDeferred(Node2D.PropertyName.Scale, lAnimCopy.rescale);
 	}
 }

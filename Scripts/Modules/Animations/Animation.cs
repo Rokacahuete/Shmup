@@ -7,7 +7,7 @@ public partial class Animation : Module {
 	// Consts
 
 	// Variables
-	[Export] public float duration = 0f;
+	[Export] public float duration = 0f, skipTime = 0f;
 	
 	protected float time = 0f;
 	protected float ratio => time / duration;
@@ -16,8 +16,6 @@ public partial class Animation : Module {
 	// Functions
 	public override void _Ready() {
 		base._Ready();
-		
-		if (duration <= 0f) QueueFree();
 		
 		SetProcess(false);
 	}
@@ -35,7 +33,7 @@ public partial class Animation : Module {
 		if (stopped) return;
 
 		stopped = true;
-		time = 0f;
+		time = skipTime;
 
 		SetProcess(true);
 	}

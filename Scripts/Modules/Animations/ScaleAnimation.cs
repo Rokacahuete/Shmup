@@ -7,7 +7,7 @@ public partial class ScaleAnimation : Animation {
 	// Consts
 
 	// Variables
-	[Export] private Vector2 _rescale = Vector2.Zero;
+	[Export] public Vector2 rescale = Vector2.Zero;
 
 	private Vector2 _baseScale;
 
@@ -19,7 +19,7 @@ public partial class ScaleAnimation : Animation {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 		
-		nodeToAffect.Scale = _baseScale * cosRatio + _rescale * (1f - cosRatio);
+		nodeToAffect.Scale = _baseScale * cosRatio + rescale * (1f - cosRatio);
 
 		base._Process(pDelta);
 	}
