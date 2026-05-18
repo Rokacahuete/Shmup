@@ -21,8 +21,7 @@ public partial class HitAnimation : Animation {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
-		float lRatio = time / duration;
-		nodeToAffect.Modulate = _baseColor * lRatio + _onHitColor * (1f - lRatio);
+		nodeToAffect.Modulate = _baseColor * ratio + _onHitColor * (1f - ratio);
 
 		base._Process(pDelta);
 	}

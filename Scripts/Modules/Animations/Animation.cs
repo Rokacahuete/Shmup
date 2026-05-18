@@ -7,13 +7,17 @@ public partial class Animation : Module {
 	// Consts
 
 	// Variables
-	[Export] protected float duration = 0f;
+	[Export] public float duration = 0f;
 	
 	protected float time = 0f;
+	protected float ratio => time / duration;
+	protected float cosRatio => Mathf.Abs(Mathf.Cos(ratio * Mathf.Pi));
 
 	// Functions
 	public override void _Ready() {
 		base._Ready();
+		
+		if (duration <= 0f) QueueFree();
 		
 		SetProcess(false);
 	}
