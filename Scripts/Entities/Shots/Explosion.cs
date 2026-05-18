@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Author : Roka
-public partial class Explosion : Enemy {
+public partial class Explosion : Shot {
 
 	// Consts
 
@@ -20,6 +20,8 @@ public partial class Explosion : Enemy {
 
 		Scale = Vector2.Zero;
 		_timeBeforeDisapear += _explosionTime;
+
+		GameManager.instance.OnGameEnd += Die;
 	}
 
 	public override void _Process(double pDelta) {
@@ -36,6 +38,11 @@ public partial class Explosion : Enemy {
     public override void Hurt(Damager pDamager) {
 		if (_collisionShape != null) _collisionShape.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
         base.Hurt(pDamager);
+    }
+
+    public override void Die() {
+		GameManager.instance.OnGameEnd -= Die;
+        base.Die();
     }
 
 	// Events

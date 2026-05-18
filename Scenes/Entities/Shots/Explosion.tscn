@@ -10,7 +10,7 @@ size = Vector2(80, 80)
 script = ExtResource("1_wm0bf")
 _collisionShape = NodePath("collider/CollisionShape2D")
 _explosionTime = 1.0
-_timeBeforeDisapear = 0.3
+_timeBeforeDisapear = 0.1
 maxHealth = 1
 
 [node name="Modules" type="Node" parent="."]

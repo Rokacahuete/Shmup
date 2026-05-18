@@ -30,7 +30,7 @@ public partial class GameManager : Node {
 	// Delegates
 	public delegate void Functions();
 	private Functions _FunctionsToCall;
-	public Functions OnRestart;
+	public Functions OnRestart, OnGameEnd;
 
 	// Functions
 	public override void _Ready() {
@@ -104,6 +104,8 @@ public partial class GameManager : Node {
 	}
 
 	public void StopGame(bool pIsWin) {
+		OnGameEnd?.Invoke();
+
 		if (pIsWin && _scoreOrbScene != null) {
 			ScoreOrb lOrb;
 			for (int i = 0; i < _currentLevel.score; i++) {
