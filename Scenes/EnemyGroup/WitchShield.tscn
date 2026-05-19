@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dexfpt4j0qm4s"]
 
 [ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="1_o0e1t"]
-[ext_resource type="PackedScene" uid="uid://bbuji5f74u38c" path="res://Scenes/Entities/shield.tscn" id="2_0ngqb"]
+[ext_resource type="PackedScene" uid="uid://bbuji5f74u38c" path="res://Scenes/Entities/Shield.tscn" id="2_0ngqb"]
 
 [node name="Group" type="Node2D"]
 
@@ -9,9 +9,15 @@
 position = Vector2(101, 94)
 _gapTp = Vector2(100, 0)
 
-[node name="Shield" parent="." instance=ExtResource("2_0ngqb")]
+[node name="Witch2" parent="." node_paths=PackedStringArray("_ATpAnimations") instance=ExtResource("1_o0e1t")]
+position = Vector2(188, 95)
+_ATpAnimations = [NodePath("../Witch/Animations/TpAnimation/Scale"), NodePath("../Witch/Animations/TpAnimation/Rotation")]
+_gapTp = Vector2(100, 0)
+
+[node name="Shield" parent="." node_paths=PackedStringArray("_LLinkedEntities") instance=ExtResource("2_0ngqb")]
 position = Vector2(112, 169)
 scale = Vector2(2, 0.5)
+_LLinkedEntities = [NodePath("../Witch")]
 
 [node name="Shield2" parent="." instance=ExtResource("2_0ngqb")]
 position = Vector2(218, 169)

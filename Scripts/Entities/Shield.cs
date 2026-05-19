@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 // Author : Roka
 public partial class Shield : Entity {
@@ -7,6 +8,7 @@ public partial class Shield : Entity {
 	// Consts
 
 	// Variables
+	[Export] private Godot.Collections.Array<Entity> _LLinkedEntities = new();
 	[Export] private Color _startColor = new Color(1f, 1f, 1f, .5f),
 		_endColor = new Color(0f, 0f, 0f, .5f);
 
@@ -17,6 +19,8 @@ public partial class Shield : Entity {
 		Modulate = _startColor;
 
 		GameManager.instance.OnGameEnd += Die;
+		foreach (Entity lEntity in _LLinkedEntities) 
+			lEntity.OnDied += _OnEntityDie;
 	}
 
 	public override void _Process(double pDelta) {
@@ -36,6 +40,9 @@ public partial class Shield : Entity {
         base.Die();
     }
 
-
 	// Events
+	private void _OnEntityDie(Entity pEntity) {
+		_LLinkedEntities.Remove(pEntity);
+		if (_LLinkedEntities.Count == 0) Die();
+	}
 }
