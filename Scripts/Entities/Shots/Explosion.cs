@@ -21,7 +21,7 @@ public partial class Explosion : Shot {
 		Scale = Vector2.Zero;
 		_timeBeforeDisapear += _explosionTime;
 
-		GameManager.instance.OnGameEnd += Die;
+		GameManager.instance.OnWaveEnd += Die;
 	}
 
 	public override void _Process(double pDelta) {
@@ -41,7 +41,7 @@ public partial class Explosion : Shot {
     }
 
     public override void Die() {
-		GameManager.instance.OnGameEnd -= Die;
+		GameManager.instance.OnWaveEnd -= Die;
         base.Die();
     }
 

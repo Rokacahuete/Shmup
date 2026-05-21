@@ -12,13 +12,19 @@
 
 [node name="Managers" type="Node" parent="."]
 
-[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer")]
+[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer", "_waveTimer")]
 script = ExtResource("1_uu6xs")
 gameContainer = NodePath("../../GameContainer")
+_waveTimer = NodePath("../../Timers/WaveTimer")
 _infiniteModeDefaultScore = 2
 _infiniteModeIncreaseScore = 1
 _xpOrbScene = ExtResource("2_fos0i")
 _scoreOrbScene = ExtResource("3_lgr22")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="WaveTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="GameContainer" type="Node2D" parent="."]
 

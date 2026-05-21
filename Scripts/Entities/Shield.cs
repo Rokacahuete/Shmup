@@ -36,7 +36,7 @@ public partial class Shield : Entity {
     }
 
     public override void Die() {
-		GameManager.instance.OnGameEnd -= Die;
+		GameManager.instance.OnWaveEnd -= Die;
         base.Die();
     }
 

@@ -19,6 +19,7 @@ public partial class GameManager : Node {
 	public static Vector2 screenSize;
 
 	[Export] public Node2D gameContainer;
+	[Export] private Timer _waveTimer = null;
 	[Export] private int _infiniteModeDefaultScore = 0;
 	[Export] private int _infiniteModeIncreaseScore = 0;
 
@@ -42,6 +43,8 @@ public partial class GameManager : Node {
 
 		instance = this;
 		_AGameModesFunctions = new Functions[3] { null, _InfiniteMode, _WavesMode };
+		
+		if (_waveTimer != null) _waveTimer.Timeout += () => _GameMode?.Invoke();
 	}
 
 	private void _SwitchGameMode(GameModes pMode) {
@@ -86,7 +89,8 @@ public partial class GameManager : Node {
 		_CreateOrbs(_xpOrbScene, lEnemy.xpOnKilled, lEnemy.GlobalPosition);
 
 		if (LEnemies.Count != 0) return;
-		_GameMode?.Invoke();
+		if (_waveTimer != null) _waveTimer.Start();
+		else _GameMode?.Invoke();
 	}
 
 	public void StartGame(Level pLevel) {
