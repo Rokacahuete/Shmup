@@ -18,7 +18,7 @@ public partial class Shield : Entity {
 
 		Modulate = _startColor;
 
-		GameManager.instance.OnGameEnd += Die;
+		GameManager.instance.OnWaveEnd += Die;
 		foreach (Entity lEntity in _LLinkedEntities) 
 			lEntity.OnDied += _OnEntityDie;
 	}

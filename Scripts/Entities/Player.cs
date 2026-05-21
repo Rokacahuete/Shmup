@@ -21,7 +21,7 @@ public partial class Player : Entity {
 		_movingZone.Position *= GameManager.screenSize;
 		_movingZone.Size *= GameManager.screenSize;
 
-		SetActive(true);
+		SetInactive(true);
 
 		base._Ready();
 		UpdateLifeBar();
@@ -50,7 +50,7 @@ public partial class Player : Entity {
 		_lifeBar.Value = health;
 	}
 
-	public void SetActive(bool pStopped) {
+	public void SetInactive(bool pStopped) {
 		foreach (Module lModule in _AModules) lModule.stopped = pStopped;
 		Visible = !pStopped;
 	}

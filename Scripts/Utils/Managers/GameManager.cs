@@ -9,6 +9,7 @@ public partial class GameManager : Node {
 
 	// Enums
 	public enum GameModes { None, Infinite, Waves };
+	private Functions[] _AGameModesFunctions;
 
 	// Variables
 	public static GameManager instance;
@@ -29,40 +30,26 @@ public partial class GameManager : Node {
 
 	// Delegates
 	public delegate void Functions();
-	private Functions _FunctionsToCall;
-	public Functions OnRestart, OnGameEnd;
+	private Functions _GameMode;
+	public Functions OnWaveEnd, OnRestart, OnGameEnd;
 
 	// Functions
 	public override void _Ready() {
 		base._Ready();
 
-		instance = this;
-
 		rand.Randomize();
 		screenSize = GetViewport().GetVisibleRect().Size;
-	}
 
-	public override void _Process(double pDelta) {
-		float lDelta = (float)pDelta;
-
-		if (LEnemies.Count != 0) return;
-		_FunctionsToCall?.Invoke();
+		instance = this;
+		_AGameModesFunctions = new Functions[3] { null, _InfiniteMode, _WavesMode };
 	}
 
 	private void _SwitchGameMode(GameModes pMode) {
-		_gameMode = pMode;
-		
-		switch ((int)_gameMode) {
-			case 0: 
-				_FunctionsToCall = null;
-				break;
-			case 1: 
-				_FunctionsToCall = _InfiniteMode;
-				break;
-			case 2:
-				_FunctionsToCall = _WavesMode;
-				break;
-		} 
+		int lMode = (int)pMode;
+		if (lMode < 0 || lMode >= _AGameModesFunctions.Length) lMode = 0;
+
+		_GameMode = _AGameModesFunctions[lMode];
+		_GameMode?.Invoke();
 	}
 
 	public void CreateEnemy(Enemy pEnemy) {
@@ -70,10 +57,23 @@ public partial class GameManager : Node {
 		pEnemy.OnDied += _RemoveEnemy;
 	}
 
+	private void _CreateOrbs(PackedScene pScene, int pNOrbs, Vector2 pPosition) {
+		if (pScene == null) return;
+
+		Orb lOrb;
+		for (int i = 0; i < pNOrbs; i++) {
+			lOrb = pScene.Instantiate<Orb>();
+
+			lOrb.GlobalPosition = pPosition;
+			lOrb.Rotation = MyMaths.RandomAngle();
+			gameContainer.CallDeferred(Node.MethodName.AddChild, lOrb);
+		}
+	}
+
 	private void _InstanciateEnemyGroup(int pGroup) {
 		pGroup = pGroup.MinMax(0, _currentLevel.AEnemyGroups.Length - 1);
 		Node2D lGroup = _currentLevel.AEnemyGroups[pGroup].Instantiate<Node2D>();
-		gameContainer.AddChild(lGroup);
+		gameContainer.CallDeferred(MethodName.AddChild, lGroup);
 
 		foreach (Entity lEntity in lGroup.GetChildren())
 			if (lEntity is Enemy lEnemy) CreateEnemy(lEnemy);
@@ -81,49 +81,34 @@ public partial class GameManager : Node {
 	
 	private void _RemoveEnemy(Entity pEnemy) {
 		Enemy lEnemy = (Enemy)pEnemy;
-
 		LEnemies.Remove(lEnemy);
 
-		if (_xpOrbScene == null) return;
-		XPOrb lOrb;
-		for (int i = 0; i < lEnemy.xpOnKilled; i++) {
-			lOrb = _xpOrbScene.Instantiate<XPOrb>();
+		_CreateOrbs(_xpOrbScene, lEnemy.xpOnKilled, lEnemy.GlobalPosition);
 
-			lOrb.GlobalPosition = lEnemy.GlobalPosition;
-			lOrb.Rotation = MyMaths.RandomAngle();
-			gameContainer.CallDeferred(Node.MethodName.AddChild, lOrb);
-		}
+		if (LEnemies.Count != 0) return;
+		_GameMode?.Invoke();
 	}
 
 	public void StartGame(Level pLevel) {
 		_currentLevel = pLevel;
-		_SwitchGameMode(pLevel.gameMode);
+		_SwitchGameMode(_currentLevel.gameMode);
 
-		Player.instance.SetActive(false);
+		Player.instance.SetInactive(false);
 		MenusManager.Switch(MenusManager.Menus.HUD);
 	}
 
 	public void StopGame(bool pIsWin) {
 		OnGameEnd?.Invoke();
 
-		if (pIsWin && _scoreOrbScene != null) {
-			ScoreOrb lOrb;
-			for (int i = 0; i < _currentLevel.score; i++) {
-				lOrb = _scoreOrbScene.Instantiate<ScoreOrb>();
-
-				lOrb.GlobalPosition = screenSize * .5f;
-				lOrb.Rotation = MyMaths.RandomAngle();
-				gameContainer.AddChild(lOrb);
-			}
-		}
+		if (pIsWin) _CreateOrbs(_scoreOrbScene, _currentLevel.score, screenSize * .5f);
 
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
-		Player.instance.SetActive(true);
+		Player.instance.SetInactive(true);
 		foreach (Enemy lEnemy in LEnemies.ToArray()) {
 			LEnemies.Remove(lEnemy);
 			lEnemy.QueueFree();
 		}
-		_FunctionsToCall = null;
+		_GameMode = null;
 	}
 
 	public void Restart() {
@@ -133,23 +118,16 @@ public partial class GameManager : Node {
 	
 	// Game modes
 	private void _InfiniteMode() {
+		OnWaveEnd?.Invoke();
 		_InstanciateEnemyGroup(rand.RandiRange(0, _currentLevel.AEnemyGroups.Length - 1));
 
-		if (_currentLevel.wave >= 0 && _scoreOrbScene != null) {
-			ScoreOrb lOrb;
-			int lNOrbs = _infiniteModeDefaultScore + _infiniteModeIncreaseScore * _currentLevel.wave;
-			for (int i = 0; i < lNOrbs; i++) {
-				lOrb = _scoreOrbScene.Instantiate<ScoreOrb>();
-
-				lOrb.GlobalPosition = screenSize * .5f;
-				lOrb.Rotation = MyMaths.RandomAngle();
-				gameContainer.AddChild(lOrb);
-			}
-		}
+		int lNOrbs = _infiniteModeDefaultScore + _infiniteModeIncreaseScore * _currentLevel.wave;
+		if (_currentLevel.wave >= 0) _CreateOrbs(_scoreOrbScene, lNOrbs, screenSize * .5f);
 		++_currentLevel.wave;
     }
 
 	private void _WavesMode() {
+		OnWaveEnd?.Invoke();
 		if (++_currentLevel.wave >= _currentLevel.AEnemyGroups.Length) StopGame(true);
 		else _InstanciateEnemyGroup(_currentLevel.wave);
 	}
