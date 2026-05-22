@@ -21,8 +21,8 @@ gameContainer = NodePath("../../GameContainer")
 _waveTimer = NodePath("../../Timers/WaveTimer")
 _infiniteModeDefaultScore = 2
 _infiniteModeIncreaseScore = 1
-_xpOrbScene = ExtResource("2_fos0i")
-_scoreOrbScene = ExtResource("3_lgr22")
+xpOrbScene = ExtResource("2_fos0i")
+scoreOrbScene = ExtResource("3_lgr22")
 
 [node name="Mouse" type="Node" parent="Managers"]
 script = ExtResource("4_trn2v")

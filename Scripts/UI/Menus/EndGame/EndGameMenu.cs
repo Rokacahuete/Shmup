@@ -7,6 +7,7 @@ public partial class EndGameMenu : Menu {
 	// Consts
 
 	// Variables
+	public static int score = 0;
 
 	// Functions
 	public override void _Ready() {
@@ -33,5 +34,6 @@ public partial class EndGameMenu : Menu {
 
 	private void _OnContinueButtonPressed() {
 		MenusManager.Switch(MenusManager.Menus.LevelSelector);
+		GameManager.instance.CreateOrbs(GameManager.instance.scoreOrbScene, score, GameManager.screenSize * .5f);
 	}
 }
