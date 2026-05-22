@@ -13,11 +13,11 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
 height = 44.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("_lifeBar", "_AModules", "_movableModule")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("_lifeBar", "_AModules", "movableModule")]
 script = ExtResource("1_agccv")
 _lifeBar = NodePath("LifeBar")
 _AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
-_movableModule = NodePath("Modules/MovableCustom")
+movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
 maxHealth = 100
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkcn7d8rrwr4e"]
+[gd_scene load_steps=3 format=3 uid="uid://dkcn7d8rrwr4e"]
 
 [ext_resource type="Script" uid="uid://d12xq6imqei2k" path="res://Scripts/UI/Menus/HUD/HUD.cs" id="1_omqfp"]
+[ext_resource type="PackedScene" uid="uid://bd6f8plef5jed" path="res://Scenes/UI/Joystick.tscn" id="2_qc5w2"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("_levelLabel", "_levelProgress", "_scoreLabel")]
 layout_mode = 3
@@ -52,3 +53,6 @@ offset_bottom = 25.0
 rotation = 0.7853982
 pivot_offset = Vector2(10, 10)
 color = Color(1, 0.78431374, 0, 1)
+
+[node name="Joystick" parent="." instance=ExtResource("2_qc5w2")]
+position = Vector2(155, 451)

@@ -10,6 +10,8 @@ public partial class MovableCustom : Module {
 	[Export] public Vector2 direction = Vector2.Zero;
 	[Export] public float speed = 0f;
 
+	public float movingStrenght = 0f;
+
 	// Functions
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
@@ -22,15 +24,7 @@ public partial class MovableCustom : Module {
 	private void _Move(float pDelta) {
 		if (stopped) return;
 		
-		nodeToAffect.Position += direction.Normalized() * speed * pDelta;
-		_CheckOutOfLimits();
-	}
-
-	private void _CheckOutOfLimits() {
-		if (nodeToAffect is Entity lEntity && (lEntity.GlobalPosition.Y >= GameManager.screenSize.Y * 1.4f || lEntity.GlobalPosition.Y < 0f)) {
-			if (lEntity is Enemy lEnemy) lEnemy.xpOnKilled = 0;
-			lEntity.Die();
-		}
+		nodeToAffect.Position += direction.Normalized() * movingStrenght * speed * pDelta;
 	}
 	
 	// Events
