@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkye55wx3d2uy"]
+
+[ext_resource type="Script" uid="uid://bh3y5lext2hx2" path="res://Scripts/UI/Menus/EndGame/EndGameMenu.cs" id="1_27nci"]
+
+[node name="End Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27nci")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 492.0
+offset_right = 289.0
+offset_bottom = 557.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 111.0
+offset_right = 277.0
+offset_bottom = 468.0
+
+[connection signal="pressed" from="Button" to="." method="_OnContinueButtonPressed"]

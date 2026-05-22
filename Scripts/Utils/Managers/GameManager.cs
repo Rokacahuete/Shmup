@@ -107,7 +107,7 @@ public partial class GameManager : Node {
 
 		if (pIsWin) _CreateOrbs(_scoreOrbScene, _currentLevel.score, screenSize * .5f);
 
-		MenusManager.Switch(MenusManager.Menus.LevelSelector);
+		MenusManager.Switch(MenusManager.Menus.EndGame);
 		Player.instance.SetInactive(true);
 		foreach (Enemy lEnemy in LEnemies.ToArray()) {
 			LEnemies.Remove(lEnemy);

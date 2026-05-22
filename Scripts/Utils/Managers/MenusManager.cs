@@ -9,7 +9,7 @@ public static class MenusManager {
 
 	// Enums
 	public const string MENUS = "None,HUD,LevelSelector,Infinite";
-	public enum Menus { None, HUD, LevelSelector, Infinite, Pause }
+	public enum Menus { None, HUD, LevelSelector, Infinite, Pause, EndGame }
 
 	// Variables
 	private static Dictionary<Menus, Menu> _DMenus = new();
