@@ -4,3 +4,4 @@
 
 [node name="Rotation" type="Node"]
 script = ExtResource("1_mhq7m")
+cosAnimation = true

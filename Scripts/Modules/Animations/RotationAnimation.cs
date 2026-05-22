@@ -19,7 +19,7 @@ public partial class RotationAnimation : Animation {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 		
-		nodeToAffect.RotationDegrees = _baseRotation * cosRatio + _angle * (1f - cosRatio);
+		nodeToAffect.RotationDegrees = _baseRotation * ratio + _angle * (1f - ratio);
 
 		base._Process(pDelta);
 	}

@@ -19,7 +19,7 @@ public partial class ScaleAnimation : Animation {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 		
-		nodeToAffect.Scale = _baseScale * cosRatio + rescale * (1f - cosRatio);
+		nodeToAffect.Scale = _baseScale * ratio + rescale * (1f - ratio);
 
 		base._Process(pDelta);
 	}

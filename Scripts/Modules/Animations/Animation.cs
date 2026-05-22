@@ -8,10 +8,12 @@ public partial class Animation : Module {
 
 	// Variables
 	[Export] public float duration = 0f, skipTime = 0f;
+	[Export] protected bool cosAnimation = false;
 	
 	protected float time = 0f;
-	protected float ratio => time / duration;
-	protected float cosRatio => Mathf.Abs(Mathf.Cos(ratio * Mathf.Pi));
+	protected float ratio => cosAnimation ? _cosRatio : _ratio;
+	private float _ratio => time / duration;
+	private float _cosRatio => Mathf.Abs(Mathf.Cos(_ratio * Mathf.Pi));
 
 	// Functions
 	public override void _Ready() {

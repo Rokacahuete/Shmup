@@ -4,3 +4,4 @@
 
 [node name="Scale" type="Node"]
 script = ExtResource("1_rob8r")
+cosAnimation = true
