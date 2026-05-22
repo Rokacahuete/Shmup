@@ -19,7 +19,7 @@ public partial class MovableRotation : Module {
 	}
 
 	private void _Move(float pDelta) {
-		if (stopped) return;
+		if (IsStopped()) return;
 		
 		nodeToAffect.Position += nodeToAffect.Rotation.FromAngleToVector() * speed * pDelta;
 		_CheckOutOfLimits();

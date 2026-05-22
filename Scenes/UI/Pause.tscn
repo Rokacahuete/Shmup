@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dalrxy5skaqr8"]
+
+[ext_resource type="Script" uid="uid://c1xlt1365o4ko" path="res://Scripts/UI/Menus/Pause/Pause.cs" id="1_evds0"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_evds0")
+
+[node name="Quit Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 50.0
+offset_bottom = 54.0
+text = "X"
+
+[node name="Settings Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 11.0
+offset_right = 311.0
+offset_bottom = 51.0
+text = "@"
+
+[node name="Replay Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 474.0
+offset_right = 268.0
+offset_bottom = 550.0
+
+[node name="Summary" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 101.0
+offset_right = 280.0
+offset_bottom = 400.0
+
+[connection signal="pressed" from="Quit Button" to="." method="_OnQuitButtonPressed"]
+[connection signal="pressed" from="Settings Button" to="." method="_OnSettingsButtonPressed"]
+[connection signal="pressed" from="Replay Button" to="." method="_OnReplayButtonPressed"]

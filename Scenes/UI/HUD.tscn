@@ -56,3 +56,13 @@ color = Color(1, 0.78431374, 0, 1)
 
 [node name="Joystick" parent="." instance=ExtResource("2_qc5w2")]
 position = Vector2(155, 451)
+
+[node name="Pause Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 0
+offset_left = -6.0
+offset_top = -8.0
+offset_right = 330.0
+offset_bottom = 85.0
+
+[connection signal="pressed" from="Pause Button" to="." method="_OnPauseButtonPressed"]

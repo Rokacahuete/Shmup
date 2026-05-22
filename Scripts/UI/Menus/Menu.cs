@@ -19,4 +19,11 @@ public partial class Menu : Control {
 	}
 
 	// Events
+	public virtual void OnShow() {
+		Visible = true;
+	}
+	
+	public virtual void OnHide() {
+		Visible = false;
+	}
 }

@@ -46,7 +46,7 @@ public partial class Shooter : Module {
 	}
 	
 	protected void Shoot(float pDelta) {
-		if (stopped) return;
+		if (IsStopped()) return;
 
 		timer -= pDelta;
 		if (timer > 0f) return;

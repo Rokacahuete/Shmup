@@ -30,7 +30,7 @@ public partial class Animation : Module {
 	}
 
 	public virtual void StartAnimation() {
-		if (stopped) return;
+		if (IsStopped()) return;
 
 		stopped = true;
 		time = skipTime;

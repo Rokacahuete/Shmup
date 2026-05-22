@@ -41,4 +41,7 @@ public partial class HUD : Menu {
 	}
 
 	// Events
+	private void _OnPauseButtonPressed() {
+		MenusManager.Switch(MenusManager.Menus.Pause);
+	}
 }

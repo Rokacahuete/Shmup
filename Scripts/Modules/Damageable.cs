@@ -38,7 +38,7 @@ public partial class Damageable : Module {
 	
 	// Events
 	private void _OnAreaEntered(Area2D pArea) {
-		if (stopped || !CanBeHurtedBy(pArea)) return;
+		if (IsStopped() || !CanBeHurtedBy(pArea)) return;
 
 		Damager lDamager = pArea.GetModule<Damager>();
 		if (lDamager != null) {

@@ -22,6 +22,8 @@ public partial class Module : Node {
 
 		base._Process(pDelta);
 	}
+
+	public bool IsStopped() => GameManager.gameStopped || stopped;
 	
 	// Events
 }

@@ -22,7 +22,7 @@ public partial class MovableCustom : Module {
 	}
 
 	private void _Move(float pDelta) {
-		if (stopped) return;
+		if (IsStopped()) return;
 		
 		nodeToAffect.Position += direction.Normalized() * movingStrenght * speed * pDelta;
 	}

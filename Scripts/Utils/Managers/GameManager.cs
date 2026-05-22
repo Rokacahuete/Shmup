@@ -17,6 +17,7 @@ public partial class GameManager : Node {
 	public static Vector2 scrollLastMove = Vector2.Zero;
 	public static RandomNumberGenerator rand = new RandomNumberGenerator();
 	public static Vector2 screenSize;
+	public static bool gameStopped = false;
 
 	[Export] public Node2D gameContainer;
 	[Export] private Timer _waveTimer = null;

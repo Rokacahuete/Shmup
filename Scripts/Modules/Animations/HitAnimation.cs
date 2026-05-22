@@ -27,7 +27,7 @@ public partial class HitAnimation : Animation {
 	}
 
     public override void StartAnimation() {
-		if (stopped) return;
+		if (IsStopped()) return;
         base.StartAnimation();
 
 		_baseColor = nodeToAffect.Modulate;

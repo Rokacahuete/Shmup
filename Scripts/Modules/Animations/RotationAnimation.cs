@@ -25,7 +25,7 @@ public partial class RotationAnimation : Animation {
 	}
 
     public override void StartAnimation() {
-		if (stopped) return;
+		if (IsStopped()) return;
         base.StartAnimation();
 
 		_baseRotation = nodeToAffect.RotationDegrees;

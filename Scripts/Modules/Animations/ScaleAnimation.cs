@@ -25,7 +25,7 @@ public partial class ScaleAnimation : Animation {
 	}
 
     public override void StartAnimation() {
-		if (stopped) return;
+		if (IsStopped()) return;
         base.StartAnimation();
 
 		_baseScale = nodeToAffect.Scale;

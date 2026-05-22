@@ -30,7 +30,7 @@ public partial class Movable : Module {
 	}
 
 	private void _Move(float pDelta) {
-		if (stopped) return;
+		if (IsStopped()) return;
 		
 		distanceTime += pDelta * _speed;
         nodeToAffect.Position = initPos + Patterns.GetPosition(_patternType, distanceTime, _direction);

@@ -9,7 +9,7 @@ public static class MenusManager {
 
 	// Enums
 	public const string MENUS = "None,HUD,LevelSelector,Infinite";
-	public enum Menus { None, HUD, LevelSelector, Infinite }
+	public enum Menus { None, HUD, LevelSelector, Infinite, Pause }
 
 	// Variables
 	private static Dictionary<Menus, Menu> _DMenus = new();
@@ -21,13 +21,13 @@ public static class MenusManager {
 	}
 
 	public static void Switch(Menus pMenu = Menus.None) {
-		if (_currentMenu != null) _currentMenu.Visible = false;
+		if (_currentMenu != null) _currentMenu.OnHide();
 
 		if (!_DMenus.Keys.Contains(pMenu)) pMenu = Menus.None;
 		if (pMenu == Menus.None) return;
 		
 		_currentMenu = _DMenus[pMenu];
-		if (_currentMenu != null) _currentMenu.Visible = true;
+		if (_currentMenu != null) _currentMenu.OnShow();
 	}
 
 	// Events
