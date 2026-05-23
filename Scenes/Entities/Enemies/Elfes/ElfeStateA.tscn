@@ -37,7 +37,7 @@ nodeToAffect = NodePath("../..")
 
 [node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_m4j7y")]
 _patternType = 1
-_direction = Vector2(10, 30)
+_direction = Vector2(10, 20)
 _speed = 1.0
 nodeToAffect = NodePath("../..")
 

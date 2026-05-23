@@ -38,8 +38,8 @@ nodeToAffect = NodePath("../..")
 
 [node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_ctroa")]
 _patternType = 1
-_direction = Vector2(20, 15)
-_speed = 1.0
+_direction = Vector2(25, 10)
+_speed = 3.0
 nodeToAffect = NodePath("../..")
 
 [node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_5frso")]
