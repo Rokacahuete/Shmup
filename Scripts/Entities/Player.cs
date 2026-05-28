@@ -14,6 +14,11 @@ public partial class Player : Entity {
 	[Export] public MovableCustom movableModule = null;
 	[Export] private Rect2 _movingZone;
 
+	[Export] public Competence competence = null;
+	[Export] public float competenceCooldown = 0f;
+
+	private float _inactiveCompetenceTime = 0f;
+
 	// Functions
 	public override void _Ready() {
 		instance = this;
@@ -22,6 +27,8 @@ public partial class Player : Entity {
 		_movingZone.Size *= GameManager.screenSize;
 
 		SetInactive(true);
+		
+		InputManager.OnDoubleClick += ActiveCompetence;
 
 		base._Ready();
 		UpdateLifeBar();
@@ -30,6 +37,7 @@ public partial class Player : Entity {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
+		_inactiveCompetenceTime -= lDelta;
 		Position = new Vector2(
 			MyMaths.MinMax(Position.X, _movingZone.Position.X, _movingZone.Size.X + _movingZone.Position.X),
 			MyMaths.MinMax(Position.Y, _movingZone.Position.Y, _movingZone.Size.Y + _movingZone.Position.Y)
@@ -47,7 +55,15 @@ public partial class Player : Entity {
 
 	public void SetInactive(bool pStopped) {
 		foreach (Module lModule in _AModules) lModule.stopped = pStopped;
+		SetProcess(!pStopped);
 		Visible = !pStopped;
+	}
+
+	public void ActiveCompetence() {
+		if (_inactiveCompetenceTime > 0f) return;
+
+		_inactiveCompetenceTime = competenceCooldown;
+		competence?.Active(GetViewport().GetMousePosition());
 	}
 
     public override void Hurt(Damager pDamager) {
@@ -62,13 +78,5 @@ public partial class Player : Entity {
 		UpdateLifeBar();
     }
 
-
     // Events
-    public override void _Input(InputEvent @event) {
-        if (@event is InputEventScreenTouch lTouch) {
-            movableModule.direction = lTouch.Position;
-        } else if (@event is InputEventScreenDrag lDrag) {
-            movableModule.direction = lDrag.Position;
-        }
-    }
 }

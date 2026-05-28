@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnaa6owekhou5"]
+[gd_scene load_steps=14 format=3 uid="uid://dnaa6owekhou5"]
 
 [ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
 [ext_resource type="PackedScene" uid="uid://dv2wsneiikb47" path="res://Scenes/Modules/MovableCustom.tscn" id="2_4kc40"]
 [ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_km4ui"]
 [ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="2_v402d"]
+[ext_resource type="PackedScene" uid="uid://isj614r3w1g0" path="res://Scenes/Modules/Competences/TP.tscn" id="3_4kc40"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="3_g4oe6"]
+[ext_resource type="PackedScene" uid="uid://b86facytq8j7o" path="res://Scenes/Modules/Animations/Rotation.tscn" id="4_3m754"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_86atj"]
+[ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="4_wmg1a"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="5_km4ui"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="6_rsj4h"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="11_wmg1a"]
@@ -13,18 +16,44 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
 height = 44.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("_lifeBar", "_AModules", "movableModule")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("_lifeBar", "_AModules", "movableModule", "competence")]
 script = ExtResource("1_agccv")
 _lifeBar = NodePath("LifeBar")
 _AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
 movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
+competence = NodePath("Competences/TP")
+competenceCooldown = 5.0
 maxHealth = 100
 
 [node name="Animations" type="Node" parent="."]
 
 [node name="Hit" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_km4ui")]
 nodeToAffect = NodePath("../..")
+
+[node name="TP Animations" type="Node" parent="Animations"]
+
+[node name="Scale" parent="Animations/TP Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_wmg1a")]
+duration = 1.0
+nodeToAffect = NodePath("../../..")
+
+[node name="Rotation" parent="Animations/TP Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_3m754")]
+_angle = 1080.0
+duration = 1.0
+nodeToAffect = NodePath("../../../renderer")
+
+[node name="Competences" type="Node" parent="."]
+
+[node name="TP" parent="Competences" node_paths=PackedStringArray("_AAnimations", "_timer", "nodeToAffect") instance=ExtResource("3_4kc40")]
+_AAnimations = [NodePath("../../Animations/TP Animations/Scale"), NodePath("../../Animations/TP Animations/Rotation")]
+_timer = NodePath("../../Timers/TimeBeforeTP")
+nodeToAffect = NodePath("../..")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="TimeBeforeTP" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
 
 [node name="Modules" type="Node" parent="."]
 

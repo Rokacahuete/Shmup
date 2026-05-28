@@ -20,8 +20,8 @@ public partial class Joystick : Node2D {
 		_movableModule = Player.instance.movableModule;
 		_initPos = _movingZone.Position;
 		
-		MouseManager.OnClick += _OnClick;
-		MouseManager.OnReleased += _OnReleased;
+		InputManager.OnClick += _OnClick;
+		InputManager.OnReleased += _OnReleased;
 	}
 
 	public override void _Process(double pDelta) {

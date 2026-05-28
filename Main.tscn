@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b40l7n4rx11a5" path="res://Scripts/Utils/Managers/GameManager.cs" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://dd7wrws355ugu" path="res://Scenes/Entities/Orbs/XpOrb.tscn" id="2_fos0i"]
 [ext_resource type="PackedScene" uid="uid://ctm14eci7agnm" path="res://Scenes/Entities/Orbs/ScoreOrb.tscn" id="3_lgr22"]
-[ext_resource type="Script" uid="uid://kgblaxft6fyu" path="res://Scripts/Utils/Managers/MouseManager.cs" id="4_trn2v"]
+[ext_resource type="Script" uid="uid://kgblaxft6fyu" path="res://Scripts/Utils/Managers/InputManager.cs" id="4_trn2v"]
 [ext_resource type="PackedScene" uid="uid://dkcn7d8rrwr4e" path="res://Scenes/UI/HUD.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bs3ot0lst4uan" path="res://Scenes/UI/LevelSelector.tscn" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://dalrxy5skaqr8" path="res://Scenes/UI/Pause.tscn" id="9_wkp8b"]
@@ -24,8 +24,9 @@ _infiniteModeIncreaseScore = 1
 xpOrbScene = ExtResource("2_fos0i")
 scoreOrbScene = ExtResource("3_lgr22")
 
-[node name="Mouse" type="Node" parent="Managers"]
+[node name="Input" type="Node" parent="Managers"]
 script = ExtResource("4_trn2v")
+_doubleClickTime = 500
 
 [node name="Timers" type="Node" parent="."]
 
