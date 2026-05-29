@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://isj614r3w1g0"]
 
-[ext_resource type="Script" uid="uid://bilatqin8kx5f" path="res://Scripts/Modules/Competences/CompetenceTP.cs" id="1_lkx2j"]
+[ext_resource type="Script" uid="uid://bilatqin8kx5f" path="res://Scripts/Modules/Competences/TPCompetence.cs" id="1_lkx2j"]
 
 [node name="TP" type="Node"]
 script = ExtResource("1_lkx2j")

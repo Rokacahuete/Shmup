@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3mm6kymb22uf"]
+
+[ext_resource type="Script" uid="uid://bp0w6a3fnft48" path="res://Scripts/Entities/MiniPlayer.cs" id="1_j0rwg"]
+[ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="1_mulk4"]
+[ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="2_j0rwg"]
+[ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="3_qlcjj"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_d3ioc"]
+[ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="5_iq88q"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="6_6qvka"]
+[ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="7_5htca"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdy22"]
+radius = 8.0
+height = 22.0
+
+[node name="MiniPlayer" type="Node2D" node_paths=PackedStringArray("_lifeBar", "_AModules")]
+script = ExtResource("1_j0rwg")
+_lifeBar = NodePath("LifeBar")
+maxHealth = 35
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="Hit" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_mulk4")]
+nodeToAffect = NodePath("../..")
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_j0rwg")]
+shotScene = ExtResource("3_qlcjj")
+timeBetweenShots = 0.5
+timer = 0.5
+nodeToAffect = NodePath("../../Canon")
+
+[node name="Damageable" parent="Modules" instance=ExtResource("4_d3ioc")]
+_ADamageables = [ExtResource("5_iq88q")]
+
+[node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("6_6qvka")]
+damage = 15
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.025)
+texture = ExtResource("7_5htca")
+
+[node name="Canon" type="Node2D" parent="."]
+position = Vector2(5, -25)
+rotation = 4.712389
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_fdy22")
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = 16.0
+offset_right = 67.0
+offset_bottom = 43.0
+scale = Vector2(0.5, 0.5)

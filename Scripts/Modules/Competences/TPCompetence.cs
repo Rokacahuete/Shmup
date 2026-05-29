@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Author : Roka
-public partial class CompetenceTP : Competence {
+public partial class TPCompetence : Competence {
 
 	// Consts
 
