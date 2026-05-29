@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl67vlc2ohodo"]
+[gd_scene load_steps=10 format=3 uid="uid://dl67vlc2ohodo"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="1_2doc0"]
 [ext_resource type="Script" uid="uid://drkuli0jutj47" path="res://Scripts/Entities/Shots/Kamikaze.cs" id="1_4vnfj"]
+[ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="2_wh2ja"]
+[ext_resource type="PackedScene" uid="uid://bty0kgif1rhtf" path="res://Scenes/Entities/Shots/Explosion.tscn" id="3_4vnfj"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="11_nbeff"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="12_751qk"]
 [ext_resource type="PackedScene" uid="uid://bs3ngmdv5jsc4" path="res://Scenes/Modules/DamagerTime.tscn" id="13_cxp18"]
@@ -18,6 +20,7 @@ maxHealth = 15
 [node name="Modules" type="Node" parent="."]
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_2doc0")]
+_ADamageables = [ExtResource("2_wh2ja"), ExtResource("3_4vnfj")]
 nodeToAffect = NodePath("../..")
 
 [node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("11_nbeff")]
@@ -40,9 +43,11 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-color = Color(0.49354547, 0.49354553, 0.49354553, 1)
+color = Color(0.84313726, 0.8, 0, 1)
 
 [node name="collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
 shape = SubResource("RectangleShape2D_wh2ja")
+
+[connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]

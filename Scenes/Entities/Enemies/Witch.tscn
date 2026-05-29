@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ci2655mjvakix"]
+[gd_scene load_steps=18 format=3 uid="uid://ci2655mjvakix"]
 
 [ext_resource type="Script" uid="uid://bco75pariqdem" path="res://Scripts/Entities/Enemies/Witch.cs" id="1_nawxp"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="1_xgw2o"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="5_nawxp"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="7_gqmj2"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="7_l5rrt"]
+[ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="11_uhmdq"]
+[ext_resource type="PackedScene" uid="uid://dqy3ydcoegu8m" path="res://Scenes/Entities/Shots/PlayerExplosion.tscn" id="12_gue65"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kb5vk"]
 radius = 11.0
@@ -78,7 +80,7 @@ timeBetweenShots = 0.5
 nodeToAffect = NodePath("../../Canon")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_bk7h6")]
-_ADamageables = [ExtResource("5_nawxp"), ExtResource("7_gqmj2")]
+_ADamageables = [ExtResource("5_nawxp"), ExtResource("7_gqmj2"), ExtResource("11_uhmdq"), ExtResource("12_gue65")]
 nodeToAffect = NodePath("../..")
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("7_l5rrt")]

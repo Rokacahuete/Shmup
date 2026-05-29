@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://432cc7df46mb"]
+[gd_scene load_steps=13 format=3 uid="uid://432cc7df46mb"]
 
 [ext_resource type="Script" uid="uid://ddu7h848y0ui5" path="res://Scripts/Entities/Enemies/Elfe.cs" id="1_iivcv"]
 [ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_k7y0e"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="4_k7y0e"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="4_m4j7y"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="5_k7y0e"]
+[ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="6_soyh7"]
 [ext_resource type="PackedScene" uid="uid://brrjq40wkdlrb" path="res://Scenes/Entities/Enemies/Elfes/ElfeStateB.tscn" id="6_tavuk"]
+[ext_resource type="PackedScene" uid="uid://dqy3ydcoegu8m" path="res://Scenes/Entities/Shots/PlayerExplosion.tscn" id="7_lwnfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iivcv"]
 size = Vector2(68, 52)
@@ -28,7 +30,7 @@ nodeToAffect = NodePath("../..")
 [node name="Modules" type="Node" parent="."]
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_tavuk")]
-_ADamageables = [ExtResource("3_m4j7y"), ExtResource("4_k7y0e")]
+_ADamageables = [ExtResource("3_m4j7y"), ExtResource("4_k7y0e"), ExtResource("6_soyh7"), ExtResource("7_lwnfq")]
 nodeToAffect = NodePath("../..")
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_xfi2r")]

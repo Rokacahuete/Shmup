@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw67n4kaxxnbk"]
+[gd_scene load_steps=12 format=3 uid="uid://dw67n4kaxxnbk"]
 
 [ext_resource type="Script" uid="uid://cjb3wy5ru3gr7" path="res://Scripts/Entities/Enemies/Crow.cs" id="1_nhq80"]
 [ext_resource type="Texture2D" uid="uid://q1a16j48u4vj" path="res://Assets/Textures/Enemies/Crow.png" id="1_ujjex"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_w3j1c"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="5_72igx"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="5_w3j1c"]
+[ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="7_vpmcm"]
+[ext_resource type="PackedScene" uid="uid://dqy3ydcoegu8m" path="res://Scenes/Entities/Shots/PlayerExplosion.tscn" id="8_c0uli"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nhq80"]
 radius = 12.641671
@@ -33,7 +35,7 @@ speed = 400.0
 nodeToAffect = NodePath("../..")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_o5tx0")]
-_ADamageables = [ExtResource("4_w3j1c"), ExtResource("5_72igx")]
+_ADamageables = [ExtResource("4_w3j1c"), ExtResource("5_72igx"), ExtResource("7_vpmcm"), ExtResource("8_c0uli")]
 nodeToAffect = NodePath("../..")
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_w3j1c")]

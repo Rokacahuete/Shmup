@@ -65,3 +65,5 @@ offset_top = 16.0
 offset_right = 67.0
 offset_bottom = 43.0
 scale = Vector2(0.5, 0.5)
+
+[connection signal="area_entered" from="collider" to="Modules/Damageable" method="_OnAreaEntered"]
