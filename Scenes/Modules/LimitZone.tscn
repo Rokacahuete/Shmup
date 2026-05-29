@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b70vlplfs2ug0"]
+
+[ext_resource type="Script" uid="uid://b22t043r3i4y5" path="res://Scripts/Modules/LimitZoneModule.cs" id="1_kohu0"]
+
+[node name="LimitZoneModule" type="Node"]
+script = ExtResource("1_kohu0")
+_movingZone = Rect2(0.12, 0.65, 0.76, 0.3)

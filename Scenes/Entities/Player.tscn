@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnaa6owekhou5"]
+[gd_scene load_steps=19 format=3 uid="uid://dnaa6owekhou5"]
 
 [ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
 [ext_resource type="PackedScene" uid="uid://dv2wsneiikb47" path="res://Scenes/Modules/MovableCustom.tscn" id="2_4kc40"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bve4v4tpvjt2e" path="res://Scenes/Modules/Competences/KamikazeShooter.tscn" id="8_0hljs"]
 [ext_resource type="PackedScene" uid="uid://dl67vlc2ohodo" path="res://Scenes/Entities/Shots/PlayerKamikaze.tscn" id="9_crkm8"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="11_wmg1a"]
+[ext_resource type="PackedScene" uid="uid://b70vlplfs2ug0" path="res://Scenes/Modules/LimitZone.tscn" id="16_crkm8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
 height = 44.0
@@ -25,7 +26,6 @@ script = ExtResource("1_agccv")
 _lifeBar = NodePath("LifeBar")
 _AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
 movableModule = NodePath("Modules/MovableCustom")
-_movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
 competence = NodePath("Competences/KamikazeShooter")
 competenceCooldown = 5.0
 maxHealth = 100
@@ -82,6 +82,9 @@ nodeToAffect = NodePath("../..")
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("11_wmg1a")]
 damage = 9999
+nodeToAffect = NodePath("../..")
+
+[node name="LimitZoneModule" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("16_crkm8")]
 nodeToAffect = NodePath("../..")
 
 [node name="renderer" type="Sprite2D" parent="."]

@@ -12,7 +12,6 @@ public partial class Player : Entity {
 	[Export] private ProgressBar _lifeBar = null;
 	[Export] private Module[] _AModules = new Module[0];
 	[Export] public MovableCustom movableModule = null;
-	[Export] private Rect2 _movingZone;
 
 	[Export] public Competence competence = null;
 	[Export] public float competenceCooldown = 0f;
@@ -22,9 +21,6 @@ public partial class Player : Entity {
 	// Functions
 	public override void _Ready() {
 		instance = this;
-		
-		_movingZone.Position *= GameManager.screenSize;
-		_movingZone.Size *= GameManager.screenSize;
 
 		SetInactive(true);
 		
@@ -38,10 +34,6 @@ public partial class Player : Entity {
 		float lDelta = (float)pDelta;
 
 		_inactiveCompetenceTime -= lDelta;
-		Position = new Vector2(
-			MyMaths.MinMax(Position.X, _movingZone.Position.X, _movingZone.Size.X + _movingZone.Position.X),
-			MyMaths.MinMax(Position.Y, _movingZone.Position.Y, _movingZone.Size.Y + _movingZone.Position.Y)
-		);
 
 		base._Process(pDelta);
 	}
