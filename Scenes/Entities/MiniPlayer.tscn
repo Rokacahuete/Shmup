@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3mm6kymb22uf"]
+[gd_scene load_steps=11 format=3 uid="uid://b3mm6kymb22uf"]
 
 [ext_resource type="Script" uid="uid://bp0w6a3fnft48" path="res://Scripts/Entities/MiniPlayer.cs" id="1_j0rwg"]
 [ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="1_mulk4"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="5_iq88q"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="6_6qvka"]
 [ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="7_5htca"]
+[ext_resource type="PackedScene" uid="uid://bs3ngmdv5jsc4" path="res://Scenes/Modules/DamagerTime.tscn" id="8_qlcjj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdy22"]
 radius = 8.0
 height = 22.0
 
-[node name="MiniPlayer" type="Node2D" node_paths=PackedStringArray("_lifeBar", "_AModules")]
+[node name="MiniPlayer" type="Node2D" node_paths=PackedStringArray("_lifeBar")]
 script = ExtResource("1_j0rwg")
 _lifeBar = NodePath("LifeBar")
 maxHealth = 35
@@ -36,6 +37,12 @@ _ADamageables = [ExtResource("5_iq88q")]
 
 [node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("6_6qvka")]
 damage = 15
+nodeToAffect = NodePath("../..")
+
+[node name="DamagerTime" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("8_qlcjj")]
+_timeBetweenDamages = 1.0
+_timer = 3.0
+damage = 5
 nodeToAffect = NodePath("../..")
 
 [node name="renderer" type="Sprite2D" parent="."]
