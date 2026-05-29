@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqy3ydcoegu8m"]
+
+[ext_resource type="Script" uid="uid://ulfkdgfqy1ic" path="res://Scripts/Entities/Shots/Explosion.cs" id="1_0ssma"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="1_uxok0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ssma"]
+size = Vector2(80, 80)
+
+[node name="PlayerExplosion" type="Node2D" node_paths=PackedStringArray("_collisionShape")]
+script = ExtResource("1_0ssma")
+_collisionShape = NodePath("collider/CollisionShape2D")
+_explosionTime = 0.5
+_timeBeforeDisapear = 0.1
+_radius = 0.5
+maxHealth = 1
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="Damager" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_uxok0")]
+damage = 30
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5137255)
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+shape = SubResource("RectangleShape2D_0ssma")

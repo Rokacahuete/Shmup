@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bve4v4tpvjt2e"]
+
+[ext_resource type="Script" uid="uid://dkjg2hyi1o3tc" path="res://Scripts/Modules/Competences/ShooterCompetence.cs" id="1_cfp0a"]
+
+[node name="KamikazeShooter" type="Node"]
+script = ExtResource("1_cfp0a")

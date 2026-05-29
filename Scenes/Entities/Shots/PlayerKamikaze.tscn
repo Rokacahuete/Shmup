@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl67vlc2ohodo"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="1_2doc0"]
+[ext_resource type="Script" uid="uid://drkuli0jutj47" path="res://Scripts/Entities/Shots/Kamikaze.cs" id="1_4vnfj"]
+[ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="11_nbeff"]
+[ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="12_751qk"]
+[ext_resource type="PackedScene" uid="uid://bs3ngmdv5jsc4" path="res://Scenes/Modules/DamagerTime.tscn" id="13_cxp18"]
+[ext_resource type="PackedScene" uid="uid://dqy3ydcoegu8m" path="res://Scenes/Entities/Shots/PlayerExplosion.tscn" id="13_wh2ja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wh2ja"]
+size = Vector2(40, 40)
+
+[node name="PlayerKamikaze" type="Node2D" node_paths=PackedStringArray("_shooterModule")]
+script = ExtResource("1_4vnfj")
+_shooterModule = NodePath("Modules/Shooter")
+maxHealth = 15
+
+[node name="Modules" type="Node" parent="."]
+
+[node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_2doc0")]
+nodeToAffect = NodePath("../..")
+
+[node name="Movable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("11_nbeff")]
+_direction = Vector2(0, -100)
+_speed = 1.0
+nodeToAffect = NodePath("../..")
+
+[node name="Shooter" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("12_751qk")]
+shotScene = ExtResource("13_wh2ja")
+nodeToAffect = NodePath("../..")
+stopped = true
+
+[node name="DamagerTime" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("13_cxp18")]
+_timer = 2.0
+damage = 9999
+nodeToAffect = NodePath("../..")
+
+[node name="renderer" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.49354547, 0.49354553, 0.49354553, 1)
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
+shape = SubResource("RectangleShape2D_wh2ja")

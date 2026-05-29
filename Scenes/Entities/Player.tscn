@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnaa6owekhou5"]
+[gd_scene load_steps=18 format=3 uid="uid://dnaa6owekhou5"]
 
 [ext_resource type="Script" uid="uid://dwl8u4a18a1mp" path="res://Scripts/Entities/Player.cs" id="1_agccv"]
 [ext_resource type="PackedScene" uid="uid://dv2wsneiikb47" path="res://Scenes/Modules/MovableCustom.tscn" id="2_4kc40"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cvne23yletcxm" path="res://Scenes/Modules/Competences/MiniShooter.tscn" id="6_46t5s"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="6_rsj4h"]
 [ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="7_0pa8p"]
+[ext_resource type="PackedScene" uid="uid://bve4v4tpvjt2e" path="res://Scenes/Modules/Competences/KamikazeShooter.tscn" id="8_0hljs"]
+[ext_resource type="PackedScene" uid="uid://dl67vlc2ohodo" path="res://Scenes/Entities/Shots/PlayerKamikaze.tscn" id="9_crkm8"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="11_wmg1a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
@@ -24,7 +26,7 @@ _lifeBar = NodePath("LifeBar")
 _AModules = [NodePath("Modules/MovableCustom"), NodePath("Modules/Shooter"), NodePath("Modules/Damageable")]
 movableModule = NodePath("Modules/MovableCustom")
 _movingZone = Rect2(0.12, 0.65, 0.76, 0.3)
-competence = NodePath("Competences/MiniShooter")
+competence = NodePath("Competences/KamikazeShooter")
 competenceCooldown = 5.0
 maxHealth = 100
 
@@ -53,6 +55,9 @@ nodeToAffect = NodePath("../..")
 
 [node name="MiniShooter" parent="Competences" instance=ExtResource("6_46t5s")]
 _shotScene = ExtResource("7_0pa8p")
+
+[node name="KamikazeShooter" parent="Competences" instance=ExtResource("8_0hljs")]
+_shotScene = ExtResource("9_crkm8")
 
 [node name="Timers" type="Node" parent="."]
 
