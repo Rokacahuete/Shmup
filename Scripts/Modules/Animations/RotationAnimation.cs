@@ -33,6 +33,8 @@ public partial class RotationAnimation : Animation {
 
     public override void StopAnimation() {
 		base.StopAnimation();
+		
+		nodeToAffect.RotationDegrees = _baseRotation;
     }
 
 	// Events

@@ -25,6 +25,7 @@ public partial class Animation : Module {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
+		if (GameManager.gameStopped) return;
 		time += lDelta;
 		if (time >= duration) StopAnimation();
 
