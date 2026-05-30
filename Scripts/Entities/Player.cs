@@ -13,8 +13,9 @@ public partial class Player : Entity {
 	[Export] private Module[] _AModules = new Module[0];
 	[Export] public MovableCustom movableModule = null;
 
-	[Export] public Competence competence = null;
-	[Export] public float competenceCooldown = 0f;
+	[Export] public Competence[] _ACompetences = new Competence[0];
+
+	private Competence _competence = null;
 
 	private float _inactiveCompetenceTime = 0f;
 
@@ -51,11 +52,19 @@ public partial class Player : Entity {
 		Visible = !pStopped;
 	}
 
-	public void ActiveCompetence() {
-		if (_inactiveCompetenceTime > 0f) return;
+	public void SwitchCompetence(int pCompetence) {
+		int lLength = _ACompetences.Length;
+		if (lLength == 0) return;
 
-		_inactiveCompetenceTime = competenceCooldown;
-		competence?.Active(GetViewport().GetMousePosition());
+		pCompetence = pCompetence.MinMax(0, lLength);
+		_competence = _ACompetences[pCompetence];
+	}
+
+	public void ActiveCompetence() {
+		if (_inactiveCompetenceTime > 0f || _competence == null) return;
+
+		_inactiveCompetenceTime = _competence.cooldown;
+		_competence.Active(GetViewport().GetMousePosition());
 	}
 
     public override void Hurt(Damager pDamager) {

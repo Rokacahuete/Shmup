@@ -19,21 +19,48 @@ grow_vertical = 2
 script = ExtResource("1_xee7o")
 _AEnemyGroupScenes = [ExtResource("2_14pns"), ExtResource("3_5wfg3"), ExtResource("4_ve4bh"), ExtResource("5_72j7s"), ExtResource("6_fxsqu"), ExtResource("7_xar52")]
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 323.0
+offset_bottom = 68.0
+text = "INFINITE_MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 92.0
-offset_top = 474.0
-offset_right = 240.0
-offset_bottom = 540.0
+offset_left = 23.0
+offset_top = 422.0
+offset_right = 298.0
+offset_bottom = 488.0
 text = "START"
 
-[node name="Button" parent="." instance=ExtResource("8_aee1u")]
+[node name="INVENTORY" parent="." instance=ExtResource("8_aee1u")]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 407.0
-offset_right = 284.0
-offset_bottom = 454.0
-text = "SWITCH_TO_LEVEL_SELECTOR"
+offset_left = 23.0
+offset_top = 507.0
+offset_right = 100.0
+offset_bottom = 565.0
+text = "B"
+_menu = 6
+
+[node name="LEVELS" parent="." instance=ExtResource("8_aee1u")]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 507.0
+offset_right = 200.0
+offset_bottom = 565.0
+text = "S"
 _menu = 2
+
+[node name="INFINITE3" parent="." instance=ExtResource("8_aee1u")]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 507.0
+offset_right = 300.0
+offset_bottom = 565.0
+disabled = true
+text = "oo"
+_menu = 3
 
 [connection signal="pressed" from="StartButton" to="." method="_OnStartButtonPressed"]

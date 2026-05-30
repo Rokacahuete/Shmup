@@ -38,7 +38,7 @@ offset_bottom = 420.0
 text = "TEST"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("7_aknpa"), ExtResource("5_41owy"), ExtResource("3_o8atg")]
-_nextLevel = NodePath("../Infinite")
+_nextLevel = NodePath("../INVENTORY")
 
 [node name="1" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
 layout_mode = 0
@@ -142,14 +142,32 @@ text = "8"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("3_amie5"), ExtResource("6_amie5"), ExtResource("6_amie5"), ExtResource("8_b07ky")]
 _score = 15
-_nextLevel = NodePath("../Infinite")
+_nextLevel = NodePath("../INVENTORY")
 
-[node name="Infinite" parent="." instance=ExtResource("9_bpf5r")]
+[node name="INVENTORY" parent="." instance=ExtResource("9_bpf5r")]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 502.0
-offset_right = 281.0
-offset_bottom = 549.0
+offset_left = 23.0
+offset_top = 507.0
+offset_right = 100.0
+offset_bottom = 565.0
+text = "B"
+_menu = 6
+
+[node name="LEVELS" parent="." instance=ExtResource("9_bpf5r")]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 507.0
+offset_right = 200.0
+offset_bottom = 565.0
 disabled = true
-text = "SWITCH_TO_INFINITE_MODE"
+text = "S"
+_menu = 2
+
+[node name="INFINITE3" parent="." instance=ExtResource("9_bpf5r")]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 507.0
+offset_right = 300.0
+offset_bottom = 565.0
+text = "oo"
 _menu = 3

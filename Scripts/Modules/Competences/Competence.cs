@@ -8,6 +8,7 @@ public partial class Competence : Module {
 
 	// Variables
 	[Export] private Animation[] _AAnimations = new Animation[0];
+	[Export] public float cooldown = 0f;
 	[Export] private Timer _timer = null;
 
 	protected Vector2 position = Vector2.Zero;

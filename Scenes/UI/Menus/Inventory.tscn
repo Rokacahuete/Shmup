@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://drhfl7qf4os1o"]
+
+[ext_resource type="Script" uid="uid://te7lcv5e82go" path="res://Scripts/UI/Menus/Inventory/InventoryMenu.cs" id="1_ffu3e"]
+[ext_resource type="PackedScene" uid="uid://doams1qd1lc6q" path="res://Scenes/UI/Buttons/SwitchMenuButton.tscn" id="1_n0q52"]
+[ext_resource type="Texture2D" uid="uid://di3u242kgdhu8" path="res://Assets/Textures/Enemies/Witch.png" id="2_mpjg6"]
+[ext_resource type="Texture2D" uid="uid://ceh5vv6vmpvty" path="res://Assets/Textures/Wizard.png" id="3_1dg23"]
+[ext_resource type="Texture2D" uid="uid://q1a16j48u4vj" path="res://Assets/Textures/Enemies/Crow.png" id="4_qa2q7"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ffu3e")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 323.0
+offset_bottom = 68.0
+text = "INVENTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TP_COMPETENCE" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 103.0
+offset_right = 85.0
+offset_bottom = 150.0
+
+[node name="TextureRect" type="TextureRect" parent="TP_COMPETENCE"]
+layout_mode = 0
+offset_left = 9.999999
+offset_top = 6.9999967
+offset_right = 877.0
+offset_bottom = 1070.0
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_mpjg6")
+
+[node name="MINI_COMPETENCE" type="Button" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 103.0
+offset_right = 185.0
+offset_bottom = 150.0
+
+[node name="TextureRect" type="TextureRect" parent="MINI_COMPETENCE"]
+layout_mode = 0
+offset_left = 3.999999
+offset_top = 10.999999
+offset_right = 871.0
+offset_bottom = 1074.0
+scale = Vector2(0.045, 0.023)
+texture = ExtResource("3_1dg23")
+
+[node name="KAMIKAZE_COMPETENCE" type="Button" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 103.0
+offset_right = 285.00006
+offset_bottom = 150.0
+
+[node name="TextureRect" type="TextureRect" parent="KAMIKAZE_COMPETENCE"]
+layout_mode = 0
+offset_left = 3.999999
+offset_top = 10.999999
+offset_right = 871.0
+offset_bottom = 1074.0
+scale = Vector2(0.045, 0.023)
+texture = ExtResource("4_qa2q7")
+
+[node name="INVENTORY" parent="." instance=ExtResource("1_n0q52")]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 507.0
+offset_right = 100.0
+offset_bottom = 565.0
+disabled = true
+text = "B"
+_menu = 6
+
+[node name="LEVELS" parent="." instance=ExtResource("1_n0q52")]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 507.0
+offset_right = 200.0
+offset_bottom = 565.0
+text = "S"
+_menu = 2
+
+[node name="INFINITE" parent="." instance=ExtResource("1_n0q52")]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 507.0
+offset_right = 300.0
+offset_bottom = 565.0
+text = "oo"
+_menu = 3
+
+[connection signal="pressed" from="TP_COMPETENCE" to="." method="_OnCompetenceButtonPressed" binds= [0]]
+[connection signal="pressed" from="MINI_COMPETENCE" to="." method="_OnCompetenceButtonPressed" binds= [1]]
+[connection signal="pressed" from="KAMIKAZE_COMPETENCE" to="." method="_OnCompetenceButtonPressed" binds= [2]]
