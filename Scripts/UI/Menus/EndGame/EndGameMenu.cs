@@ -8,6 +8,8 @@ public partial class EndGameMenu : Menu {
 
 	// Variables
 	public static int score = 0;
+	
+	[Export] private Label _summary = null;
 
 	// Functions
 	public override void _Ready() {
@@ -25,6 +27,14 @@ public partial class EndGameMenu : Menu {
     public override void OnShow() {
         base.OnShow();
 		HUD.instance.OnShow();
+		GameManager.instance.currentLevel.datas.score += score;
+		
+		if (_summary == null) return;
+
+		Level.Datas lDatas = GameManager.instance.currentLevel.datas;
+		_summary.Text = $"Score : {lDatas.score}\n";
+		_summary.Text += $"XP : {lDatas.xp}\n";
+		_summary.Text += $"Ennemies tués : {lDatas.enemyKilled}\n";
     }
 
     public override void OnHide() {

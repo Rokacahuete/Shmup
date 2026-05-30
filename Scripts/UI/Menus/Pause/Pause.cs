@@ -26,6 +26,13 @@ public partial class Pause : Menu {
         base.OnShow();
 
 		GameManager.gameStopped = true;
+
+		if (_summary == null) return;
+
+		Level.Datas lDatas = GameManager.instance.currentLevel.datas;
+		_summary.Text = $"Score : {lDatas.score}\n";
+		_summary.Text += $"XP : {lDatas.xp}\n";
+		_summary.Text += $"Ennemies tués : {lDatas.enemyKilled}\n";
     }
 
     public override void OnHide() {

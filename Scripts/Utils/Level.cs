@@ -2,6 +2,11 @@ using Godot;
 
 // Author : Roka
 public struct Level {
+    public class Datas {
+        public int score = 0;
+        public int xp = 0;
+        public int enemyKilled = 0;
+    }
 	
 	// Consts
 
@@ -11,6 +16,7 @@ public struct Level {
 	public int score = 0;
 
     public int wave = -1;
+    public Datas datas = new();
 
     // Constructors
     public Level() {}

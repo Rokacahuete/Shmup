@@ -26,7 +26,7 @@ public partial class GameManager : Node {
 
 	[Export] public PackedScene xpOrbScene = null, scoreOrbScene = null;
 	
-	private Level _currentLevel;
+	public Level currentLevel;
 	private GameModes _gameMode = 0;
 	public List<Enemy> LEnemies = new();
 
@@ -75,8 +75,8 @@ public partial class GameManager : Node {
 	}
 
 	private void _InstanciateEnemyGroup(int pGroup) {
-		pGroup = pGroup.MinMax(0, _currentLevel.AEnemyGroups.Length - 1);
-		Node2D lGroup = _currentLevel.AEnemyGroups[pGroup].Instantiate<Node2D>();
+		pGroup = pGroup.MinMax(0, currentLevel.AEnemyGroups.Length - 1);
+		Node2D lGroup = currentLevel.AEnemyGroups[pGroup].Instantiate<Node2D>();
 		gameContainer.CallDeferred(MethodName.AddChild, lGroup);
 
 		foreach (Entity lEntity in lGroup.GetChildren())
@@ -87,7 +87,11 @@ public partial class GameManager : Node {
 		Enemy lEnemy = (Enemy)pEnemy;
 		LEnemies.Remove(lEnemy);
 
-		CreateOrbs(xpOrbScene, lEnemy.xpOnKilled, lEnemy.GlobalPosition);
+		if (lEnemy.xpOnKilled >= 0) {
+			CreateOrbs(xpOrbScene, lEnemy.xpOnKilled, lEnemy.GlobalPosition);
+			currentLevel.datas.xp += lEnemy.xpOnKilled;
+			currentLevel.datas.enemyKilled++;
+		}
 
 		if (LEnemies.Count != 0) return;
 		if (_waveTimer != null) _waveTimer.Start();
@@ -95,8 +99,8 @@ public partial class GameManager : Node {
 	}
 
 	public void StartGame(Level pLevel) {
-		_currentLevel = pLevel;
-		_SwitchGameMode(_currentLevel.gameMode);
+		currentLevel = pLevel;
+		_SwitchGameMode(currentLevel.gameMode);
 
 		Player.instance.SetInactive(false);
 		MenusManager.Switch(MenusManager.Menus.HUD);
@@ -105,7 +109,7 @@ public partial class GameManager : Node {
 	public void StopGame(bool pIsWin) {
 		OnGameEnd?.Invoke();
 
-		if (pIsWin) EndGameMenu.score = _currentLevel.score;
+		if (pIsWin) EndGameMenu.score = currentLevel.score;
 		else EndGameMenu.score = 0;
 
 		MenusManager.Switch(MenusManager.Menus.EndGame);
@@ -125,17 +129,20 @@ public partial class GameManager : Node {
 	// Game modes
 	private void _InfiniteMode() {
 		OnWaveEnd?.Invoke();
-		_InstanciateEnemyGroup(rand.RandiRange(0, _currentLevel.AEnemyGroups.Length - 1));
+		_InstanciateEnemyGroup(rand.RandiRange(0, currentLevel.AEnemyGroups.Length - 1));
 
-		int lNOrbs = _infiniteModeDefaultScore + _infiniteModeIncreaseScore * _currentLevel.wave;
-		if (_currentLevel.wave >= 0) CreateOrbs(scoreOrbScene, lNOrbs, screenSize * .5f);
-		++_currentLevel.wave;
+		int lNOrbs = _infiniteModeDefaultScore + _infiniteModeIncreaseScore * currentLevel.wave;
+		if (currentLevel.wave >= 0) {
+			CreateOrbs(scoreOrbScene, lNOrbs, screenSize * .5f);
+			currentLevel.datas.score += lNOrbs;
+		}
+		++currentLevel.wave;
     }
 
 	private void _WavesMode() {
 		OnWaveEnd?.Invoke();
-		if (++_currentLevel.wave >= _currentLevel.AEnemyGroups.Length) StopGame(true);
-		else _InstanciateEnemyGroup(_currentLevel.wave);
+		if (++currentLevel.wave >= currentLevel.AEnemyGroups.Length) StopGame(true);
+		else _InstanciateEnemyGroup(currentLevel.wave);
 	}
 
 	// Events

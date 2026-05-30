@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1xlt1365o4ko" path="res://Scripts/UI/Menus/Pause/Pause.cs" id="1_evds0"]
 
-[node name="Pause" type="Control"]
+[node name="Pause" type="Control" node_paths=PackedStringArray("_summary")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_evds0")
+_summary = NodePath("Summary")
 
 [node name="Quit Button" type="Button" parent="."]
 layout_mode = 0
