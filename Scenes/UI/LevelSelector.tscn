@@ -37,7 +37,7 @@ offset_right = 197.0
 offset_bottom = 420.0
 text = "TEST"
 script = ExtResource("2_cc4ho")
-_AEnemyGroup = [ExtResource("10_41owy")]
+_AEnemyGroup = [ExtResource("7_aknpa"), ExtResource("5_41owy"), ExtResource("3_o8atg")]
 _nextLevel = NodePath("../Infinite")
 
 [node name="1" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]

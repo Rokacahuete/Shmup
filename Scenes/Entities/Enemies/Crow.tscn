@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://q1a16j48u4vj" path="res://Assets/Textures/Enemies/Crow.png" id="1_ujjex"]
 [ext_resource type="PackedScene" uid="uid://dtjklu400biu8" path="res://Scenes/Modules/MovableRotation.tscn" id="1_y4dt6"]
 [ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_el2o4"]
-[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="3_o5tx0"]
+[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="3_o5tx0"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_w3j1c"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="5_72igx"]
-[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="5_w3j1c"]
+[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="5_w3j1c"]
 [ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="7_vpmcm"]
 [ext_resource type="PackedScene" uid="uid://dqy3ydcoegu8m" path="res://Scenes/Entities/Shots/PlayerExplosion.tscn" id="8_c0uli"]
 
@@ -19,6 +19,7 @@ height = 58.281815
 rotation = 1.5707964
 script = ExtResource("1_nhq80")
 _rotationMultiplicator = 1.0
+_target = Vector2(0.5, 0.75)
 xpOnKilled = 5
 maxHealth = 30
 
@@ -31,7 +32,7 @@ nodeToAffect = NodePath("../..")
 [node name="Modules" type="Node" parent="."]
 
 [node name="MovableRotation" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("1_y4dt6")]
-speed = 400.0
+speed = 300.0
 nodeToAffect = NodePath("../..")
 
 [node name="Damageable" parent="Modules" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_o5tx0")]
