@@ -39,6 +39,12 @@ public partial class Player : Entity {
 		base._Process(pDelta);
 	}
 
+	public void Start() {
+		SetInactive(false);
+		health = maxHealth;
+		UpdateLifeBar();
+	}
+
 	public void UpdateLifeBar() {
 		if (_lifeBar == null) return;
 

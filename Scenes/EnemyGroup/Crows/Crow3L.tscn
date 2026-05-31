@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://p2mh65wgofqg"]
+
+[ext_resource type="PackedScene" uid="uid://dw67n4kaxxnbk" path="res://Scenes/Entities/Enemies/Crow.tscn" id="1_r1h0i"]
+
+[node name="Group" type="Node2D"]
+
+[node name="Crow" parent="." instance=ExtResource("1_r1h0i")]
+position = Vector2(-36, 55.999996)
+rotation = 5.9864793
+
+[node name="Crow2" parent="." instance=ExtResource("1_r1h0i")]
+position = Vector2(-96.00001, 35.999992)
+rotation = 5.9864793
+
+[node name="Crow3" parent="." instance=ExtResource("1_r1h0i")]
+position = Vector2(-152, 14.000002)
+rotation = 5.9864793

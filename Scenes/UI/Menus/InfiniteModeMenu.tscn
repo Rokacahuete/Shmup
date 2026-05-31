@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://b686owbgycuj1"]
 
 [ext_resource type="Script" uid="uid://eqg4poiwaaib" path="res://Scripts/UI/Menus/InfiniteMode/InfiniteModeMenu.cs" id="1_xee7o"]
-[ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/SoloCrow.tscn" id="2_14pns"]
+[ext_resource type="PackedScene" uid="uid://cfd8it0drkun0" path="res://Scenes/EnemyGroup/Crows/SoloCrow.tscn" id="2_14pns"]
 [ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="3_5wfg3"]
-[ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/TwoCrow.tscn" id="4_ve4bh"]
+[ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/Crows/TwoCrow.tscn" id="4_ve4bh"]
 [ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="5_72j7s"]
 [ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="6_fxsqu"]
 [ext_resource type="PackedScene" uid="uid://dg8fwem1w0nxr" path="res://Scenes/EnemyGroup/SoloBookWitch.tscn" id="7_xar52"]

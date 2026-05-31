@@ -53,7 +53,8 @@ public partial class GameManager : Node {
 		if (lMode < 0 || lMode >= _AGameModesFunctions.Length) lMode = 0;
 
 		_GameMode = _AGameModesFunctions[lMode];
-		_GameMode?.Invoke();
+		if (_waveTimer != null) _waveTimer.Start();
+		else _GameMode?.Invoke();
 	}
 
 	public void CreateEnemy(Enemy pEnemy) {
@@ -102,7 +103,7 @@ public partial class GameManager : Node {
 		currentLevel = pLevel;
 		_SwitchGameMode(currentLevel.gameMode);
 
-		Player.instance.SetInactive(false);
+		Player.instance.Start();
 		MenusManager.Switch(MenusManager.Menus.HUD);
 	}
 
