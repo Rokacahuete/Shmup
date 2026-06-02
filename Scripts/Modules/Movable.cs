@@ -7,7 +7,7 @@ public partial class Movable : Module {
 	// Consts
 
 	// Variables
-	[Export(PropertyHint.Enum, "Line,Sinusoidal,Circle")] private int _patternType = 0;
+	[Export(PropertyHint.Enum, Patterns.TYPES)] private int _patternType = 0;
 	[Export] private Vector2 _direction = Vector2.Zero;
 	[Export] private float _speed = 0f;
 	[Export] public float distanceTime = 0f;

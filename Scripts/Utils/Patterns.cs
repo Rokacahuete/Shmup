@@ -4,6 +4,7 @@ using Godot;
 public static class Patterns {
 
     // Consts
+    public const string TYPES = "Line,Sinusoidal,Circle";
 
     // Delegates
     public delegate Vector2 Pattern(float pIndex, Vector2 pPatternVector);
@@ -25,10 +26,7 @@ public static class Patterns {
     }
 
     public static Vector2 Sinusoidal(float pI, Vector2 pVector) {
-        return new Vector2(
-            Mathf.Sin(pI),
-            pI
-        ) * pVector;
+        return new Vector2(Mathf.Sin(pI), pI) * pVector;
     }
 
     public static Vector2 Circle(float pI, Vector2 pVector) {

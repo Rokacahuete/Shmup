@@ -5,6 +5,7 @@ using Godot;
 public static class MyMaths {
     
     // Consts
+    public const float HALF_PI = Mathf.Pi * .5f;
 
     // Variables
 

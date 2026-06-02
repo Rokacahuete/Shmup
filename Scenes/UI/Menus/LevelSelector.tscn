@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://bs3ot0lst4uan"]
+[gd_scene load_steps=17 format=3 uid="uid://bs3ot0lst4uan"]
 
 [ext_resource type="Script" uid="uid://x54d2ggkk5yj" path="res://Scripts/UI/Menus/LevelSelector/LevelSelector.cs" id="1_o3ex8"]
 [ext_resource type="Script" uid="uid://c0xwulxn46npp" path="res://Scripts/UI/Menus/LevelSelector/LevelButton.cs" id="2_cc4ho"]
 [ext_resource type="PackedScene" uid="uid://cw13krkw2ffmy" path="res://Scenes/EnemyGroup/Crows/SoloCrowR.tscn" id="3_20jcn"]
-[ext_resource type="PackedScene" uid="uid://dexfpt4j0qm4s" path="res://Scenes/EnemyGroup/WitchShield.tscn" id="3_amie5"]
+[ext_resource type="PackedScene" uid="uid://dexfpt4j0qm4s" path="res://Scenes/EnemyGroup/Witches/Witch2Shield.tscn" id="3_amie5"]
 [ext_resource type="PackedScene" uid="uid://bv1hqkrxtjyng" path="res://Scenes/EnemyGroup/Crows/SoloCrowL.tscn" id="4_5l4hm"]
-[ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/SoloWitch.tscn" id="4_bpf5r"]
+[ext_resource type="PackedScene" uid="uid://cd0nm5m4gtacp" path="res://Scenes/EnemyGroup/Witches/WitchMovingShild.tscn" id="4_b4fo1"]
+[ext_resource type="PackedScene" uid="uid://c2wfo50mdx0po" path="res://Scenes/EnemyGroup/Witches/SoloWitch.tscn" id="4_bpf5r"]
 [ext_resource type="PackedScene" uid="uid://btyew0p7cjs50" path="res://Scenes/EnemyGroup/Crows/TwoCrow.tscn" id="5_41owy"]
-[ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/TwoWitch.tscn" id="6_amie5"]
+[ext_resource type="PackedScene" uid="uid://e8kip7nosby2" path="res://Scenes/EnemyGroup/Witches/WitchRotateShield5.tscn" id="5_qsgqd"]
+[ext_resource type="PackedScene" uid="uid://bbycmyoa6pf66" path="res://Scenes/EnemyGroup/Witches/TwoWitch.tscn" id="6_amie5"]
 [ext_resource type="PackedScene" uid="uid://bm3l3he0tjik7" path="res://Scenes/EnemyGroup/Crows/Crow3R.tscn" id="6_vs8eg"]
 [ext_resource type="PackedScene" uid="uid://di7lwo6djnay0" path="res://Scenes/EnemyGroup/SoloBookCrow.tscn" id="7_aknpa"]
 [ext_resource type="PackedScene" uid="uid://p2mh65wgofqg" path="res://Scenes/EnemyGroup/Crows/Crow3L.tscn" id="7_b4fo1"]
@@ -40,7 +42,7 @@ offset_right = 197.0
 offset_bottom = 420.0
 text = "TEST"
 script = ExtResource("2_cc4ho")
-_AEnemyGroup = [ExtResource("3_20jcn"), ExtResource("4_5l4hm"), ExtResource("5_41owy"), ExtResource("6_vs8eg"), ExtResource("7_b4fo1")]
+_AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("4_b4fo1"), ExtResource("5_qsgqd")]
 _nextLevel = NodePath("../INVENTORY")
 
 [node name="1" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -52,7 +54,7 @@ offset_bottom = 470.0
 text = "1"
 script = ExtResource("2_cc4ho")
 _AEnemyGroup = [ExtResource("3_20jcn"), ExtResource("4_5l4hm"), ExtResource("5_41owy"), ExtResource("6_vs8eg"), ExtResource("7_b4fo1")]
-_score = 2
+_score = 15
 _nextLevel = NodePath("../2")
 
 [node name="2" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
@@ -64,8 +66,8 @@ offset_bottom = 440.0
 disabled = true
 text = "2"
 script = ExtResource("2_cc4ho")
-_AEnemyGroup = [ExtResource("4_bpf5r")]
-_score = 3
+_AEnemyGroup = [ExtResource("4_bpf5r"), ExtResource("4_b4fo1"), ExtResource("5_qsgqd")]
+_score = 20
 _nextLevel = NodePath("../3")
 
 [node name="3" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]

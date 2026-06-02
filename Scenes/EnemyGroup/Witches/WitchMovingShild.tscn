@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd0nm5m4gtacp"]
+
+[ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="1_u5tk2"]
+[ext_resource type="PackedScene" uid="uid://bbuji5f74u38c" path="res://Scenes/Entities/Shield.tscn" id="2_xks5d"]
+[ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="3_xks5d"]
+[ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="4_y3t8w"]
+
+[node name="Group" type="Node2D"]
+
+[node name="Witch" parent="." instance=ExtResource("1_u5tk2")]
+position = Vector2(105, 92)
+_gapTp = Vector2(100, 0)
+
+[node name="Shield" parent="." node_paths=PackedStringArray("_LLinkedEntities") instance=ExtResource("2_xks5d")]
+position = Vector2(162, 200)
+rotation = 1.5707964
+scale = Vector2(1, 5)
+_LLinkedEntities = [NodePath("../Witch")]
+maxHealth = 300
+
+[node name="Movable" parent="Shield" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_xks5d")]
+_patternType = 1
+_direction = Vector2(162, 0)
+_speed = 1.0
+nodeToAffect = NodePath("..")
+
+[node name="ScaleShieldSpawn" parent="Shield" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_y3t8w")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("..")

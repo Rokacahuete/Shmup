@@ -1,17 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbuji5f74u38c"]
+[gd_scene load_steps=6 format=3 uid="uid://bbuji5f74u38c"]
 
 [ext_resource type="Script" uid="uid://ykym38wcl7rl" path="res://Scripts/Entities/Shield.cs" id="1_qy5a5"]
+[ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="2_gxf61"]
 [ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="2_wu3y4"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="3_gxf61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgfax"]
 size = Vector2(40, 40)
 
-[node name="Shield" type="Node2D"]
+[node name="Shield" type="Node2D" node_paths=PackedStringArray("_ALinkedEntitiesDiedAnimations", "_lastEntityDiedTimer", "_dieTimer")]
 script = ExtResource("1_qy5a5")
+_ALinkedEntitiesDiedAnimations = [NodePath("Animations/Scale")]
+_lastEntityDiedTimer = NodePath("Timers/LastEntityDie")
+_dieTimer = NodePath("Timers/Die")
 _startColor = Color(0, 0.27058825, 1, 0.5019608)
 _endColor = Color(0.48235294, 0, 0.22745098, 0.5019608)
 maxHealth = 500
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="Scale" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("2_gxf61")]
+duration = 1.0
+nodeToAffect = NodePath("../..")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="LastEntityDie" type="Timer" parent="Timers"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Die" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
 
 [node name="Modules" type="Node" parent="."]
 

@@ -34,7 +34,7 @@ public partial class Entity : Node2D {
 	}
 
 	public virtual void Die() {
-		QueueFree();
+		if (IsInstanceValid(this)) QueueFree();
 		OnDied?.Invoke(this);
 	}
 	

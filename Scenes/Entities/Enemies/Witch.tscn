@@ -57,6 +57,21 @@ _angle = 1080.0
 duration = 1.0
 nodeToAffect = NodePath("../../../renderer")
 
+[node name="Spawn" type="Node" parent="Animations"]
+
+[node name="Scale" parent="Animations/Spawn" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_jsatl")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("../../../renderer")
+
+[node name="Rotation" parent="Animations/Spawn" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_ei7gc")]
+_angle = 1080.0
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("../../../renderer")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="TP Move" type="Timer" parent="Timers"]

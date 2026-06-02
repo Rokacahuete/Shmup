@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://e8kip7nosby2"]
+
+[ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="1_hpq6j"]
+[ext_resource type="PackedScene" uid="uid://bbuji5f74u38c" path="res://Scenes/Entities/Shield.tscn" id="2_4tbm2"]
+[ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="3_shvv6"]
+[ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="4_xfomt"]
+
+[node name="Group" type="Node2D"]
+
+[node name="Witch" parent="." instance=ExtResource("1_hpq6j")]
+position = Vector2(134, 98)
+_nbTp = 3
+_gapTp = Vector2(0, 0)
+maxHealth = 250
+
+[node name="Shield" parent="Witch" node_paths=PackedStringArray("_LLinkedEntities", "_ALinkedEntitiesDiedAnimations") instance=ExtResource("2_4tbm2")]
+_LLinkedEntities = [NodePath("..")]
+_ALinkedEntitiesDiedAnimations = []
+maxHealth = 300
+
+[node name="Movable" parent="Witch/Shield" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_shvv6")]
+_patternType = 2
+_direction = Vector2(100, 100)
+_speed = 1.0
+nodeToAffect = NodePath("..")
+
+[node name="ScaleShieldSpawn" parent="Witch/Shield" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_xfomt")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("..")
+
+[node name="Shield2" parent="Witch" node_paths=PackedStringArray("_LLinkedEntities", "_ALinkedEntitiesDiedAnimations") instance=ExtResource("2_4tbm2")]
+_LLinkedEntities = [NodePath("..")]
+_ALinkedEntitiesDiedAnimations = []
+maxHealth = 300
+
+[node name="Movable" parent="Witch/Shield2" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_shvv6")]
+_patternType = 2
+_direction = Vector2(100, 100)
+_speed = 1.0
+distanceTime = 1.2570000000000001
+nodeToAffect = NodePath("..")
+
+[node name="ScaleShieldSpawn" parent="Witch/Shield2" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_xfomt")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("..")
+
+[node name="Shield3" parent="Witch" node_paths=PackedStringArray("_LLinkedEntities", "_ALinkedEntitiesDiedAnimations") instance=ExtResource("2_4tbm2")]
+_LLinkedEntities = [NodePath("..")]
+_ALinkedEntitiesDiedAnimations = []
+maxHealth = 300
+
+[node name="Movable" parent="Witch/Shield3" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_shvv6")]
+_patternType = 2
+_direction = Vector2(100, 100)
+_speed = 1.0
+distanceTime = 2.513
+nodeToAffect = NodePath("..")
+
+[node name="ScaleShieldSpawn" parent="Witch/Shield3" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_xfomt")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("..")
+
+[node name="Shield4" parent="Witch" node_paths=PackedStringArray("_LLinkedEntities", "_ALinkedEntitiesDiedAnimations") instance=ExtResource("2_4tbm2")]
+_LLinkedEntities = [NodePath("..")]
+_ALinkedEntitiesDiedAnimations = []
+maxHealth = 300
+
+[node name="Movable" parent="Witch/Shield4" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_shvv6")]
+_patternType = 2
+_direction = Vector2(100, 100)
+_speed = 1.0
+distanceTime = 3.77
+nodeToAffect = NodePath("..")
+
+[node name="ScaleShieldSpawn" parent="Witch/Shield4" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_xfomt")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("..")
+
+[node name="Shield5" parent="Witch" node_paths=PackedStringArray("_LLinkedEntities", "_ALinkedEntitiesDiedAnimations") instance=ExtResource("2_4tbm2")]
+_LLinkedEntities = [NodePath("..")]
+_ALinkedEntitiesDiedAnimations = []
+maxHealth = 300
+
+[node name="Movable" parent="Witch/Shield5" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_shvv6")]
+_patternType = 2
+_direction = Vector2(100, 100)
+_speed = 1.0
+distanceTime = 5.027
+nodeToAffect = NodePath("..")
+
+[node name="ScaleShieldSpawn" parent="Witch/Shield5" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_xfomt")]
+_activeOnStart = true
+duration = 1.0
+skipTime = 0.5
+nodeToAffect = NodePath("..")

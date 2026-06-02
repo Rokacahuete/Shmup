@@ -7,6 +7,7 @@ public partial class Animation : Module {
 	// Consts
 
 	// Variables
+	[Export] private bool _activeOnStart = false;
 	[Export] public float duration = 0f, skipTime = 0f;
 	[Export] protected bool cosAnimation = false;
 	
@@ -20,6 +21,7 @@ public partial class Animation : Module {
 		base._Ready();
 		
 		SetProcess(false);
+		if (_activeOnStart) StartAnimation();
 	}
 
 	public override void _Process(double pDelta) {
@@ -42,6 +44,7 @@ public partial class Animation : Module {
 	}
 
 	public virtual void StopAnimation() {
+		if (_activeOnStart) QueueFree();
 		stopped = false;
 		
 		SetProcess(false);
