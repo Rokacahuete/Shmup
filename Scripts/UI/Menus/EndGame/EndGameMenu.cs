@@ -41,7 +41,7 @@ public partial class EndGameMenu : Menu {
         base.OnHide();
 		HUD.instance.OnHide();
 
-		TimeManager.SetTimeout(DatasManager.Save, 2f);
+		TimeManager.SetTimeout(DatasManager.Save, 1.5f);
     }
 
 	private void _OnContinueButtonPressed() {

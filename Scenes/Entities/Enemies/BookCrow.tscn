@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3wqh2v6tpeya"]
+[gd_scene load_steps=17 format=3 uid="uid://b3wqh2v6tpeya"]
 
 [ext_resource type="Script" uid="uid://c04nhddjhyvx5" path="res://Scripts/Entities/Enemies/Book.cs" id="1_640ay"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="2_hsh41"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dw67n4kaxxnbk" path="res://Scenes/Entities/Enemies/Crow.tscn" id="2_xxqtk"]
 [ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="3_38re6"]
 [ext_resource type="Texture2D" uid="uid://blhrs0mf51hkc" path="res://Assets/Textures/Enemies/Book.png" id="3_uvg3u"]
-[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_iue3s"]
+[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="4_iue3s"]
+[ext_resource type="PackedScene" uid="uid://ct4gmplyym4ee" path="res://Scenes/Modules/Animations/ScaleX.tscn" id="4_nnc3i"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="5_2uasq"]
-[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="6_0fsev"]
+[ext_resource type="PackedScene" uid="uid://dwhhfscodaymg" path="res://Scenes/Modules/Animations/ScaleY.tscn" id="5_wpjk2"]
+[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="6_0fsev"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="6_o61bj"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="7_2uasq"]
 [ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="9_0t40i"]
@@ -31,6 +33,20 @@ nodeToAffect = NodePath("../..")
 [node name="Scale-Spawn" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("3_38re6")]
 duration = 1.0
 skipTime = 0.5
+nodeToAffect = NodePath("../..")
+
+[node name="Spawn-ScaleX" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_nnc3i")]
+_activeOnStart = true
+duration = 2.0
+skipTime = 1.0
+cosAnimation = true
+nodeToAffect = NodePath("../..")
+
+[node name="Spawn-ScaleY" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_wpjk2")]
+_activeOnStart = true
+duration = 0.4
+skipTime = 0.2
+cosAnimation = true
 nodeToAffect = NodePath("../..")
 
 [node name="Modules" type="Node" parent="."]

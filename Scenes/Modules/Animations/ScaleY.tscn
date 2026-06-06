@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwhhfscodaymg"]
+
+[ext_resource type="Script" uid="uid://bakqbx7cboovp" path="res://Scripts/Modules/Animations/ScaleYAnimation.cs" id="1_hwpkj"]
+
+[node name="ScaleY" type="Node"]
+script = ExtResource("1_hwpkj")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct4gmplyym4ee"]
+
+[ext_resource type="Script" uid="uid://dywtrvi3fa5hk" path="res://Scripts/Modules/Animations/ScaleXAnimation.cs" id="1_0j3d2"]
+
+[node name="ScaleX" type="Node"]
+script = ExtResource("1_0j3d2")

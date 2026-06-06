@@ -16,8 +16,14 @@ public partial class Entity : Node2D {
 
 	// Functions
 	public override void _Ready() {
-		health = maxHealth;
 		base._Ready();
+
+		health = maxHealth;
+		
+		if (Visible) {
+			Visible = false;
+			TimeManager.SetTimeout(() => SetDeferred(PropertyName.Visible, true));
+		}
 	}
 
 	public override void _Process(double pDelta) {
