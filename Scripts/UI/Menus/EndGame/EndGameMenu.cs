@@ -40,6 +40,8 @@ public partial class EndGameMenu : Menu {
     public override void OnHide() {
         base.OnHide();
 		HUD.instance.OnHide();
+
+		TimeManager.SetTimeout(DatasManager.Save, 2f);
     }
 
 	private void _OnContinueButtonPressed() {

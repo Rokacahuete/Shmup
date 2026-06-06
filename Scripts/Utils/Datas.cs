@@ -6,11 +6,13 @@ public static class Datas {
 	// Consts
 
 	// Variables
-	public static int score { get; private set; } = 0;
+	public static string name = "";
+
+	public static int score = 0;
 	
 	public static int xpToLevelUp => 200 + level * 10;
-	public static int xp { get; private set; } = 0;
-	public static int level { get; private set; } = 1;
+	public static int xp = 0;
+	public static int level = 1;
 
 	// Delegates
 	public delegate void OnDatasChangedEventHandler();

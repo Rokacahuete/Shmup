@@ -39,10 +39,12 @@ public partial class GameManager : Node {
 	public override void _Ready() {
 		base._Ready();
 
+		instance = this;
 		rand.Randomize();
 		screenSize = GetViewport().GetVisibleRect().Size;
 
-		instance = this;
+		TimeManager.SetTimeout(DatasManager.Load, 1f);
+
 		_AGameModesFunctions = new Functions[3] { null, _InfiniteMode, _WavesMode };
 		
 		if (_waveTimer != null) _waveTimer.Timeout += () => _GameMode?.Invoke();
