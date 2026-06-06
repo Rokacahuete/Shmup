@@ -40,14 +40,14 @@ _activeOnStart = true
 duration = 2.0
 skipTime = 1.0
 cosAnimation = true
-nodeToAffect = NodePath("../..")
+nodeToAffect = NodePath("../../renderer")
 
 [node name="Spawn-ScaleY" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_wpjk2")]
 _activeOnStart = true
 duration = 0.4
 skipTime = 0.2
 cosAnimation = true
-nodeToAffect = NodePath("../..")
+nodeToAffect = NodePath("../../renderer")
 
 [node name="Modules" type="Node" parent="."]
 

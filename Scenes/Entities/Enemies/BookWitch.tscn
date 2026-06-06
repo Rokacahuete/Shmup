@@ -1,15 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddavm1k0rnoqh"]
+[gd_scene load_steps=17 format=3 uid="uid://ddavm1k0rnoqh"]
 
 [ext_resource type="Script" uid="uid://c04nhddjhyvx5" path="res://Scripts/Entities/Enemies/Book.cs" id="1_orfdt"]
 [ext_resource type="PackedScene" uid="uid://de45x6gd838gt" path="res://Scenes/Modules/Animations/Hit.tscn" id="2_va7jo"]
 [ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="3_8xlw2"]
 [ext_resource type="PackedScene" uid="uid://ci2655mjvakix" path="res://Scenes/Entities/Enemies/Witch.tscn" id="3_x3gec"]
-[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="4_6tchc"]
+[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="4_6tchc"]
+[ext_resource type="PackedScene" uid="uid://ct4gmplyym4ee" path="res://Scenes/Modules/Animations/ScaleX.tscn" id="4_8gsh0"]
+[ext_resource type="PackedScene" uid="uid://dwhhfscodaymg" path="res://Scenes/Modules/Animations/ScaleY.tscn" id="5_k7jjx"]
 [ext_resource type="Texture2D" uid="uid://dikefhfnmmqw4" path="res://Assets/Textures/Enemies/Book2.png" id="5_va7jo"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="5_x3gec"]
 [ext_resource type="PackedScene" uid="uid://045m4xfrgdpd" path="res://Scenes/Modules/Shooter.tscn" id="6_h1lp5"]
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="6_va7jo"]
-[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="6_w25wm"]
+[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="6_w25wm"]
 [ext_resource type="PackedScene" uid="uid://bly3a3c30m3hx" path="res://Scenes/Modules/Movable.tscn" id="7_x3gec"]
 [ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="9_2wrxm"]
 [ext_resource type="PackedScene" uid="uid://dqy3ydcoegu8m" path="res://Scenes/Entities/Shots/PlayerExplosion.tscn" id="10_8gsh0"]
@@ -32,6 +34,20 @@ nodeToAffect = NodePath("../..")
 duration = 1.0
 skipTime = 0.5
 nodeToAffect = NodePath("../..")
+
+[node name="Spawn-ScaleX" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("4_8gsh0")]
+_activeOnStart = true
+duration = 2.0
+skipTime = 1.0
+cosAnimation = true
+nodeToAffect = NodePath("../../renderer")
+
+[node name="Spawn-ScaleY" parent="Animations" node_paths=PackedStringArray("nodeToAffect") instance=ExtResource("5_k7jjx")]
+_activeOnStart = true
+duration = 0.4
+skipTime = 0.2
+cosAnimation = true
+nodeToAffect = NodePath("../../renderer")
 
 [node name="Modules" type="Node" parent="."]
 

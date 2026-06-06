@@ -42,7 +42,7 @@ offset_right = 197.0
 offset_bottom = 420.0
 text = "TEST"
 script = ExtResource("2_cc4ho")
-_AEnemyGroup = [ExtResource("7_aknpa")]
+_AEnemyGroup = [ExtResource("7_aknpa"), ExtResource("8_b07ky")]
 _nextLevel = NodePath("../INVENTORY")
 
 [node name="1" type="Button" parent="." node_paths=PackedStringArray("_nextLevel")]
