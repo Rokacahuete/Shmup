@@ -20,7 +20,7 @@ public partial class GameManager : Node {
 	public static bool gameStopped = false;
 
 	[Export] public Node2D gameContainer;
-	[Export] private Timer _waveTimer = null;
+	[Export] public float waveTimer = 0f;
 	[Export] private int _infiniteModeDefaultScore = 0;
 	[Export] private int _infiniteModeIncreaseScore = 0;
 
@@ -46,8 +46,6 @@ public partial class GameManager : Node {
 		TimeManager.SetTimeout(DatasManager.Load, 1f);
 
 		_AGameModesFunctions = new Functions[3] { null, _InfiniteMode, _WavesMode };
-		
-		if (_waveTimer != null) _waveTimer.Timeout += () => _GameMode?.Invoke();
 	}
 
 	private void _SwitchGameMode(GameModes pMode) {
@@ -55,8 +53,7 @@ public partial class GameManager : Node {
 		if (lMode < 0 || lMode >= _AGameModesFunctions.Length) lMode = 0;
 
 		_GameMode = _AGameModesFunctions[lMode];
-		if (_waveTimer != null) _waveTimer.Start();
-		else _GameMode?.Invoke();
+		if (_GameMode != null) TimeManager.SetTimeout(_GameMode.Invoke, waveTimer);
 	}
 
 	public void CreateEnemy(Enemy pEnemy) {
@@ -97,8 +94,8 @@ public partial class GameManager : Node {
 		}
 
 		if (LEnemies.Count != 0) return;
-		if (_waveTimer != null) _waveTimer.Start();
-		else _GameMode?.Invoke();
+		if (_GameMode != null) TimeManager.SetTimeout(_GameMode.Invoke, waveTimer);
+		OnWaveEnd?.Invoke();
 	}
 
 	public void StartGame(Level pLevel) {
@@ -131,7 +128,6 @@ public partial class GameManager : Node {
 	
 	// Game modes
 	private void _InfiniteMode() {
-		OnWaveEnd?.Invoke();
 		_InstanciateEnemyGroup(rand.RandiRange(0, currentLevel.AEnemyGroups.Length - 1));
 
 		int lNOrbs = _infiniteModeDefaultScore + _infiniteModeIncreaseScore * currentLevel.wave;
@@ -143,7 +139,6 @@ public partial class GameManager : Node {
     }
 
 	private void _WavesMode() {
-		OnWaveEnd?.Invoke();
 		if (++currentLevel.wave >= currentLevel.AEnemyGroups.Length) StopGame(true);
 		else _InstanciateEnemyGroup(currentLevel.wave);
 	}

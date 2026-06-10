@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmwo73fm1k6bv"]
+[gd_scene load_steps=14 format=3 uid="uid://cmwo73fm1k6bv"]
 
 [ext_resource type="PackedScene" uid="uid://dnaa6owekhou5" path="res://Scenes/Entities/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://b40l7n4rx11a5" path="res://Scripts/Utils/Managers/GameManager.cs" id="1_uu6xs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ctt8gqcbn8cpl" path="res://Scripts/Utils/Managers/TimeManager.cs" id="4_5vvyt"]
 [ext_resource type="Script" uid="uid://kgblaxft6fyu" path="res://Scripts/Utils/Managers/InputManager.cs" id="4_trn2v"]
 [ext_resource type="PackedScene" uid="uid://dkcn7d8rrwr4e" path="res://Scenes/UI/Menus/HUD.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://chyn6w86frvdn" path="res://Scenes/UI/Backgrounds/DefaultBackground.tscn" id="6_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://bs3ot0lst4uan" path="res://Scenes/UI/Menus/LevelSelector.tscn" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://dalrxy5skaqr8" path="res://Scenes/UI/Menus/Pause.tscn" id="9_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://bkye55wx3d2uy" path="res://Scenes/UI/Menus/EndGame.tscn" id="10_20pc6"]
@@ -20,10 +21,10 @@
 [node name="Time" type="Node" parent="Managers"]
 script = ExtResource("4_5vvyt")
 
-[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer", "_waveTimer")]
+[node name="Game" type="Node" parent="Managers" node_paths=PackedStringArray("gameContainer")]
 script = ExtResource("1_uu6xs")
 gameContainer = NodePath("../../GameContainer")
-_waveTimer = NodePath("../../Timers/WaveTimer")
+waveTimer = 3.0
 _infiniteModeDefaultScore = 2
 _infiniteModeIncreaseScore = 1
 xpOrbScene = ExtResource("2_fos0i")
@@ -33,10 +34,7 @@ scoreOrbScene = ExtResource("3_lgr22")
 script = ExtResource("4_trn2v")
 _doubleClickTime = 500
 
-[node name="Timers" type="Node" parent="."]
-
-[node name="WaveTimer" type="Timer" parent="Timers"]
-one_shot = true
+[node name="ParallaxBackground" parent="." instance=ExtResource("6_c6i3y")]
 
 [node name="GameContainer" type="Node2D" parent="."]
 
