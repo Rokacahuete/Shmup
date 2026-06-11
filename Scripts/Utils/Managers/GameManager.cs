@@ -17,7 +17,7 @@ public partial class GameManager : Node {
 	public static Vector2 scrollLastMove = Vector2.Zero;
 	public static RandomNumberGenerator rand = new RandomNumberGenerator();
 	public static Vector2 screenSize;
-	public static bool gameStopped = false;
+	public static bool gameStopped = true;
 
 	[Export] public Node2D gameContainer;
 	[Export] public float waveTimer = 0f;
@@ -99,6 +99,7 @@ public partial class GameManager : Node {
 	}
 
 	public void StartGame(Level pLevel) {
+		gameStopped = false;
 		currentLevel = pLevel;
 		_SwitchGameMode(currentLevel.gameMode);
 
@@ -107,6 +108,7 @@ public partial class GameManager : Node {
 	}
 
 	public void StopGame(bool pIsWin) {
+		gameStopped = true;
 		OnGameEnd?.Invoke();
 
 		if (pIsWin) EndGameMenu.score = currentLevel.score;

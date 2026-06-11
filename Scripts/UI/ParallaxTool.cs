@@ -31,6 +31,7 @@ public partial class ParallaxTool : Parallax2D {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
+		if (GameManager.gameStopped) return;
 		_FunctionsDelta?.Invoke();
 
 		base._Process(pDelta);
@@ -45,7 +46,6 @@ public partial class ParallaxTool : Parallax2D {
 
 		float lTimer = GameManager.instance.waveTimer;
 		float lRatio = _elapsedTime / lTimer;
-		//a + (b - a) · 4t(1 - t)
 
 		if (_elapsedTime >= lTimer) {
 			_elapsedTime = 0f;
