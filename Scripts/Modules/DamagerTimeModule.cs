@@ -10,7 +10,7 @@ public partial class DamagerTimeModule : Damager {
 	[Export] private float _timeBetweenDamages = 0f;
 	[Export] private float _timer = 0f;
 	
-	private float _timeBeforeNextDamage;
+	private TimeManager.Timeout _currentTimer;
 
 	// Functions
 	public override void _Ready() {
@@ -18,25 +18,26 @@ public partial class DamagerTimeModule : Damager {
 
 		base._Ready();
 
-		_timeBeforeNextDamage = _timer;
+		((Entity)nodeToAffect).OnDied += _Stop;
+		TimeManager.SetTimeout(_Damage, _timer);
 	}
 
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
-		_Damage(lDelta);
-
 		base._Process(pDelta);
 	}
 
-	private void _Damage(float pDelta) {
+	private void _Damage() {
 		if (IsStopped()) return;
 
-		_timeBeforeNextDamage -= pDelta;
-		if (_timeBeforeNextDamage >= 0f) return;
-
-		_timeBeforeNextDamage = _timeBetweenDamages;
+		_currentTimer = TimeManager.SetTimeout(_Damage, _timeBetweenDamages);
 		((Entity)nodeToAffect)?.Hurt(this);
+	}
+
+	private void _Stop(Entity pEntity) {
+		((Entity)nodeToAffect).OnDied -= _Stop;
+		_currentTimer.Dispose();
 	}
 
 	// Events

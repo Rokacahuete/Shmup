@@ -9,15 +9,13 @@ public partial class Competence : Module {
 	// Variables
 	[Export] private Animation[] _AAnimations = new Animation[0];
 	[Export] public float cooldown = 0f;
-	[Export] private Timer _timer = null;
+	[Export] private float _timer = 0f;
 
 	protected Vector2 position = Vector2.Zero;
 
 	// Functions
 	public override void _Ready() {
 		base._Ready();
-
-		if (_timer != null) _timer.Timeout += Action;
 	}
 
 	public override void _Process(double pDelta) {
@@ -30,8 +28,7 @@ public partial class Competence : Module {
 		position = pPosition;
 
 		foreach (Animation lAnim in _AAnimations) lAnim.StartAnimation();
-		if (_timer != null) _timer.Start();
-		else Action();
+		TimeManager.SetTimeout(Action, _timer);
 	}
 	
 	protected virtual void Action() {}

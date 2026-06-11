@@ -10,7 +10,7 @@ public partial class Shield : Entity {
 	// Variables
 	[Export] private Godot.Collections.Array<Entity> _LLinkedEntities = new();
 	[Export] private Animation[] _ALinkedEntitiesDiedAnimations = new Animation[0];
-	[Export] private Timer _lastEntityDiedTimer = null, _dieTimer = null;
+	[Export] private float _lastEntityDiedTimer = 0f, _dieTimer = 0f;
 	[Export] private Color _startColor = new Color(1f, 1f, 1f, .5f),
 		_endColor = new Color(0f, 0f, 0f, .5f);
 
@@ -23,9 +23,6 @@ public partial class Shield : Entity {
 		GameManager.instance.OnWaveEnd += Die;
 		foreach (Entity lEntity in _LLinkedEntities) 
 			lEntity.OnDied += _OnEntityDie;
-		
-		if (_lastEntityDiedTimer != null) _lastEntityDiedTimer.Timeout += _DieAnimation;
-		if (_dieTimer != null) _dieTimer.Timeout += Die;
 	}
 
 	public override void _Process(double pDelta) {
@@ -35,12 +32,9 @@ public partial class Shield : Entity {
 	}
 
 	private void _DieAnimation() {
-		if (_dieTimer == null) Die();
-		else {
-			foreach (Animation lAnim in _ALinkedEntitiesDiedAnimations) {
-				lAnim.StartAnimation();
-			}
-			_dieTimer.Start();
+		TimeManager.SetTimeout(Die, _dieTimer);
+		foreach (Animation lAnim in _ALinkedEntitiesDiedAnimations) {
+			lAnim.StartAnimation();
 		}
 	}
 
@@ -62,7 +56,7 @@ public partial class Shield : Entity {
 		_LLinkedEntities.Remove(pEntity);
 		if (_LLinkedEntities.Count != 0) return;
 
-		if (_lastEntityDiedTimer == null) _DieAnimation();
-		else _lastEntityDiedTimer.Start();
+		
+		TimeManager.SetTimeout(_DieAnimation, _lastEntityDiedTimer);
 	}
 }

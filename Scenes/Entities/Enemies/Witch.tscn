@@ -26,15 +26,15 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5rrt"]
 size = Vector2(60, 69)
 
-[node name="Witch" type="Node2D" node_paths=PackedStringArray("_movableModule", "_damageableModule", "_visionShape", "_ATpAnimations", "_tpTimerMove", "_tpTimerInvicibility")]
+[node name="Witch" type="Node2D" node_paths=PackedStringArray("_movableModule", "_damageableModule", "_visionShape", "_ATpAnimations")]
 rotation = 1.5707964
 script = ExtResource("1_nawxp")
 _movableModule = NodePath("Modules/Movable")
 _damageableModule = NodePath("Modules/Damageable")
 _visionShape = NodePath("DetectionZone/CollisionShape2D")
 _ATpAnimations = [NodePath("Animations/TpAnimation/Scale"), NodePath("Animations/TpAnimation/Rotation")]
-_tpTimerMove = NodePath("Timers/TP Move")
-_tpTimerInvicibility = NodePath("Timers/TP Invicibility")
+_tpTimerMove = 0.5
+_tpTimerInvicibility = 1.0
 _lifePercentageToTp = 0.7
 _nbTp = 2
 _gapTp = Vector2(150, 0)
@@ -71,15 +71,6 @@ _activeOnStart = true
 duration = 1.0
 skipTime = 0.5
 nodeToAffect = NodePath("../../../renderer")
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="TP Move" type="Timer" parent="Timers"]
-wait_time = 0.5
-one_shot = true
-
-[node name="TP Invicibility" type="Timer" parent="Timers"]
-one_shot = true
 
 [node name="Modules" type="Node" parent="."]
 

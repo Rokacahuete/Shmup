@@ -12,7 +12,7 @@ public partial class Witch : Enemy {
 	[Export] private CollisionShape2D _visionShape = null;
 	
 	[Export] private Animation[] _ATpAnimations = new Animation[0];
-	[Export] private Timer _tpTimerMove = null, _tpTimerInvicibility = null;
+	[Export] private float _tpTimerMove = 0f, _tpTimerInvicibility = 0f;
 	[Export(PropertyHint.Range, "0f,1f")] private float _lifePercentageToTp = 0f;
 	[Export] private int _nbTp = 0;
 	[Export] private Vector2 _gapTp = Vector2.Zero;
@@ -27,9 +27,6 @@ public partial class Witch : Enemy {
 
 		_healthToTp = (int)(maxHealth * _lifePercentageToTp);
 		if (GlobalPosition.X >= GameManager.screenSize.X * .5f) _gapTp.X *= -1f;
-
-		if (_tpTimerMove != null) _tpTimerMove.Timeout += _TPMove;
-		if (_tpTimerInvicibility != null) _tpTimerInvicibility.Timeout += _TPInvicibility;
 	}
 
 	public override void _Process(double pDelta) {
@@ -53,13 +50,10 @@ public partial class Witch : Enemy {
 		_tpActive--;
 
 		_damageableModule.stopped = true;
-		// _movableModule.stopped = true;
 		if (_visionShape != null) _visionShape.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 
-		if (_tpTimerMove != null) _tpTimerMove?.Start();
-		else _TPMove();
-		if (_tpTimerInvicibility != null) _tpTimerInvicibility?.Start();
-		else _TPInvicibility();
+		TimeManager.SetTimeout(_TPMove, _tpTimerMove);
+		TimeManager.SetTimeout(_TPInvicibility, _tpTimerInvicibility);
 	}
 
 	private void _TPMove() {

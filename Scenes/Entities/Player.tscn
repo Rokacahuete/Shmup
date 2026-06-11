@@ -9,13 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://b86facytq8j7o" path="res://Scenes/Modules/Animations/Rotation.tscn" id="4_3m754"]
 [ext_resource type="PackedScene" uid="uid://dttjrhlqit1y1" path="res://Scenes/Entities/Shots/PlayerShot.tscn" id="4_86atj"]
 [ext_resource type="PackedScene" uid="uid://ddiqqpnc4b7xq" path="res://Scenes/Modules/Animations/Scale.tscn" id="4_wmg1a"]
-[ext_resource type="PackedScene" uid="uid://cvuoxauwej8pw" path="res://Scenes/Modules/Damageable.tscn" id="5_km4ui"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damageable.tscn" id="5_km4ui"]
 [ext_resource type="PackedScene" uid="uid://cvne23yletcxm" path="res://Scenes/Modules/Competences/MiniShooter.tscn" id="6_46t5s"]
 [ext_resource type="PackedScene" uid="uid://ba0lxd7yjdpxj" path="res://Scenes/Entities/Shots/EnemyShot.tscn" id="6_rsj4h"]
 [ext_resource type="PackedScene" uid="uid://b3mm6kymb22uf" path="res://Scenes/Entities/MiniPlayer.tscn" id="7_0pa8p"]
 [ext_resource type="PackedScene" uid="uid://bve4v4tpvjt2e" path="res://Scenes/Modules/Competences/KamikazeShooter.tscn" id="8_0hljs"]
 [ext_resource type="PackedScene" uid="uid://dl67vlc2ohodo" path="res://Scenes/Entities/Shots/PlayerKamikaze.tscn" id="9_crkm8"]
-[ext_resource type="PackedScene" uid="uid://crdu287mkpj6v" path="res://Scenes/Modules/Damager.tscn" id="11_wmg1a"]
+[ext_resource type="PackedScene" path="res://Scenes/Modules/Damager.tscn" id="11_wmg1a"]
 [ext_resource type="PackedScene" uid="uid://b70vlplfs2ug0" path="res://Scenes/Modules/LimitZone.tscn" id="16_crkm8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km4ui"]
@@ -47,10 +47,10 @@ nodeToAffect = NodePath("../../../renderer")
 
 [node name="Competences" type="Node" parent="."]
 
-[node name="TP" parent="Competences" node_paths=PackedStringArray("_AAnimations", "_timer", "nodeToAffect") instance=ExtResource("3_4kc40")]
+[node name="TP" parent="Competences" node_paths=PackedStringArray("_AAnimations", "nodeToAffect") instance=ExtResource("3_4kc40")]
 _AAnimations = [NodePath("../../Animations/TP Animations/Scale"), NodePath("../../Animations/TP Animations/Rotation")]
 cooldown = 5.0
-_timer = NodePath("../../Timers/TimeBeforeTP")
+_timer = 0.5
 nodeToAffect = NodePath("../..")
 
 [node name="MiniShooter" parent="Competences" instance=ExtResource("6_46t5s")]
@@ -60,12 +60,6 @@ cooldown = 7.0
 [node name="KamikazeShooter" parent="Competences" instance=ExtResource("8_0hljs")]
 _shotScene = ExtResource("9_crkm8")
 cooldown = 2.0
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="TimeBeforeTP" type="Timer" parent="Timers"]
-wait_time = 0.5
-one_shot = true
 
 [node name="Modules" type="Node" parent="."]
 
