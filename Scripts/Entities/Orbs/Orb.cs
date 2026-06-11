@@ -20,6 +20,7 @@ public partial class Orb : Entity {
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
 
+		if (GameManager.gameStopped) return;
 		Rotation += GetAngleTo(_target) * _rotationMultiplicator * lDelta;
 		if (GlobalPosition.Y < _target.Y) Die();
 		base._Process(pDelta);

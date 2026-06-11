@@ -19,6 +19,8 @@ public partial class Crow : Enemy {
 
 	public override void _Process(double pDelta) {
 		float lDelta = (float)pDelta;
+		
+		if (GameManager.gameStopped) return;
 		Rotation += GetAngleTo(_target) * _rotationMultiplicator * lDelta;
 
 		base._Process(pDelta);
