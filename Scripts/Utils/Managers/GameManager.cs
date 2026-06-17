@@ -115,7 +115,7 @@ public partial class GameManager : Node {
 		else EndGameMenu.score = 0;
 
 		MenusManager.Switch(MenusManager.Menus.EndGame);
-		Player.instance.SetInactive(true);
+		Player.instance.SetActive(true);
 		foreach (Enemy lEnemy in LEnemies.ToArray()) {
 			LEnemies.Remove(lEnemy);
 			lEnemy.QueueFree();

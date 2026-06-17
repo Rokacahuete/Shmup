@@ -23,8 +23,9 @@ public partial class Player : Entity {
 	public override void _Ready() {
 		instance = this;
 
-		SetInactive(true);
+		SetActive(true);
 		
+		GameManager.instance.OnWaveEnd += _InterWave;
 		InputManager.OnDoubleClick += ActiveCompetence;
 
 		base._Ready();
@@ -40,7 +41,7 @@ public partial class Player : Entity {
 	}
 
 	public void Start() {
-		SetInactive(false);
+		SetActive(false);
 		health = maxHealth;
 		UpdateLifeBar();
 	}
@@ -52,10 +53,19 @@ public partial class Player : Entity {
 		_lifeBar.Value = health;
 	}
 
-	public void SetInactive(bool pStopped) {
+	public void SetActive(bool pStopped) {
+		SetActive(pStopped, !pStopped);
+	}
+
+	public void SetActive(bool pStopped, bool pVisible) {
 		foreach (Module lModule in _AModules) lModule.stopped = pStopped;
 		SetProcess(!pStopped);
-		Visible = !pStopped;
+		Visible = pVisible;
+	}
+
+	private void _InterWave() {
+		SetActive(true, true);
+		TimeManager.SetTimeout(() => SetActive(false, true), GameManager.instance.waveTimer);
 	}
 
 	public void SwitchCompetence(int pCompetence) {
